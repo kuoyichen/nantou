@@ -3,57 +3,62 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>草屯鎮政策島</title>
+<title>南投縣政策島</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<meta name="description" content="張媛婷 2026 草屯鎮長政見：五大升級、十二座政策島的 3D 互動城市。">
+<meta name="description" content="温世政 2026 南投縣長政見：顧老人、顧少年、顧腹肚、顧環境，十二座漂在日月潭上的 3D 政策島。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@700;900&display=swap">
 <style>
-/* 版面：滿版 3D 舞台，介面元件浮在四角。單一暖色黏土世界，不做深色主題。 */
+/* 版面：滿版 3D 舞台，介面元件浮在四角。茶綠＋潭藍的山城世界（日月潭、合歡山、九九峰、清境、茶園），不做深色主題。 */
 :root{
-  --coral:#db6a41; --ink:#211d1d; --cream:#fff8f4; --yellow:#fcea8b; --stone:#c5b5a7; --green:#71806a;
-  --glass:#86a8a6; --wood:#b48560; --teal:#3e7c8c;
-  --paper:rgba(255,250,245,.78); --line:rgba(33,29,29,.10);
-  --shadow:0 1px 2px #4a2a1410,0 6px 18px #4a2a1414,0 18px 48px #4a2a1412;
+  --accent:#2f7d5b; --ink:#1c2a24; --cream:#f5f8f0; --yellow:#f2d46b; --stone:#b9c2b2; --green:#5f7f5c;
+  --glass:#8fb3b5; --wood:#a9805a; --teal:#2f7896; --amber:#c97a3d; --mist:#e2efe4;
+  --paper:rgba(247,250,245,.8); --line:rgba(28,42,36,.11);
+  --shadow:0 1px 2px #1f3a2c10,0 6px 18px #1f3a2c14,0 18px 48px #1f3a2c12;
   --f-ui:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+  --f-title:"Noto Serif TC","Songti TC","PMingLiU",serif;
   --f-mono:ui-monospace,"SFMono-Regular",Menlo,Consolas,monospace;
   --f-num:Georgia,"Times New Roman",serif;
   color-scheme:light;
 }
 html,body{height:100%}
 [hidden]{display:none!important}
-body{margin:0;overflow:hidden;background:radial-gradient(120% 90% at 50% 30%,#fffdf9 0%,#edddcf 100%);color:var(--ink);font-family:var(--f-ui);-webkit-font-smoothing:antialiased}
+body{margin:0;overflow:hidden;background:radial-gradient(120% 90% at 50% 30%,#fbfdf8 0%,#d6e5da 100%);color:var(--ink);font-family:var(--f-ui);-webkit-font-smoothing:antialiased}
 #stage{position:fixed;inset:0}
 #stage canvas{display:block;width:100%;height:100%;touch-action:none;outline:none}
 #labels{position:fixed;inset:0;pointer-events:none}
-.eyebrow{font:700 10px/1.2 var(--f-mono);letter-spacing:2px;text-transform:uppercase;color:var(--coral)}
+.eyebrow{font:700 10px/1.2 var(--f-mono);letter-spacing:2px;text-transform:uppercase;color:var(--accent)}
 .btn{min-height:44px;border-radius:9px;border:0;background:transparent;color:var(--ink);font:600 13px/1 var(--f-ui);cursor:pointer;padding:0 12px;display:inline-flex;align-items:center;justify-content:center;gap:6px}
-.btn:hover{background:var(--yellow)}
+.btn:hover{background:var(--mist)}
 .btn[aria-pressed="true"],.btn:active{background:var(--ink);color:var(--cream)}
-.btn:focus-visible{outline:3px solid var(--coral);outline-offset:2px}
-.chip{display:inline-flex;align-items:center;gap:6px;border-radius:999px;background:#fff;box-shadow:0 2px 8px #4a2a1414;padding:6px 12px;font-size:12px;border:0;color:var(--ink)}
+.btn:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.chip{display:inline-flex;align-items:center;gap:6px;border-radius:999px;background:#fff;box-shadow:0 2px 8px #1f3a2c14;padding:6px 12px;font-size:12px;border:0;color:var(--ink)}
 
 /* island label pill */
-.isl-label{pointer-events:auto;cursor:pointer;display:inline-flex;align-items:center;gap:6px;padding:5px 11px 5px 6px;border-radius:999px;background:rgba(255,248,244,.94);box-shadow:0 2px 8px #4a2a1420;font:600 13px/1 var(--f-ui);white-space:nowrap;transition:opacity .25s,background .2s,color .2s;user-select:none}
-.isl-label b{font:700 10px/1 var(--f-mono);letter-spacing:1px;color:#fff;background:var(--coral);border-radius:999px;padding:4px 6px}
+.isl-label{pointer-events:auto;cursor:pointer;display:inline-flex;align-items:center;gap:6px;padding:5px 11px 5px 6px;border-radius:8px 999px 999px 8px;background:rgba(247,250,245,.95);box-shadow:0 2px 8px #1f3a2c20;font:600 13px/1 var(--f-ui);white-space:nowrap;transition:opacity .25s,background .2s,color .2s;user-select:none}
+.isl-label b{font:700 10px/1 var(--f-mono);letter-spacing:1px;color:#fff;background:var(--accent);border-radius:999px;padding:4px 6px}
 .isl-label.sel{background:var(--ink);color:var(--cream)}
 .isl-label.dim{opacity:.45}
 
 /* loading */
-#loading{position:fixed;inset:0;z-index:50;display:grid;place-items:center;background:radial-gradient(120% 90% at 50% 30%,#fffdf9 0%,#edddcf 100%);transition:opacity .6s}
+#loading{position:fixed;inset:0;z-index:50;display:grid;place-items:center;background:radial-gradient(120% 90% at 50% 30%,#fbfdf8 0%,#d6e5da 100%);transition:opacity .6s}
 #loading.done{opacity:0;pointer-events:none}
 #loading .in{text-align:center;padding:0 24px}
-#loading h1{margin:10px 0 6px;font-size:clamp(34px,7vw,64px);letter-spacing:4px;font-weight:900}
-#loading p{margin:0;color:#6b5a50;font-size:15px}
+#loading h1{margin:10px 0 6px;font-family:var(--f-title);font-size:clamp(34px,7vw,64px);letter-spacing:6px;font-weight:900}
+#loading .ridge{display:block;width:min(420px,80vw);height:auto;margin:0 auto 6px}
+#loading p{margin:0;color:#4f6358;font-size:15px}
 #loading .err{margin-top:18px;color:#a3301a;font-size:14px;max-width:420px;line-height:1.6;white-space:pre-wrap}
-.dots i{display:inline-block;width:8px;height:8px;margin:18px 4px 0;border-radius:50%;background:var(--coral);animation:bob 1s infinite ease-in-out}
+.dots i{display:inline-block;width:8px;height:8px;margin:18px 4px 0;border-radius:50%;background:var(--accent);animation:bob 1s infinite ease-in-out}
 .dots i:nth-child(2){animation-delay:.15s;background:var(--yellow)}.dots i:nth-child(3){animation-delay:.3s;background:var(--teal)}
 @keyframes bob{50%{transform:translateY(-8px)}}
 
 /* brand */
-#brand{position:fixed;left:max(16px,env(safe-area-inset-left,0px));top:calc(16px + env(safe-area-inset-top,0px));z-index:10;display:flex;gap:12px;align-items:center;padding:12px 16px;border-radius:18px;background:var(--paper);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:var(--shadow)}
-#brand .photo{width:46px;height:46px;border-radius:50%;object-fit:cover;object-position:50% 20%;background:var(--stone)}
-#brand h1{margin:2px 0 0;font-size:20px;font-weight:900;letter-spacing:1px}
-#brand h1 span{color:var(--coral)}
-#brand .sub{font-size:12px;color:#6b5a50;margin-top:2px}
+#brand{position:fixed;left:max(16px,env(safe-area-inset-left,0px));top:calc(16px + env(safe-area-inset-top,0px));z-index:10;display:flex;gap:12px;align-items:center;padding:12px 16px 16px;border-radius:18px;overflow:hidden;background:var(--paper) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 14' preserveAspectRatio='none'%3E%3Cpath d='M0 14 L0 9 L22 5 L38 8 L60 2 L74 6 L92 4 L110 9 L128 6 L140 8 L152 3 L160 6 L168 2 L176 6 L184 3 L192 7 L215 5 L240 9 L262 4 L282 8 L300 6 L300 14Z' fill='%232f7d5b' fill-opacity='.22'/%3E%3Cpath d='M0 14 L0 11 L40 10 L70 12 L110 10 L150 12 L200 10 L250 12 L300 10 L300 14Z' fill='%232f7896' fill-opacity='.3'/%3E%3C/svg%3E") left bottom/100% 12px no-repeat;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:var(--shadow)}
+#brand .photo{width:46px;height:46px;border-radius:50%;object-fit:cover;object-position:50% 30%;border:2px solid #fff;box-shadow:0 0 0 2px var(--accent);background:var(--stone)}
+#brand h1{margin:2px 0 0;font-family:var(--f-title);font-size:21px;font-weight:900;letter-spacing:1px}
+#brand h1 span{color:var(--accent)}
+#brand .sub{font-size:12px;color:#4f6358;margin-top:2px}
 
 /* tools */
 #tools{position:fixed;left:max(16px,env(safe-area-inset-left,0px));top:calc(112px + env(safe-area-inset-top,0px));z-index:10;display:flex;gap:4px;padding:4px;border-radius:14px;background:var(--paper);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:var(--shadow)}
@@ -63,62 +68,62 @@ body{margin:0;overflow:hidden;background:radial-gradient(120% 90% at 50% 30%,#ff
 /* sheets: card (left) and side (right) */
 .sheet{position:fixed;z-index:12;background:rgba(255,250,245,.92);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);box-shadow:var(--shadow);display:flex;flex-direction:column;overflow:hidden}
 .grab{display:none}
-#card{left:max(16px,env(safe-area-inset-left,0px));top:calc(176px + env(safe-area-inset-top,0px));width:340px;max-height:calc(100% - 176px - 100px - env(safe-area-inset-top,0px) - env(safe-area-inset-bottom,0px));border-radius:22px;box-shadow:0 1px 2px #4a2a1412,0 8px 24px #4a2a1418,0 28px 64px #4a2a1420}
+#card{left:max(16px,env(safe-area-inset-left,0px));top:calc(176px + env(safe-area-inset-top,0px));width:340px;max-height:calc(100% - 176px - 100px - env(safe-area-inset-top,0px) - env(safe-area-inset-bottom,0px));border-radius:22px;box-shadow:0 1px 2px #1f3a2c12,0 8px 24px #1f3a2c18,0 28px 64px #1f3a2c20}
 #card .close{position:absolute;right:8px;top:8px;width:44px;z-index:2}
 .card-body{overflow-y:auto;padding:22px 22px 24px;overscroll-behavior:contain}
-.card-body h2{margin:6px 44px 4px 0;font-size:24px;line-height:1.25;font-weight:900;text-wrap:balance}
-.card-body .lead{margin:8px 0 14px;font-size:14px;line-height:1.7;color:#4a3f3a}
-.card-body .quote{margin:12px 0;padding:12px 14px;border-radius:14px;background:var(--cream);font-size:15px;line-height:1.75;border:1px solid var(--line)}
-.card-body .quote small{display:block;margin-top:6px;font:700 10px/1.2 var(--f-mono);letter-spacing:2px;color:#8a7a70}
-.card-body h3{margin:18px 0 8px;font:700 10px/1.2 var(--f-mono);letter-spacing:2px;color:#8a7a70;text-transform:uppercase}
+.card-body h2{margin:6px 44px 4px 0;font-family:var(--f-title);font-size:24px;line-height:1.3;font-weight:900;text-wrap:balance}
+.card-body .lead{margin:8px 0 14px;font-size:14px;line-height:1.7;color:#33463d}
+.card-body .quote{margin:12px 0;padding:12px 14px 12px 16px;border-radius:4px 14px 14px 4px;background:var(--cream);font-size:15px;line-height:1.75;border:1px solid var(--line);border-left:4px solid var(--accent)}
+.card-body .quote small{display:block;margin-top:6px;font:700 10px/1.2 var(--f-mono);letter-spacing:2px;color:#6f8378}
+.card-body h3{margin:18px 0 8px;font:700 10px/1.2 var(--f-mono);letter-spacing:2px;color:#6f8378;text-transform:uppercase}
 .isl-icon{width:52px;height:52px;border-radius:16px;display:grid;place-items:center;font-size:26px;color:var(--ink);box-shadow:inset 0 -3px 0 #0000001a}
 .card-top{display:flex;gap:12px;align-items:center}
 .items{list-style:none;margin:0;padding:0;display:grid;gap:4px}
 .items button{width:100%;text-align:left;justify-content:flex-start;gap:10px;font-weight:500;line-height:1.35;padding:8px 10px;min-height:44px}
-.num{flex:none;width:22px;height:22px;border-radius:50%;display:inline-grid;place-items:center;background:var(--coral);color:#fff;font:700 12px/1 var(--f-ui)}
+.num{flex:none;width:22px;height:22px;border-radius:50%;display:inline-grid;place-items:center;background:var(--accent);color:#fff;font:700 12px/1 var(--f-ui)}
 .num.lit{background:var(--yellow);color:var(--ink)}
 .chips{display:flex;flex-wrap:wrap;gap:6px}
 .chip.btnlike{cursor:pointer}
-.chip.btnlike:hover{background:var(--yellow)}
+.chip.btnlike:hover{background:var(--mist)}
 .chip.cream{background:var(--cream)}
 .thumb{width:160px;height:160px;border-radius:18px;background:var(--cream);display:block;margin:4px auto 6px;box-shadow:inset 0 0 0 1px var(--line)}
 .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(88px,1fr));gap:8px;margin:12px 0}
-.stat{padding:10px 12px;border-radius:14px;background:#fff;box-shadow:0 2px 8px #4a2a1414}
-.stat b{display:block;font:italic 28px/1.05 var(--f-num);color:var(--coral)}
-.stat span{font-size:12px;color:#6b5a50}
+.stat{padding:10px 12px;border-radius:14px;background:#fff;box-shadow:0 2px 8px #1f3a2c14}
+.stat b{display:block;font:900 26px/1.1 var(--f-title);color:var(--accent)}
+.stat span{font-size:12px;color:#4f6358}
 .when{display:flex;gap:6px;flex-wrap:wrap}
 .when .chip{background:var(--yellow)}
 .src{display:inline-block;margin-top:16px;font-size:12px;color:var(--teal)}
 .lvl{display:inline-flex;align-items:center;gap:8px;font-size:13px}
-.lvl i{display:inline-block;width:34px;height:0;border-top:3px solid var(--coral)}
+.lvl i{display:inline-block;width:34px;height:0;border-top:3px solid var(--accent)}
 .lvl.thematic i{border-top-style:dashed}.lvl.pending i{border-top-style:dotted}
 .flowline{display:flex;align-items:center;gap:10px;margin:14px 0;font-weight:700}
-.flowline .arrow{color:var(--coral);font-size:20px}
+.flowline .arrow{color:var(--accent);font-size:20px}
 
 #side{right:max(16px,env(safe-area-inset-right,0px));top:calc(16px + env(safe-area-inset-top,0px));bottom:calc(100px + env(safe-area-inset-bottom,0px));width:318px;border-radius:22px;background:rgba(255,250,245,.72)}
 .side-head{padding:14px 14px 8px;display:grid;gap:10px}
 #search{min-height:44px;border-radius:12px;border:1px solid var(--line);background:#fff;padding:0 14px;font:14px var(--f-ui);color:var(--ink)}
-#search:focus-visible{outline:3px solid var(--coral);outline-offset:1px}
-.tabs{display:grid;grid-template-columns:1fr 1fr 1fr;gap:4px;padding:3px;border-radius:12px;background:#4a2a140d}
+#search:focus-visible{outline:3px solid var(--accent);outline-offset:1px}
+.tabs{display:grid;grid-template-columns:1fr 1fr 1fr;gap:4px;padding:3px;border-radius:12px;background:#1f3a2c0d}
 .tab{min-height:40px;border-radius:9px;border:0;background:transparent;font:600 13px var(--f-ui);color:var(--ink);cursor:pointer}
-.tab[aria-selected="true"]{background:#fff;box-shadow:0 2px 8px #4a2a1414}
-.tab:focus-visible{outline:3px solid var(--coral)}
+.tab[aria-selected="true"]{background:#fff;box-shadow:0 2px 8px #1f3a2c14}
+.tab:focus-visible{outline:3px solid var(--accent)}
 .side-body{overflow-y:auto;padding:4px 10px 16px;overscroll-behavior:contain}
 .pillar-h{margin:14px 6px 6px}
 .pillar-h .eyebrow{display:block}
-.pillar-h small{font-size:12px;color:#6b5a50}
+.pillar-h small{font-size:12px;color:#4f6358}
 details.isl{border-radius:14px;margin:4px 0}
-details.isl[open]{background:#fff;box-shadow:0 2px 8px #4a2a1414}
+details.isl[open]{background:#fff;box-shadow:0 2px 8px #1f3a2c14}
 details.isl summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:10px;min-height:44px;padding:4px 10px;border-radius:12px;font-weight:700}
 details.isl summary::-webkit-details-marker{display:none}
-details.isl summary:hover{background:var(--yellow)}
-details.isl summary:focus-visible{outline:3px solid var(--coral)}
-details.isl summary .no{font:700 10px/1 var(--f-mono);letter-spacing:1px;color:#fff;background:var(--coral);border-radius:999px;padding:4px 6px}
-details.isl summary .cnt{margin-left:auto;font-size:12px;color:#8a7a70;font-weight:500}
+details.isl summary:hover{background:var(--mist)}
+details.isl summary:focus-visible{outline:3px solid var(--accent)}
+details.isl summary .no{font:700 10px/1 var(--f-mono);letter-spacing:1px;color:#fff;background:var(--accent);border-radius:999px;padding:4px 6px}
+details.isl summary .cnt{margin-left:auto;font-size:12px;color:#6f8378;font-weight:500}
 details.isl .items{padding:0 6px 8px}
 .flowrow{width:100%;text-align:left;justify-content:flex-start;flex-wrap:wrap;gap:4px 10px;padding:10px;min-height:56px;font-weight:500}
 .flowrow b{font-weight:700}
-.empty{padding:20px 10px;color:#8a7a70;font-size:13px}
+.empty{padding:20px 10px;color:#6f8378;font-size:13px}
 mark{background:var(--yellow);color:inherit;border-radius:3px}
 
 /* HUD */
@@ -128,7 +133,7 @@ mark{background:var(--yellow);color:inherit;border-radius:3px}
 .hud-group{display:flex;gap:2px}
 .hud-time{display:flex;flex-direction:column;align-items:center;padding:0 10px 0 14px;min-width:84px}
 .hud-time .time{font:italic 22px/1 var(--f-num)}
-.hud-time .slot{font-size:10px;color:#8a7a70;margin-top:3px;white-space:nowrap}
+.hud-time .slot{font-size:10px;color:#6f8378;margin-top:3px;white-space:nowrap}
 .hud-sep{width:1px;height:30px;background:var(--line);margin:0 4px}
 
 /* log */
@@ -141,29 +146,29 @@ body.side-open #log{right:calc(318px + 32px + env(safe-area-inset-right,0px))}
 #logFilter{margin-left:auto;min-height:32px;border-radius:8px;border:1px solid var(--line);background:#fff;font:12px var(--f-ui);max-width:120px}
 #logList{list-style:none;margin:0;padding:6px 8px;overflow-y:auto;font-size:12px;line-height:1.5}
 #logList li{display:grid;grid-template-columns:40px 1fr;gap:6px;padding:5px 4px;border-bottom:1px dashed var(--line)}
-#logList time{font:italic 13px var(--f-num);color:#8a7a70}
-#logList .k{font:700 9px var(--f-mono);letter-spacing:1px;color:var(--coral);margin-right:4px}
+#logList time{font:italic 13px var(--f-num);color:#6f8378}
+#logList .k{font:700 9px var(--f-mono);letter-spacing:1px;color:var(--accent);margin-right:4px}
 
 #legend{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(84px + env(safe-area-inset-bottom,0px));z-index:10;display:flex;gap:14px;padding:8px 14px;border-radius:999px;background:var(--paper);box-shadow:var(--shadow);font-size:12px;white-space:nowrap}
 
 /* help */
-#help{position:fixed;inset:0;z-index:40;display:grid;place-items:center;background:#211d1d55;padding:16px}
-.help-in{width:min(440px,100%);border-radius:22px;background:var(--cream);padding:26px;box-shadow:0 30px 80px #211d1d55}
-.help-in h2{margin:6px 0 14px;font-size:26px;font-weight:900}
+#help{position:fixed;inset:0;z-index:40;display:grid;place-items:center;background:#1c2a2455;padding:16px}
+.help-in{width:min(440px,100%);border-radius:22px;background:var(--cream);padding:26px;box-shadow:0 30px 80px #1c2a2455}
+.help-in h2{margin:6px 0 14px;font-family:var(--f-title);font-size:26px;font-weight:900}
 .help-in ol{margin:0 0 20px;padding:0;list-style:none;counter-reset:s;display:grid;gap:12px}
 .help-in li{counter-increment:s;display:grid;grid-template-columns:34px 1fr;gap:2px 10px;font-size:14px;line-height:1.55}
-.help-in li::before{content:counter(s);grid-row:span 2;width:30px;height:30px;border-radius:50%;background:var(--coral);color:#fff;display:grid;place-items:center;font:italic 700 16px var(--f-num)}
-.help-in li span{color:#6b5a50}
-.btn.primary{background:var(--ink);color:var(--cream);width:100%;font-size:15px}
-.btn.primary:hover{background:var(--coral)}
+.help-in li::before{content:counter(s);grid-row:span 2;width:30px;height:30px;border-radius:50%;background:var(--accent);color:#fff;display:grid;place-items:center;font:italic 700 16px var(--f-num)}
+.help-in li span{color:#4f6358}
+.btn.primary{background:var(--accent);color:var(--cream);width:100%;font-size:15px}
+.btn.primary:hover{background:var(--teal)}
 
 /* pins */
-.pin{width:24px;height:24px;border-radius:50%;background:var(--coral);color:#fff;display:grid;place-items:center;font:700 13px/1 var(--f-ui);box-shadow:0 2px 6px #4a2a1440;pointer-events:auto;cursor:pointer;border:2px solid #fff}
+.pin{width:24px;height:24px;border-radius:50%;background:var(--accent);color:#fff;display:grid;place-items:center;font:700 13px/1 var(--f-ui);box-shadow:0 2px 6px #1f3a2c40;pointer-events:auto;cursor:pointer;border:2px solid #fff}
 .pin.lit{background:var(--yellow);color:var(--ink)}
 .pin.sel{background:var(--ink)}
 .isl-label.short .nm{display:none}
 .isl-label.hide{visibility:hidden}
-.bubble{padding:4px 9px;border-radius:999px;background:#fff;box-shadow:0 2px 8px #4a2a1426;font:600 11px/1.2 var(--f-ui);white-space:nowrap;transform:translateY(-6px);pointer-events:none}
+.bubble{padding:4px 9px;border-radius:999px;background:#fff;box-shadow:0 2px 8px #1f3a2c26;font:600 11px/1.2 var(--f-ui);white-space:nowrap;transform:translateY(-6px);pointer-events:none}
 .bubble::after{content:"";position:absolute;left:50%;bottom:-4px;margin-left:-4px;border:4px solid transparent;border-top-color:#fff;border-bottom:0}
 
 /* 手機版 ≤800px */
@@ -179,7 +184,7 @@ body.side-open #log{right:calc(318px + 32px + env(safe-area-inset-right,0px))}
   #card{height:34%;z-index:14}
   #side{height:52%;z-index:13}
   .grab{display:block;flex:none;height:28px;cursor:grab;touch-action:none;position:relative}
-  .grab::before{content:"";position:absolute;left:50%;top:10px;width:44px;height:5px;margin-left:-22px;border-radius:3px;background:#211d1d33}
+  .grab::before{content:"";position:absolute;left:50%;top:10px;width:44px;height:5px;margin-left:-22px;border-radius:3px;background:#1c2a2433}
   .card-body{padding:4px max(18px,env(safe-area-inset-left,0px)) 24px max(18px,env(safe-area-inset-right,0px))}
   #card .close{top:2px}
   .card-body h2{font-size:21px}
@@ -199,22 +204,26 @@ body.side-open #log{right:calc(318px + 32px + env(safe-area-inset-right,0px))}
 @media (prefers-reduced-motion: reduce){
   *,*::before,*::after{animation:none!important;transition:none!important}
 }
-.cand-label{display:inline-flex;align-items:center;gap:5px;padding:4px 10px 4px 5px;border-radius:999px;background:var(--coral);color:#fff;font:800 12px/1 var(--f-ui);letter-spacing:1px;box-shadow:0 3px 10px #4a2a1440;white-space:nowrap;pointer-events:auto;cursor:pointer;border:2px solid #fff}
-.cand-label i{font-style:normal;width:16px;height:16px;border-radius:50%;background:#fff;color:var(--coral);display:grid;place-items:center;font-size:10px}
-.cand-act{display:block;margin-top:4px;padding:3px 8px;border-radius:999px;background:#fff;color:var(--ink);font:600 10px/1.2 var(--f-ui);letter-spacing:0;box-shadow:0 2px 6px #4a2a1420;text-align:center}
+.cand-label{display:inline-flex;align-items:center;gap:5px;padding:4px 10px 4px 5px;border-radius:999px;background:var(--accent);color:#fff;font:800 12px/1 var(--f-ui);letter-spacing:1px;box-shadow:0 3px 10px #1f3a2c40;white-space:nowrap;pointer-events:auto;cursor:pointer;border:2px solid #fff}
+.cand-label i{font-style:normal;width:16px;height:16px;border-radius:50%;background:#fff;color:var(--accent);display:grid;place-items:center;font-size:10px}
+.cand-act{display:block;margin-top:4px;padding:3px 8px;border-radius:999px;background:#fff;color:var(--ink);font:600 10px/1.2 var(--f-ui);letter-spacing:0;box-shadow:0 2px 6px #1f3a2c20;text-align:center}
 .cand-photo{width:72px;height:72px;border-radius:50%;object-fit:cover;object-position:50% 20%;background:var(--stone)}
 .vids{list-style:none;margin:0;padding:0;display:grid;gap:4px}
 .vids button{width:100%;text-align:left;justify-content:flex-start;gap:10px;font-weight:500;line-height:1.35;padding:8px 10px;min-height:44px}
 .play{flex:none;width:26px;height:26px;border-radius:50%;display:inline-grid;place-items:center;background:var(--ink);color:#fff;font-size:10px;padding-left:2px}
 .vid-group{margin:14px 6px 6px}
-.isl-label .vid{font-style:normal;font-size:9px;color:var(--coral);margin-left:-2px}
+.isl-label .vid{font-style:normal;font-size:9px;color:var(--accent);margin-left:-2px}
 .isl-label.sel .vid{color:var(--yellow)}
-#player{position:fixed;inset:0;z-index:45;display:grid;place-items:center;background:#211d1dcc;padding:16px}
+#player{position:fixed;inset:0;z-index:45;display:grid;place-items:center;background:#1c2a24cc;padding:16px}
 .player-in{width:min(860px,100%);border-radius:22px;background:var(--cream);padding:16px;box-shadow:0 30px 80px #0008}
 .player-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:10px}
 .player-head h2{margin:4px 0 0;font-size:20px;line-height:1.3;text-wrap:balance}
 #playerVideo{width:100%;max-height:70vh;border-radius:14px;background:#000;display:block}
-.player-note{margin:10px 2px 0;font-size:13px;color:#6b5a50}
+.lm-label{padding:3px 8px;border-radius:6px;background:rgba(28,42,36,.62);color:#f5f8f0;font:600 11px/1.2 var(--f-ui);letter-spacing:1px;white-space:nowrap;pointer-events:none;transition:opacity .3s}
+.lm-label small{display:block;font:500 9px/1.2 var(--f-mono);letter-spacing:1px;opacity:.75}
+.lm-label.off{opacity:0}
+#playerYT{width:100%;aspect-ratio:16/9;border:0;border-radius:14px;background:#000;display:block}
+.player-note{margin:10px 2px 0;font-size:13px;color:#4f6358}
 </style>
 </head>
 <body>
@@ -252,7 +261,7 @@ body.side-open #log{right:calc(318px + 32px + env(safe-area-inset-right,0px))}
 <aside id="side" class="sheet" hidden aria-label="政策清單">
   <div class="grab" aria-hidden="true"></div>
   <div class="side-head">
-    <input id="search" type="search" placeholder="搜尋政見，例如：托育、防災" aria-label="搜尋政見" autocomplete="off">
+    <input id="search" type="search" placeholder="搜尋政見，例如：假牙、茶、公托" aria-label="搜尋政見" autocomplete="off">
     <div class="tabs" role="tablist">
       <button class="tab" role="tab" id="tabTopics" aria-selected="true" data-en="Policy topics">政策主題</button>
       <button class="tab" role="tab" id="tabFlows" aria-selected="false" data-en="Connections">協作關係</button>
@@ -262,8 +271,8 @@ body.side-open #log{right:calc(318px + 32px + env(safe-area-inset-right,0px))}
   <div class="side-body" id="sideBody"></div>
 </aside>
 
-<section id="log" hidden aria-label="城市日誌">
-  <div class="log-head"><span class="live"><i></i>LIVE</span><b data-en="City log">城市日誌</b>
+<section id="log" hidden aria-label="南投日誌">
+  <div class="log-head"><span class="live"><i></i>LIVE</span><b data-en="Island log">南投日誌</b>
     <select id="logFilter" aria-label="依協作線篩選"></select></div>
   <ol id="logList"></ol>
 </section>
@@ -300,7 +309,7 @@ body.side-open #log{right:calc(318px + 32px + env(safe-area-inset-right,0px))}
     <ol>
       <li><b data-en="Drag to look around">拖曳旋轉、滾輪縮放</b><span data-en="Pinch on phones. Arrow keys work too.">手機用雙指縮放，鍵盤方向鍵也可以。</span></li>
       <li><b data-en="Tap an island or building">點一座島或一棟建物</b><span data-en="A card opens with the original policy text.">左側會打開卡片，顯示政見原文。</span></li>
-      <li><b data-en="Watch the day go by">看一天的草屯</b><span data-en="Policies light up yellow when they matter most; walkers carry things between islands.">不同時段相關政見會亮黃色，小人在島之間搬運協作。</span></li>
+      <li><b data-en="Watch a day in Nantou">看一天的南投</b><span data-en="Policies light up gold when they matter most; walkers carry things between islands floating on Sun Moon Lake.">不同時段相關政見會亮金黃色，小人在漂浮於日月潭的島之間搬運協作。</span></li>
     </ol>
     <button class="btn primary" id="helpOk" data-en="Start exploring">開始逛</button>
   </div>
@@ -310,15 +319,17 @@ body.side-open #log{right:calc(318px + 32px + env(safe-area-inset-right,0px))}
   <div class="player-in">
     <div class="player-head"><div><div class="eyebrow" id="playerKind"></div><h2 id="playerTitle"></h2></div><button class="btn" id="playerClose" aria-label="關閉影片">✕</button></div>
     <video id="playerVideo" controls playsinline preload="metadata"></video>
+    <iframe id="playerYT" hidden title="YouTube 影片" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>
     <p class="player-note" id="playerNote" hidden></p>
   </div>
 </div>
 
 <div id="loading" role="status" aria-live="polite">
   <div class="in">
-    <div class="eyebrow">CAOTUN · POLICY ISLANDS</div>
-    <h1>草屯鎮政策島</h1>
-    <p id="loadingMsg">正在組合政策城市…</p>
+    <svg class="ridge" viewBox="0 0 420 70" aria-hidden="true"><path d="M0 70 L40 40 L70 52 L120 12 L135 20 L150 10 L170 34 L200 26 L215 38 L226 30 L236 40 L246 29 L256 41 L266 31 L276 42 L300 34 L340 48 L380 36 L420 52 L420 70Z" fill="#2f7d5b" opacity=".25"/><path d="M120 12 L135 20 L150 10 L144 22 L132 24Z" fill="#fff"/><path d="M0 70 L60 58 L130 62 L210 56 L290 63 L360 57 L420 62 L420 70Z" fill="#2f7896" opacity=".35"/></svg>
+    <div class="eyebrow">NANTOU · POLICY ISLANDS</div>
+    <h1>南投縣政策島</h1>
+    <p id="loadingMsg">正在把政見種上日月潭…</p>
     <div class="dots" id="loadingDots"><i></i><i></i><i></i></div>
     <div class="err" id="loadingErr" hidden></div>
   </div>
@@ -327,195 +338,202 @@ body.side-open #log{right:calc(318px + 32px + env(safe-area-inset-right,0px))}
 <script>
 const DATA = {
   city: {
-    name: '草屯鎮', en: 'Caotun',
-    title: '草屯鎮政策島', titleEn: 'Caotun Policy Islands',
-    candidate: '張媛婷', candidateEn: 'Chang Yuan-Ting',
-    role: '2026 草屯鎮長候選人', roleEn: '2026 Caotun Township Mayor Candidate',
-    slogan: '用治理專業，讓草屯升級', sloganEn: 'Upgrading Caotun with governance expertise',
-    source: 'https://542upup.tw/', updated: '2026.10.13',
-    images: { hero: 'https://542upup.tw/candidate-hero.jpeg', emblem: 'https://542upup.tw/dpp-emblem.svg' }
+    name: '南投縣', en: 'Nantou County',
+    title: '南投縣政策島', titleEn: 'Nantou Policy Islands',
+    candidate: '温世政', candidateEn: 'Wen Shih-Cheng',
+    role: '2026 南投縣長候選人', roleEn: '2026 Nantou County Magistrate Candidate',
+    nick: '温欸', nickEn: 'Dr. Wen',
+    slogan: '顧老人，顧少年，顧腹肚', sloganEn: 'Caring for elders, for the young, and for livelihoods',
+    pledge: '以「顧老人、顧少年、顧腹肚」三顧為架構，把2026年首度突破300億元的中央投入轉化為地方建設；爭取財劃法納入城鄉差距與高齡化；支持警政升級、社會住宅與全民共享。',
+    pledgeEn: 'Three kinds of care — for elders, the young and livelihoods — turning record central funding (over NT$30 billion in 2026) into local projects.',
+    bio: '南投草屯囡仔，從醫 30 年的牙醫師。921 那年在 803 醫院整夜縫合鄉親的傷口，這一次回家，要「把南投變美，讓台灣更好」。',
+    bioEn: 'Born in Caotun, a dentist for 30 years. After treating the injured through the night of the 921 earthquake, Dr. Wen came home to make Nantou better.',
+    source: 'https://wen-shih-cheng.com.tw/policies/', sourceHost: 'wen-shih-cheng.com.tw', updated: '2026.10.24',
+    images: { hero: 'https://wen-shih-cheng.com.tw/images/og-home-v1.jpg' }
   },
   pillars: [
-    { id: 'P1', no: '01', name: '幸福升級', en: 'Wellbeing', tagline: '建構全齡照顧、健康幸福城鎮', taglineEn: 'Care for all ages, a healthy and happy town' },
-    { id: 'P2', no: '02', name: '安全升級', en: 'Safety', tagline: '建構安全宜居、韌性草屯', taglineEn: 'A safe, livable and resilient Caotun' },
-    { id: 'P3', no: '03', name: '產業升級', en: 'Industry', tagline: '發展地方品牌，提升產業競爭力', taglineEn: 'Local brands and stronger industries' },
-    { id: 'P4', no: '04', name: '治理升級', en: 'Governance', tagline: '建立智慧便民、透明高效政府', taglineEn: 'Smart, transparent and efficient government' },
-    { id: 'P5', no: '05', name: '區域升級', en: 'Region', tagline: '草屯支點，槓桿無限', taglineEn: 'Caotun as the fulcrum of the region' }
+    { id: 'P1', no: '01', name: '顧老人', en: 'Elders', tagline: '讓長輩健康、有尊嚴地在南投安心生活', taglineEn: 'Healthy, dignified ageing at home in Nantou' },
+    { id: 'P2', no: '02', name: '顧少年', en: 'The Young', tagline: '讓年輕人回得來、留得下、敢成家', taglineEn: 'Young people can come home, stay and start families' },
+    { id: 'P3', no: '03', name: '顧腹肚', en: 'Livelihoods', tagline: '打通交通、發展產業，把錢留在南投', taglineEn: 'Open up transport, grow industry, keep money in Nantou' },
+    { id: 'P4', no: '04', name: '顧環境', en: 'Environment', tagline: '讓山依然綠，讓溪水依然清', taglineEn: 'Keep the mountains green and the rivers clear' }
   ],
   islands: [
-    { id: 'I01', no: '01', name: '樂活公園', en: 'Active Parks', pillar: 'P1', q: -1, r: 0, ground: 'speckle', tint: '#d8e6c0', band: '#9cc27a', tree: 'cherry', icon: '⛹',
-      policies: ['一里一共融公園計畫', '爭取草屯樂活休閒館', '強壯草屯人'],
-      summary: '0 到 100 歲都能用的共融公園，加上結合親子館、托育與運動的樂活休閒館。', summaryEn: 'Inclusive parks usable from age 0 to 100, plus an active living center combining a family hub, childcare and sports.',
+    { id: 'I01', no: '01', name: '健康守護圈', en: '8 km Health Circle', pillar: 'P1', q: -1, r: 0, ground: 'speckle', tint: '#dcebd6', band: '#5f9e86', tree: 'conifer', icon: '✚',
+      url: 'https://wen-shih-cheng.com.tw/policies/health-8km-care-network/',
+      policies: ['打造8公里健康守護圈：把整座醫院開進山裡', '推動行動醫療車'],
+      summary: '住家 8 公里內有基本健康照顧、8 分鐘內被醫療網接住：智慧行動醫療車隊、長照站升級、醫護留才與食安聯防。', summaryEn: 'Basic care within 8 km of every home and an emergency network that reaches you in 8 minutes: mobile clinics, upgraded care stations, rural staff retention and food safety.',
       items: [
-        { id: 'i01a', main: true, name: '草屯樂活休閒館', en: 'Active Living Center', model: 'hall', policy: '爭取草屯樂活休閒館', desc: '結合親子館、托育、運動、健康促進及多功能教室' },
-        { id: 'i01b', name: '匹克球新興運動', en: 'Pickleball', model: 'court', policy: '爭取草屯樂活休閒館', desc: '推廣匹克球等新興全民運動' },
-        { id: 'i01c', name: '運動兼顧托育', en: 'Exercise with childcare', model: 'house', policy: '爭取草屯樂活休閒館', desc: '家長輕鬆運動，同時兼顧托育' },
-        { id: 'i01d', name: '一里一共融公園', en: 'An inclusive park in every village', model: 'playground', policy: '一里一共融公園計畫', desc: '打造 0 到 100 歲都能使用的友善遊憩空間' },
-        { id: 'i01e', name: '抗高溫無障礙設計', en: 'Heat-safe, barrier-free design', model: 'pergola', policy: '一里一共融公園計畫', desc: '抗高溫、無障礙設計' },
-        { id: 'i01f', name: '強壯草屯人健康護照', en: 'Strong Caotun health passport', model: 'book', policy: '強壯草屯人', desc: '推廣全民運動、肌力訓練與健康護照' }
+        { id: 'i01a', main: true, name: '智慧行動醫療車隊', en: 'Smart mobile clinic fleet', model: 'medvan', policy: '打造8公里健康守護圈：把整座醫院開進山裡', desc: '地面，有智慧行動醫療車隊，配備數位X光、超音波、心電圖，把檢查與診療，直接開進偏鄉社區。' },
+        { id: 'i01b', name: '行動醫療車八成覆蓋', en: '80% county coverage', model: 'map', policy: '推動行動醫療車', desc: '依照南投13鄉鎮市的人口分布、醫療資源及交通條件，逐步建立行動醫療車服務網絡，朝全縣服務覆蓋率達八成的目標努力。' },
+        { id: 'i01c', name: '長照站升級健康守護', en: 'Care stations as health posts', model: 'clinic', policy: '打造8公里健康守護圈：把整座醫院開進山裡', desc: '偏鄉的長照站，要從單純的聚會場所，升級成健康守護的第一線。行動醫療車開進站，長輩在站裡就能做檢查、追蹤、轉介。' },
+        { id: 'i01d', name: '8分鐘醫療守護網', en: '8-minute emergency network', model: 'tower', policy: '打造8公里健康守護圈：把整座醫院開進山裡', desc: '每一位南投鄉親，在住家八公里內，都能獲得基本健康照顧；在需要的時候，八分鐘內，都能被醫療網接住。' },
+        { id: 'i01e', name: '偏鄉醫護專案津貼', en: 'Rural nursing allowance', model: 'coin', policy: '打造8公里健康守護圈：把整座醫院開進山裡', desc: '非山非市區域的醫護人員，每月專案津貼三千到五千元；首創「減壓1000」照護佐理人力，把行政負擔從護理人員身上卸下來。' },
+        { id: 'i01f', name: '中部食安聯防平台', en: 'Regional food safety', model: 'market', policy: '打造8公里健康守護圈：把整座醫院開進山裡', desc: '推動中部縣市食安聯防治理平台，建立單一窗口通報機制，增加食安預算、強化稽查密度、提高抽驗頻率。' }
       ] },
-    { id: 'I02', no: '02', name: '家庭育兒', en: 'Family Support', pillar: 'P1', q: -2, r: 1, ground: 'brick', tint: '#f3dccf', band: '#f2b5c6', tree: 'fruit', icon: '♡',
-      policies: ['家庭支持計畫', '草屯育兒與校園共享平台'],
-      summary: '公共托育、國家和你一起養再加碼、免費月嫂到宅，以及用草屯人 APP 媒合育兒與校園用品。', summaryEn: 'Public childcare, a bigger child allowance, free in-home postnatal help, and the Caotun app matching school and baby supplies.',
+    { id: 'I02', no: '02', name: '無人機醫療網', en: 'Drone Medicine Network', pillar: 'P1', q: -2, r: 0, ground: 'stripe', tint: '#e2ecf0', band: '#5d8fb0', tree: 'conifer', icon: '✈',
+      url: 'https://wen-shih-cheng.com.tw/policies/education-for-the-future/',
+      policies: ['打造無人機遠距醫療網：讓藥品飛過群山'],
+      summary: '接軌衛福部無人機送藥計畫，在信義、仁愛等山地鄉開示範航線，讓慢性病用藥、急救物資與檢體飛越群山。', summaryEn: 'Join the national drone-delivery programme and fly pilot routes in mountain townships, carrying medicine, emergency supplies and lab samples over the hills.',
       items: [
-        { id: 'i02a', main: true, name: '公共托育機構', en: 'Public childcare centers', model: 'house', policy: '家庭支持計畫', desc: '依新生兒成長推估需求，建置公共托育機構' },
-        { id: 'i02b', name: '國家和你一起養再加碼', en: 'Extra child allowance', model: 'coin', policy: '家庭支持計畫', desc: '「國家和你一起養」再加碼' },
-        { id: 'i02c', name: '免費月嫂到宅', en: 'Free in-home postnatal care', model: 'clinic', policy: '家庭支持計畫', desc: '免費月嫂到宅育兒指導' },
-        { id: 'i02d', name: '幸福巴士 2.0', en: 'Happiness Bus 2.0', model: 'busstop', policy: '家庭支持計畫', desc: '幸福巴士 2.0 強化鎮內公共交通，完善全齡活動機能' },
-        { id: 'i02e', name: '育兒與校園共享平台', en: 'Parenting & school sharing platform', model: 'phone', policy: '草屯育兒與校園共享平台', desc: '整合草屯人 APP，媒合制服、運動服、書包、文具及育兒用品' },
-        { id: 'i02f', name: '制服交換惜物市集', en: 'Uniform swap market', model: 'kiosk', policy: '草屯育兒與校園共享平台', desc: '辦理制服交換及惜物市集' }
+        { id: 'i02a', main: true, name: '無人機送藥', en: 'Drone medicine delivery', model: 'drone', policy: '打造無人機遠距醫療網：讓藥品飛過群山', desc: '透過無人機送藥，把慢性病用藥、緊急醫療物資，直接送到需要的人手中。' },
+        { id: 'i02b', name: '接軌中央縣級試點', en: 'Join the national pilot', model: 'hall', policy: '打造無人機遠距醫療網：讓藥品飛過群山', desc: '第一階段，接軌中央計畫。爭取納入衛福部「無人機送藥計畫」的縣級試點，把南投的山地鄉列為示範場域。' },
+        { id: 'i02c', name: '山地鄉示範航線', en: 'Mountain pilot routes', model: 'map', policy: '打造無人機遠距醫療網：讓藥品飛過群山', desc: '第二階段，選定示範航線。從信義、仁愛等山地鄉的長照據點與衛生所開始，建立定點起降基地。' },
+        { id: 'i02d', name: '遠距視訊看診', en: 'Video consultations', model: 'phone', policy: '打造無人機遠距醫療網：讓藥品飛過群山', desc: '市區的醫生透過遠距視訊看診，診斷與處方在線上完成；藥品由無人機精準送到偏鄉家戶。' },
+        { id: 'i02e', name: '斷路時的救命物資', en: 'Supplies when roads close', model: 'tower', policy: '打造無人機遠距醫療網：讓藥品飛過群山', desc: '颱風、豪雨造成道路中斷時，無人機能跨越受阻路段，把AED、緊急藥品、血清等救命物資送到第一線。' },
+        { id: 'i02f', name: '檢體快速送檢', en: 'Fast lab sample runs', model: 'clinic', policy: '打造無人機遠距醫療網：讓藥品飛過群山', desc: '偏鄉衛生所採集的檢體，可在最短時間送回市區醫院檢驗，縮短診斷等待。' }
       ] },
-    { id: 'I03', no: '03', name: '人才扎根', en: 'Growing Talent', pillar: 'P1', q: -2, r: 0, ground: 'stripe', tint: '#f6ecd0', band: '#fcea8b', tree: 'conifer', icon: '✎',
-      policies: ['人才扎根計畫'],
-      summary: '課後陪伴與閱讀、母語與外語、青年營隊與職涯探索，讓草屯囝仔在家鄉扎根。', summaryEn: 'After-school care and reading, mother tongue and foreign languages, youth camps and career exploration, so kids can grow roots at home.',
+    { id: 'I03', no: '03', name: '預防醫學', en: 'Preventive Care', pillar: 'P1', q: -2, r: 1, ground: 'brick', tint: '#eef0e2', band: '#8fb07a', tree: 'broadleaf', icon: '◉',
+      url: 'https://wen-shih-cheng.com.tw/policies/lung-cancer-ldct-screening/',
+      policies: ['50歲免費LDCT肺癌篩檢', '65歲以上皮蛇疫苗補助'],
+      summary: '研議擴大 50 歲起高風險族群免費 LDCT 肺癌篩檢，推動 65 歲以上皮蛇疫苗補助，從篩檢、預約到異常追蹤一條龍。', summaryEn: 'Wider free low-dose CT lung screening from age 50 for high-risk groups and shingles vaccine subsidies from 65, with booking and follow-up built in.',
       items: [
-        { id: 'i03a', main: true, name: '課後陪伴與閱讀', en: 'After-school care & reading', model: 'classroom', policy: '人才扎根計畫', desc: '擴大課後陪伴及閱讀推廣，加強家庭教育、減少 3C 數位浪潮' },
-        { id: 'i03b', name: '青年百億圓夢', en: 'Youth dream program', model: 'stage', policy: '人才扎根計畫', desc: '培訓草屯囝仔加入青年百億圓夢計畫' },
-        { id: 'i03c', name: '阿母的話', en: 'Mother tongue', model: 'book', policy: '人才扎根計畫', desc: '讓孩子都會說「阿母的話」' },
-        { id: 'i03d', name: '外語與國際交流', en: 'Languages & exchange', model: 'globe', policy: '人才扎根計畫', desc: '推動英文、第二外語及國際交流活動' },
-        { id: 'i03e', name: '青年公共參與營隊', en: 'Youth civic camp', model: 'camp', policy: '人才扎根計畫', desc: '辦理青年公共參與營隊' },
-        { id: 'i03f', name: '職涯探索合作', en: 'Career exploration', model: 'office', policy: '人才扎根計畫', desc: '鼓勵企業、大學與公所合作，讓孩子有更多探索職涯的機會' }
+        { id: 'i03a', main: true, name: '50歲免費LDCT肺癌篩檢', en: 'Free LDCT lung screening from 50', model: 'clinic', policy: '50歲免費LDCT肺癌篩檢', desc: '以50歲起的民眾為重要服務對象，研議擴大符合專業評估條件者的免費篩檢支持。' },
+        { id: 'i03b', name: '篩檢到追蹤一條龍', en: 'Screening to follow-up', model: 'book', policy: '50歲免費LDCT肺癌篩檢', desc: '結合縣內醫院、衛生所及基層診所，建立從資格諮詢、檢查預約、報告說明到異常追蹤的完整流程。' },
+        { id: 'i03c', name: '65歲以上皮蛇疫苗補助', en: 'Shingles vaccine from 65', model: 'vaccine', policy: '65歲以上皮蛇疫苗補助', desc: '主張推動65歲以上長者帶狀疱疹疫苗補助，降低接種負擔，讓更多鄉親獲得預防保護。' },
+        { id: 'i03d', name: '弱勢與獨居長者優先', en: 'Priority for vulnerable elders', model: 'house', policy: '65歲以上皮蛇疫苗補助', desc: '對於低收入戶、中低收入戶、獨居長者及健康風險較高的族群，也應優先評估補助需求。' },
+        { id: 'i03e', name: '偏鄉接送與巡迴接種', en: 'Rides and outreach', model: 'busstop', policy: '65歲以上皮蛇疫苗補助', desc: '針對偏鄉與行動不便的長輩，研議結合巡迴醫療及交通接送，讓預防服務更加便利。' },
+        { id: 'i03f', name: '戒菸與肺癌衛教', en: 'Quit-smoking education', model: 'classroom', policy: '50歲免費LDCT肺癌篩檢', desc: '加強戒菸、二手菸防制及肺癌風險衛教，讓癌症防治融入日常健康管理。' }
       ] },
-    { id: 'I04', no: '04', name: '安心行路', en: 'Safe Streets', pillar: 'P2', q: 0, r: 0, ground: 'brick', tint: '#ece3d8', band: '#58a6a6', tree: 'broadleaf', icon: '⚑',
-      policies: ['道路守護', '環境守護', '全齡守護'],
-      summary: '道路安全總體檢、易肇事路口改善、通學安全、公共照明，和對全齡友善的人行道。', summaryEn: 'A town-wide road safety audit, safer intersections and school routes, better public lighting and sidewalks for all ages.',
+    { id: 'I04', no: '04', name: '長輩好牙', en: 'Healthy Smiles', pillar: 'P1', q: -1, r: 1, ground: 'speckle', tint: '#f1ebdc', band: '#d39a5a', tree: 'cherry', icon: '☺',
+      url: 'https://wen-shih-cheng.com.tw/policies/elderly-dignity-care/',
+      policies: ['長者假牙補助最高8萬元', '把尊嚴還給每一位長輩：打造南投幸福老年'],
+      summary: '以牙醫專業推動假牙補助最高 8 萬元，附保固與定期評估；偏鄉牙科車開進部落，並支持家庭照顧者喘息。', summaryEn: 'Denture subsidies up to NT$80,000 with warranty and reviews, a dental van for remote villages, and respite for family carers.',
       items: [
-        { id: 'i04a', main: true, name: '道路安全總體檢', en: 'Road safety audit', model: 'roadwork', policy: '道路守護', desc: '道路安全總體檢' },
-        { id: 'i04b', name: '易肇事路口改善', en: 'Fix dangerous intersections', model: 'crossing', policy: '道路守護', desc: '易肇事路口改善、標線更新' },
-        { id: 'i04c', name: '通學安全', en: 'Safe routes to school', model: 'school', policy: '道路守護', desc: '通學安全' },
-        { id: 'i04d', name: '公共空間照明', en: 'Better public lighting', model: 'lamps', policy: '環境守護', desc: '提升道路、公園、公有市場及公共空間照明' },
-        { id: 'i04e', name: '人行道改善', en: 'Sidewalk upgrades', model: 'ramp', policy: '全齡守護', desc: '人行道改善' },
-        { id: 'i04f', name: '全齡友善行走環境', en: 'Walkable for all ages', model: 'pergola', policy: '全齡守護', desc: '提供身心障礙、親子及高齡友善的行走環境' }
+        { id: 'i04a', main: true, name: '假牙補助最高8萬元', en: 'Dentures up to NT$80,000', model: 'tooth', policy: '長者假牙補助最高8萬元', desc: '將長者假牙補助額度提高至最高8萬元，並依照缺牙情況、口腔健康狀況及牙醫師的專業評估，建立合理的分級補助制度。' },
+        { id: 'i04b', name: '保固與五年重新評估', en: 'Warranty & 5-year review', model: 'clock', policy: '長者假牙補助最高8萬元', desc: '建立更完善的品質保障制度，研議三年保固，以及以五年為週期的重新評估機制。' },
+        { id: 'i04c', name: '偏鄉牙科巡迴車', en: 'Rural dental van', model: 'medvan', policy: '把尊嚴還給每一位長輩：打造南投幸福老年', desc: '安排偏鄉牙科巡迴車，把牙科診療直接送到部落，減少山區長輩的奔波與辛苦。' },
+        { id: 'i04d', name: '家庭照顧者喘息服務', en: 'Respite for family carers', model: 'house', policy: '把尊嚴還給每一位長輩：打造南投幸福老年', desc: '為家庭照顧者發聲，向中央爭取更多的資源與支持，提供喘息服務與照護支援，減輕他們的負擔。' },
+        { id: 'i04e', name: '長照據點口腔檢查', en: 'Dental checks at care sites', model: 'clinic', policy: '長者假牙補助最高8萬元', desc: '結合牙科醫療車、衛生所與基層牙醫師，提供口腔檢查、假牙需求評估、衛教及轉診服務。' }
       ] },
-    { id: 'I05', no: '05', name: '韌性防災', en: 'Resilience', pillar: 'P2', q: -1, r: 1, ground: 'stripe', tint: '#dfe6e2', band: '#6f7fb5', tree: 'willow', icon: '☂',
-      policies: ['韌性防災守護'],
-      summary: '易淹水區防災地圖、排水總健檢、山區豪雨智慧預警、農業智慧防災與社區自主防災。', summaryEn: 'A flood-risk map, a drainage check-up, smart mountain rainstorm alerts, smart farm protection and community-led disaster readiness.',
+    { id: 'I05', no: '05', name: '敬老出門', en: 'Out and About', pillar: 'P1', q: -2, r: 2, ground: 'brick', tint: '#efe6d6', band: '#c78b5a', tree: 'fruit', icon: '♨',
+      url: 'https://wen-shih-cheng.com.tw/policies/senior-card-1800-points/',
+      policies: ['敬老卡每月1,800點', '推動行動醫療車'],
+      summary: '敬老卡每月 1,800 點，整合幸福巴士、小黃公車與預約式接送，加上「長輩就醫安心車」，讓長輩出門、看診都方便。', summaryEn: 'Senior cards topped up to 1,800 points a month, linked with community buses, taxis and on-demand rides, plus a door-to-door ride to the doctor.',
       items: [
-        { id: 'i05a', main: true, name: '防災地圖', en: 'Flood risk map', model: 'map', policy: '韌性防災守護', desc: '全鎮易淹水區總盤點，建立防災地圖作為工程改善與預算編列依據' },
-        { id: 'i05b', name: '排水系統總健檢', en: 'Drainage check-up', model: 'river', policy: '韌性防災守護', desc: '排水系統總健檢，建立定期巡檢、清淤及維護制度' },
-        { id: 'i05c', name: '山區豪雨智慧預警', en: 'Smart rainstorm alerts', model: 'tower', policy: '韌性防災守護', desc: '山區豪雨智慧預警：結合中央氣象、水利及災害資訊，透過 LINE 官方帳號、APP 及里長系統即時通知' },
-        { id: 'i05d', name: '農業智慧防災', en: 'Smart farm protection', model: 'farm', policy: '韌性防災守護', desc: '農業智慧防災：提供豪雨、高溫、寒害等氣象資訊，並串聯中央及縣府災害救助' },
-        { id: 'i05e', name: '韌性草屯人培養', en: 'Community resilience', model: 'camp', policy: '韌性防災守護', desc: '韌性草屯人培養計畫：社區自主防災、定期防災演練、防災志工與社區互助網絡' }
+        { id: 'i05a', main: true, name: '敬老卡每月1,800點', en: '1,800 points a month', model: 'card', policy: '敬老卡每月1,800點', desc: '將敬老卡補助提高至每月1,800點，讓長輩有更多交通使用彈性，並研究點數累積使用的可行性。' },
+        { id: 'i05b', name: '整合幸福巴士與小黃公車', en: 'Buses & taxi-buses linked', model: 'busstop', policy: '敬老卡每月1,800點', desc: '整合幸福巴士、小黃公車及其他彈性運輸，強化醫院、衛生所、市場與社區照顧據點之間的交通連結。' },
+        { id: 'i05c', name: '長輩就醫安心車', en: 'Ride to the doctor', model: 'car', policy: '推動行動醫療車', desc: '整合公共運輸、長照交通接送與預約式服務，並研議讓有需要的長輩一個人也能提出接送預約。' },
+        { id: 'i05d', name: '電話預約人工協助', en: 'Phone booking, human help', model: 'phone', policy: '敬老卡每月1,800點', desc: '保留電話預約與人工協助，讓不熟悉智慧型手機的長輩，也能方便使用。' },
+        { id: 'i05e', name: '出門買菜看診都方便', en: 'Markets and clinics in reach', model: 'market', policy: '敬老卡每月1,800點', desc: '透過敬老卡補助與公共運輸改善，鼓勵長輩走出家門，增加社會互動，也減輕家庭接送負擔。' }
       ] },
-    { id: 'I06', no: '06', name: '清涼生態', en: 'Cool & Green', pillar: 'P2', q: -2, r: 2, ground: 'speckle', tint: '#d6e6cf', band: '#71806a', tree: 'palm', icon: '☀',
-      policies: ['抗高溫調適計畫', '生態友善守護'],
-      summary: 'APP 抗高溫專區、降溫避暑地圖、公園遮蔭與奉茶點，並建立路殺熱點通報機制。', summaryEn: 'A heat section in the Caotun app, a cool-spot map, shaded parks and tea stations, and a roadkill hotspot reporting system.',
+    { id: 'I06', no: '06', name: '青年回流', en: 'Youth Come Home', pillar: 'P2', q: 0, r: -1, ground: 'stripe', tint: '#e6efe0', band: '#7a9fc2', tree: 'broadleaf', icon: '✎',
+      url: 'https://wen-shih-cheng.com.tw/policies/youth-return-home/',
+      policies: ['青年回流：讓人才留在家鄉', '温來顧南投 南投發發發'],
+      summary: '青年創業最高補助 30 萬元加導師陪伴、引進高薪低污染產業、技職連結在地產業、遠距工作，以及每個鄉鎮一間閱讀空間。', summaryEn: 'Start-up grants up to NT$300,000 with mentors, high-wage clean industry, vocational links, remote work, and a reading space in every township.',
       items: [
-        { id: 'i06a', main: true, name: '友善奉茶與高溫關懷', en: 'Tea stations & heat care', model: 'house', policy: '抗高溫調適計畫', desc: '友善奉茶點及脆弱族群高溫關懷' },
-        { id: 'i06b', name: 'APP 抗高溫專區', en: 'Heat section in the app', model: 'phone', policy: '抗高溫調適計畫', desc: '草屯人 APP 抗高溫專區' },
-        { id: 'i06c', name: '降溫避暑地圖', en: 'Cool-spot map', model: 'map', policy: '抗高溫調適計畫', desc: '結合友善店家建立降溫避暑地圖' },
-        { id: 'i06d', name: '公園遮蔭抗熱鋪面', en: 'Shade & cool paving', model: 'pergola', policy: '抗高溫調適計畫', desc: '公園遮蔭、親子公園抗熱鋪面' },
-        { id: 'i06e', name: '路殺熱點通報', en: 'Roadkill hotspot reports', model: 'wildlife', policy: '生態友善守護', desc: '建立路殺熱點通報機制' },
-        { id: 'i06f', name: '跨單位快速處理', en: 'Rapid joint response', model: 'truck', policy: '生態友善守護', desc: '結合警察、清潔隊及動保團體快速處理' }
+        { id: 'i06a', main: true, name: '青年創業最高30萬', en: 'Start-up grants to NT$300k', model: 'office', policy: '青年回流：讓人才留在家鄉', desc: '推出青年創業政策，最高補助三十萬元，同時建立創業導師陪伴制度。' },
+        { id: 'i06b', name: '高薪低污染產業', en: 'High-wage, clean industry', model: 'factory', policy: '青年回流：讓人才留在家鄉', desc: '引進高薪、低污染的產業，增加在地就業機會，讓年輕人在家鄉就能找到一份有尊嚴、有前景的工作。' },
+        { id: 'i06c', name: '技職教育接軌產業', en: 'Vocational training', model: 'school', policy: '青年回流：讓人才留在家鄉', desc: '強化技職教育與在地產業的連結，讓學校教的，跟產業需要的接得上。' },
+        { id: 'i06d', name: '數位與遠距工作', en: 'Digital & remote work', model: 'phone', policy: '青年回流：讓人才留在家鄉', desc: '南投的好山好水，加上穩定的網路，可以成為遠距工作者的好地方。' },
+        { id: 'i06e', name: '每個鄉鎮一間閱讀空間', en: 'A reading room per township', model: 'book', policy: '青年回流：讓人才留在家鄉', desc: '讓每個鄉鎮都有可以坐下來讀書的地方。不只學校，社區也找得到閱讀空間。' },
+        { id: 'i06f', name: '青年發展局單一窗口', en: 'Youth Development Bureau', model: 'hall', policy: '温來顧南投 南投發發發', desc: '成立青年發展局，整合創業貸款、成家補助、托育、青年返鄉與勞工補助，只要一個窗口就能找到資源。' },
+        { id: 'i06g', name: '8萬元成家基金', en: 'NT$80k home-starter fund', model: 'coin', policy: '温來顧南投 南投發發發', desc: '推動 8 萬元成家基金、修繕與租屋補助，減輕青年成家負擔。' }
       ] },
-    { id: 'I07', no: '07', name: '停車便利', en: 'Easy Parking', pillar: 'P3', q: 1, r: 0, ground: 'stripe', tint: '#e6e1da', band: '#c5b5a7', tree: 'broadleaf', icon: 'P',
-      policies: ['停車便利升級計畫'],
-      summary: '盤點商圈、市場、學校與景點的停車需求，活化閒置土地並導入智慧停車導引。', summaryEn: 'Survey parking demand around markets, schools and sights, reuse idle land and add smart parking guidance.',
+    { id: 'I07', no: '07', name: '敢生敢養', en: 'Raising Kids', pillar: 'P2', q: 0, r: 0, ground: 'brick', tint: '#f4e7dc', band: '#e0a3a8', tree: 'fruit', icon: '♡',
+      url: 'https://wen-shih-cheng.com.tw/policies/childcare-family-support/',
+      policies: ['敢生敢養：孩子是南投的未來'],
+      summary: '首胎生育獎勵加碼到 2 萬元、0 至 5 歲每年 1 萬元、兩年內公托翻倍做到一鄉鎮一公托，並強化兒少保護。', summaryEn: 'A bigger first-baby bonus, NT$10,000 a year for ages 0–5, public childcare doubled within two years, and stronger child protection.',
       items: [
-        { id: 'i07a', main: true, name: '停車需求總盤點', en: 'Parking demand survey', model: 'parking', policy: '停車便利升級計畫', desc: '全面盤點商圈、公有市場、學校及景點的停車需求' },
-        { id: 'i07b', name: '活化閒置土地', en: 'Reuse idle land', model: 'roadwork', policy: '停車便利升級計畫', desc: '活化閒置土地，評估增加停車空間' },
-        { id: 'i07c', name: '智慧停車導引', en: 'Smart parking guidance', model: 'signboard', policy: '停車便利升級計畫', desc: '導入智慧停車資訊及停車導引' }
+        { id: 'i07a', main: true, name: '一鄉鎮一公托', en: 'Public childcare in every township', model: 'house', policy: '敢生敢養：孩子是南投的未來', desc: '承諾兩年內，公共托育的數量翻倍，目標是實現「一鄉鎮一公托」。' },
+        { id: 'i07b', name: '第一胎十二萬', en: 'NT$120k for a first child', model: 'coin', policy: '敢生敢養：孩子是南投的未來', desc: '首胎生育獎勵金，從一萬元翻倍加碼到兩萬元。加上中央補助的十萬元，第一胎總共可以領到十二萬元。' },
+        { id: 'i07c', name: '0到5歲每年1萬元', en: 'NT$10k a year, ages 0–5', model: 'playground', policy: '敢生敢養：孩子是南投的未來', desc: '零到五歲的孩子，每年加發一萬元育兒津貼。從出生到上小學之前，這份陪伴一路不間斷。' },
+        { id: 'i07d', name: '坐月子補助三萬', en: 'NT$30k postnatal care', model: 'clinic', policy: '敢生敢養：孩子是南投的未來', desc: '零到兩歲的育兒津貼，每個月再加發一千元。每一胎生產，補助三萬元坐月子費用。' },
+        { id: 'i07e', name: '支持友善休假制度', en: 'Family-friendly leave', model: 'clock', policy: '敢生敢養：孩子是南投的未來', desc: '支持中央把產假延長到十二週、陪產假十四天、育嬰假放寬到零至六歲。' },
+        { id: 'i07f', name: '強化兒少保護', en: 'Child protection', model: 'pergola', policy: '敢生敢養：孩子是南投的未來', desc: '強化兒少保護系統，讓受虐的孩子能被系統及時接住；爭取資源，改善兒少家園。' }
       ] },
-    { id: 'I08', no: '08', name: '生活商圈', en: 'Town Market District', pillar: 'P3', q: 1, r: 1, ground: 'brick', tint: '#f5e2d2', band: '#db6a41', tree: 'fruit', icon: '◍',
-      policies: ['草鞋墩生活商圈'],
-      summary: '整體規劃閒置空間與商圈，建置公有市場，活化攤位、青年試創、夜間經濟與青農品牌。', summaryEn: 'Plan idle spaces and the shopping district, build a public market, revive stalls, youth pop-ups, the night economy and young farmer brands.',
+    { id: 'I08', no: '08', name: '8字路網', en: 'Figure-8 Transit', pillar: 'P3', q: 1, r: 0, ground: 'stripe', tint: '#e4e8ea', band: '#6b8fa8', tree: 'willow', icon: '∞',
+      url: 'https://wen-shih-cheng.com.tw/policies/nantou-888-transport-network/',
+      policies: ['8字路網：把南投的每一條路，走成回家的路'],
+      summary: '高鐵接駁班次加倍、新增 8 條路線、尖峰 8 分鐘班距，打造台中高鐵、草屯、南投 30 分鐘生活圈；人本交通、通學安全與自行車路網。', summaryEn: 'Double the HSR shuttles, 8 new routes and 8-minute peak headways for a 30-minute Taichung HSR–Caotun–Nantou commute; safer streets and school routes.',
       items: [
-        { id: 'i08a', main: true, name: '商圈整體規劃', en: 'District master plan', model: 'hall', policy: '草鞋墩生活商圈', desc: '盤點並整體規劃公共閒置空間、形象商圈、公有市場及周邊街區' },
-        { id: 'i08b', name: '公有市場建置', en: 'New public market', model: 'market', policy: '草鞋墩生活商圈', desc: '人口成長區公有市場建置' },
-        { id: 'i08c', name: '照明動線改善', en: 'Lighting & walkways', model: 'lamps', policy: '草鞋墩生活商圈', desc: '改善照明、動線及公共空間' },
-        { id: 'i08d', name: '青年試創攤位', en: 'Youth pop-up stalls', model: 'kiosk', policy: '草鞋墩生活商圈', desc: '活化閒置攤位、青年試創攤位、特色市集及商圈品牌' },
-        { id: 'i08e', name: '特色住宿夜間經濟', en: 'Stays & night economy', model: 'house', policy: '草鞋墩生活商圈', desc: '發展特色住宿及夜間經濟' },
-        { id: 'i08f', name: '青農品牌電商', en: 'Young farmer brands', model: 'farm', policy: '草鞋墩生活商圈', desc: '青年創業基地、青農品牌、農產品加工及電商平台' }
+        { id: 'i08a', main: true, name: '高鐵接駁加倍', en: 'Double HSR shuttles', model: 'busstop', policy: '8字路網：把南投的每一條路，走成回家的路', desc: '把高鐵接駁班次加倍，新增8條接駁路線，直達台中高鐵站。平日尖峰，班距縮短到8分鐘。' },
+        { id: 'i08b', name: '30分鐘生活圈', en: '30-minute commute', model: 'clock', policy: '8字路網：把南投的每一條路，走成回家的路', desc: '目標是台中高鐵、草屯、南投三地，都在半小時內互相抵達。' },
+        { id: 'i08c', name: '實體人行道與圓環', en: 'Real sidewalks & roundabouts', model: 'crossing', policy: '8字路網：把南投的每一條路，走成回家的路', desc: '標線型人行道要轉型成實體人行道，道路空間要重新分配，用現代圓環設計取代直衝的號誌。' },
+        { id: 'i08d', name: '守護通學的路', en: 'Safe routes to school', model: 'school', policy: '8字路網：把南投的每一條路，走成回家的路', desc: '南投國小周邊，要新設實體與標線型人行道。孩子上學的路，必須安全、完整、看得到大人。' },
+        { id: 'i08e', name: '自行車觀光廊道', en: 'Cycling corridors', model: 'bikes', policy: '8字路網：把南投的每一條路，走成回家的路', desc: '持續推動自行車路網優化，串起集集、埔里、竹山、草屯的觀光廊道，也在沿線增設電輔車（E-bike）。' },
+        { id: 'i08f', name: '溝通在前再施工', en: 'Talk first, then build', model: 'roadwork', policy: '8字路網：把南投的每一條路，走成回家的路', desc: '工程一定要「溝通在前」。先聽在地住戶的出入習慣，再開始施工；縣府要加強監管施工品質。' },
+        { id: 'i08g', name: '毒駕零容忍', en: 'Zero tolerance for drug driving', model: 'signboard', policy: '8字路網：把南投的每一條路，走成回家的路', desc: '與中央聯手打擊毒駕。源頭要防堵，校園要防護，線上要斷鏈，末端要用重刑執法。' }
       ] },
-    { id: 'I09', no: '09', name: '草鞋墩觀光', en: 'Caoxiedun Tourism', pillar: 'P3', q: 0, r: -1, ground: 'speckle', tint: '#f0e4cc', band: '#b48560', tree: 'cherry', icon: '✿',
-      policies: ['草鞋墩意象再興計畫', '加入臺灣國家觀光隊'],
-      summary: '建立「草鞋墩」品牌，串聯宮廟、工藝與自然景觀，並爭取中央資源，打造中彰投觀光支點。', summaryEn: 'Build the Caoxiedun brand, link temples, crafts and scenery, and win national resources to make Caotun a regional tourism hub.',
+    { id: 'I09', no: '09', name: '部部有觀光', en: 'Rail Tourism', pillar: 'P3', q: 1, r: 1, ground: 'speckle', tint: '#eee6d2', band: '#b98b5a', tree: 'cherry', icon: '⛰',
+      url: 'https://wen-shih-cheng.com.tw/policies/nantou-tourism-plan/',
+      policies: ['觀光不能只靠一座塔：南投觀光整體規劃', '8字路網：把南投的每一條路，走成回家的路', '温來顧南投 南投發發發'],
+      summary: '反對單點地標，以集集線串起「部部有觀光」；把國姓、埔里、日月潭、集集、溪頭、杉林溪連成縱向旅遊帶，讓旅客住下來。', summaryEn: 'No single landmark tower: link the Jiji rail line and scenic towns into a north–south travel belt so visitors stay longer.',
       items: [
-        { id: 'i09a', main: true, name: '草鞋墩品牌', en: 'The Caoxiedun brand', model: 'sandal', policy: '草鞋墩意象再興計畫', desc: '建立「草鞋墩」品牌' },
-        { id: 'i09b', name: '宮廟工藝聚落串聯', en: 'Temples, crafts & scenery', model: 'temple', policy: '草鞋墩意象再興計畫', desc: '串聯宮廟、工藝文化園區、地方聚落與自然景觀區（鳥嘴潭、雙龍隧道等）' },
-        { id: 'i09c', name: '地方故事導覽', en: 'Local story tours', model: 'book', policy: '草鞋墩意象再興計畫', desc: '推動地方故事導覽' },
-        { id: 'i09d', name: '爭取中央觀光資源', en: 'National tourism funding', model: 'coin', policy: '加入臺灣國家觀光隊', desc: '爭取中央觀光資源' },
-        { id: 'i09e', name: '草鞋墩旅遊地圖', en: 'Caoxiedun travel map', model: 'map', policy: '加入臺灣國家觀光隊', desc: '推出草鞋墩旅遊地圖，完善觀光行程的交通接駁' },
-        { id: 'i09f', name: '多國語言標示', en: 'Multilingual signs', model: 'globe', policy: '加入臺灣國家觀光隊', desc: '提升多國語言標示' },
-        { id: 'i09g', name: '中彰投觀光支點', en: 'Regional tourism hub', model: 'gate', policy: '加入臺灣國家觀光隊', desc: '打造中彰投觀光支點，吸引國內及國際觀光客' }
+        { id: 'i09a', main: true, name: '集集線部部有觀光', en: 'Every stop on the Jiji line', model: 'train', policy: '觀光不能只靠一座塔：南投觀光整體規劃', desc: '主張「部部有觀光」，把集集線鐵道跟沿線各景點一路串聯起來。遊客搭著火車，一站一站地玩，站站都有主題。' },
+        { id: 'i09b', name: '支持36億修復集集線', en: 'Restore the Jiji line', model: 'roadwork', policy: '8字路網：把南投的每一條路，走成回家的路', desc: '支持中央投入36億元修復集集線，促成全線通車；持續推動田中支線，讓高鐵彰化站與集集線接軌。' },
+        { id: 'i09c', name: '縱向旅遊帶4天5夜', en: 'A north–south travel belt', model: 'map', policy: '温來顧南投 南投發發發', desc: '轉型為國姓、埔里、日月潭、集集、溪頭、杉林溪等景點串連的「縱向旅遊帶」，發展 4 天 5 夜深度旅遊。' },
+        { id: 'i09d', name: '蓋塔的錢投入交通', en: 'Roads, not a tower', model: 'gate', policy: '觀光不能只靠一座塔：南投觀光整體規劃', desc: '把原本要蓋塔的錢，拿來改善通往各景點的道路、接駁與指標。' },
+        { id: 'i09e', name: '人流分散規劃', en: 'Spreading the crowds', model: 'signboard', policy: '觀光不能只靠一座塔：南投觀光整體規劃', desc: '建立整體的觀光分流策略，把遊客從過度擁擠的景點，引導到被忽略的地方。' },
+        { id: 'i09f', name: '轉乘節點晚上回得了家', en: 'Transfer hubs, late rides home', model: 'busstop', policy: '温來顧南投 南投發發發', desc: '在草屯、南投、名間、埔里、竹山、水里、集集、國姓等地建立轉乘節點，增加高鐵接駁班次，解決南投人晚上回不了家的交通痛點。' }
       ] },
-    { id: 'I10', no: '10', name: '智慧鎮公所', en: 'Smart Town Hall', pillar: 'P4', q: 1, r: -1, ground: 'brick', tint: '#e7e5ee', band: '#3e7c8c', tree: 'conifer', icon: '☖',
-      policies: ['強化草屯人 APP', '行動鎮公所'],
-      summary: '強化草屯人 APP 整合各種生活服務，行動鎮公所定期深入各里，工程資訊公開。', summaryEn: 'Upgrade the Caotun app to bundle everyday services; a mobile town hall visits every village and publishes project information.',
+    { id: 'I10', no: '10', name: '茶鄉安心農業', en: 'Tea & Farm Security', pillar: 'P3', q: 1, r: -1, ground: 'speckle', tint: '#dbe8c8', band: '#5e8d4a', tree: 'broadleaf', icon: '❦',
+      url: 'https://wen-shih-cheng.com.tw/policies/agriculture-income-plan/',
+      policies: ['農民的擔子，我來一起扛', '觀光不能只靠一座塔：南投觀光整體規劃'],
+      summary: '災損 8 小時勘災、8 天認定、8 億元農業韌性基金；節水與智慧農業補助；茶業六箭、茶園體驗觀光與國際外銷。', summaryEn: 'Damage surveys within 8 hours, decisions in 8 days and an NT$800 million resilience fund; water-saving and smart-farm grants; six measures for tea and exports.',
       items: [
-        { id: 'i10a', main: true, name: '行動鎮公所', en: 'Mobile town hall', model: 'hall', policy: '行動鎮公所', desc: '定期深入各里傾聽需求' },
-        { id: 'i10b', name: '強化草屯人 APP', en: 'Caotun app upgrade', model: 'phone', policy: '強化草屯人 APP', desc: '整合陳情、交通、防災、活動、共享平台及生活資訊' },
-        { id: 'i10c', name: '工程資訊公開', en: 'Open project info', model: 'clock', policy: '行動鎮公所', desc: '工程資訊公開、提升行政效率' }
+        { id: 'i10a', main: true, name: '茶業六箭', en: 'Six arrows for tea', model: 'teafield', policy: '農民的擔子，我來一起扛', desc: '茶業災損補助更快發放，茶葉滯銷由政府協助收購，加碼農業保險補助，設立農業人力支援平台，並整合八大茶區。' },
+        { id: 'i10b', name: '8小時勘災・8天認定', en: 'Survey in 8 h, decide in 8 days', model: 'clock', policy: '農民的擔子，我來一起扛', desc: '災損發生，八小時內啟動勘災，八天內完成農損認定，並提供一站式輔導救助申請。' },
+        { id: 'i10c', name: '8億元農業韌性基金', en: 'NT$800m resilience fund', model: 'coin', policy: '農民的擔子，我來一起扛', desc: '成立八億元的農業韌性基金，補助價格崩跌、加碼農損救助、支持復耕。' },
+        { id: 'i10d', name: '節水灌溉與智慧農業', en: 'Water-saving & smart farming', model: 'farm', policy: '農民的擔子，我來一起扛', desc: '滴灌系統最高二十萬元；智慧農業設施補助，包含自動控制、微氣象站、液肥注入器，每公頃最高二十三萬元。' },
+        { id: 'i10e', name: '農業人力支援平台', en: 'Farm labour platform', model: 'camp', policy: '農民的擔子，我來一起扛', desc: '農會、村里長、茶區合作社把缺工訊息報上來，平台統整，媒合在地的農事幫手跟願意進場的年輕人。' },
+        { id: 'i10f', name: '茶園體驗觀光', en: 'Tea farm experiences', model: 'teahouse', policy: '觀光不能只靠一座塔：南投觀光整體規劃', desc: '輔導茶園轉型為體驗式觀光，讓遊客不只買茶，還能走進茶園、認識製茶、品嘗在地好茶。' },
+        { id: 'i10g', name: '南投好茶賣到世界', en: 'Nantou tea to the world', model: 'globe', policy: '農民的擔子，我來一起扛', desc: '領軍參加日韓國際茶展，讓南投茶站上國際舞台。' }
       ] },
-    { id: 'I11', no: '11', name: '青年參與', en: 'Youth Voice', pillar: 'P4', q: 2, r: -1, ground: 'stripe', tint: '#f3e6dc', band: '#f2b5c6', tree: 'palm', icon: '✋',
-      policies: ['青年委員會（Youth Council）', '參與式預算試辦'],
-      summary: '成立青年委員會，試辦參與式預算，由青年及社區共同提案與投票。', summaryEn: 'Create a Youth Council and pilot participatory budgeting where youth and communities propose and vote together.',
+    { id: 'I11', no: '11', name: '垃圾雞尾酒療法', en: 'Waste Cocktail Therapy', pillar: 'P4', q: 2, r: -1, ground: 'stripe', tint: '#e3e6dc', band: '#7f9a86', tree: 'conifer', icon: '♻',
+      url: 'https://wen-shih-cheng.com.tw/policies/waste-cocktail-solution/',
+      policies: ['垃圾雞尾酒療法：不讓焚化爐成為唯一答案'],
+      summary: '源頭減量、資源回收、廚餘轉能、以量換量與 SRF 能源轉型，用數據與程序正義治理垃圾，拒絕在名間強推 500 噸焚化爐。', summaryEn: 'Cut, recycle, turn food waste into energy, share capacity and make SRF fuel — no oversized 500-tonne incinerator forced on Mingjian.',
       items: [
-        { id: 'i11a', main: true, name: '青年委員會', en: 'Youth Council', model: 'office', policy: '青年委員會（Youth Council）', desc: '進行青年公共事務培力' },
-        { id: 'i11b', name: '納入青年的聲音', en: 'Youth in public affairs', model: 'stage', policy: '青年委員會（Youth Council）', desc: '讓公共事務納入青年的聲音' },
-        { id: 'i11c', name: '每年編列參與式預算', en: 'Annual participatory budget', model: 'coin', policy: '參與式預算試辦', desc: '每年編列部分預算' },
-        { id: 'i11d', name: '共同提案與投票', en: 'Propose & vote together', model: 'ballot', policy: '參與式預算試辦', desc: '由青年及社區共同提案與投票決定' },
-        { id: 'i11e', name: '資源貼近地方', en: 'Resources closer to home', model: 'house', policy: '參與式預算試辦', desc: '讓公共資源更貼近地方需求' }
+        { id: 'i11a', main: true, name: '回收率看齊台北', en: 'Recycle like Taipei', model: 'recycle', policy: '垃圾雞尾酒療法：不讓焚化爐成為唯一答案', desc: '配方一：回收率提升。台北市回收率已達 67%。南投若向這個標準看齊，每日即可減少 75 公噸的垃圾。' },
+        { id: 'i11b', name: '廚餘轉能', en: 'Food waste to energy', model: 'farm', policy: '垃圾雞尾酒療法：不讓焚化爐成為唯一答案', desc: '配方二：規劃興建生質能資源化中心，透過黑水虻與厭氧消化等技術，每日再回收 26 公噸的廚餘。' },
+        { id: 'i11c', name: '以量換量區域合作', en: 'Share capacity regionally', model: 'truck', policy: '垃圾雞尾酒療法：不讓焚化爐成為唯一答案', desc: '配方三：善用南崗資源化中心既有的處理量能，透過區域合作與外縣市相互調度，補足彼此缺口。' },
+        { id: 'i11d', name: '移動式SRF能源轉型', en: 'Mobile SRF fuel system', model: 'factory', policy: '垃圾雞尾酒療法：不讓焚化爐成為唯一答案', desc: '配方四：引進「全移動式 SRF 能源轉型系統」，一套每日可處理 200 噸垃圾，目標是「科學洗淨」南投歷史堆置的垃圾。' },
+        { id: 'i11e', name: '程序正義與公開數據', en: 'Due process & open data', model: 'ballot', policy: '垃圾雞尾酒療法：不讓焚化爐成為唯一答案', desc: '當選後將公開完整的垃圾處理數據；任何重大公共設施，從選址、環評到營運監督，全程公開、納入地方意見。' }
       ] },
-    { id: 'I12', no: '12', name: '區域交通', en: 'Regional Transit', pillar: 'P5', q: 3, r: -2, ground: 'speckle', tint: '#e2e8ec', band: '#6f7fb5', tree: 'willow', icon: '⇄',
-      policies: ['草屯支點，槓桿無限計畫', 'TOD 交通生活圈'],
-      summary: '以草屯作為中彰投支點與南投門戶，推動 TOD 交通生活圈，完善第一哩與最後一哩。', summaryEn: 'Make Caotun the fulcrum of the Taichung–Changhua–Nantou region and gateway to Nantou, with transit-oriented first- and last-mile links.',
+    { id: 'I12', no: '12', name: '山綠水清', en: 'Green Hills, Clear Water', pillar: 'P4', q: 3, r: -2, ground: 'speckle', tint: '#d4e6cc', band: '#4f8a6a', tree: 'conifer', icon: '☘',
+      url: 'https://wen-shih-cheng.com.tw/policies/nantou-green-environment/',
+      policies: ['讓山依然綠，讓溪水依然清'],
+      summary: '以最高標準審視名間焚化爐預定地、守護石虎棲地；綠色交通、空氣與水質數據公開、擴大造林護林，守護桶頭水源。', summaryEn: 'Protect leopard cat habitat at Mingjian, low-carbon transport, open air and water data, more forest, and cleaner tap water.',
       items: [
-        { id: 'i12a', main: true, name: '草屯支點，槓桿無限', en: 'Caotun as the fulcrum', model: 'lever', policy: '草屯支點，槓桿無限計畫', desc: '以草屯作為中彰投的重要支點，發揮中央、縣府及地方資源的槓桿效益' },
-        { id: 'i12b', name: '南投門戶', en: 'Gateway to Nantou', model: 'gate', policy: '草屯支點，槓桿無限計畫', desc: '打造草屯成為南投門戶、中彰投核心節點' },
-        { id: 'i12c', name: '中彰投生活圈合作', en: 'Regional cooperation', model: 'globe', policy: '草屯支點，槓桿無限計畫', desc: '建立中彰投生活圈合作機制，串聯交通、觀光、文化及產業' },
-        { id: 'i12d', name: '多元共乘夜間接駁', en: 'Ride-sharing & night shuttles', model: 'busstop', policy: 'TOD 交通生活圈', desc: '推動多元共乘、夜間接駁、幸福小黃與彈性運輸（DRTS）' },
-        { id: 'i12e', name: '第一哩與最後一哩', en: 'First & last mile', model: 'train', policy: 'TOD 交通生活圈', desc: '完善高鐵、台中、彰化、草屯及偏鄉的第一哩與最後一哩' },
-        { id: 'i12f', name: '轉運熱點公共自行車', en: 'Public bikes at hubs', model: 'bikes', policy: 'TOD 交通生活圈', desc: '爭取鎮內轉運熱點設置公共自行車' },
-        { id: 'i12g', name: '最後一班高鐵也到家', en: 'Home even after the last train', model: 'clock', policy: 'TOD 交通生活圈', desc: '讓返鄉青年與觀光客有安心便捷的交通，就算搭最後一班高鐵也能順利到家' }
+        { id: 'i12a', main: true, name: '守護石虎棲地', en: 'Leopard cat habitat', model: 'leopard', policy: '讓山依然綠，讓溪水依然清', desc: '把生態保育放在最前，用最高標準審視名間焚化爐預定地，守住石虎棲地與生態廊道。' },
+        { id: 'i12b', name: '造林護林生態廊道', en: 'Forests & corridors', model: 'forest', policy: '讓山依然綠，讓溪水依然清', desc: '擴大造林面積，加強護林與棲地保育，讓山坡留住水土，也讓棲地連成廊道。' },
+        { id: 'i12c', name: '空氣水質數據公開', en: 'Open air & water data', model: 'signboard', policy: '讓山依然綠，讓溪水依然清', desc: '設立數據公開平台，把空氣品質與水質健康的數據公開透明，接受全民監督。' },
+        { id: 'i12d', name: '守護桶頭水源', en: 'Clean tap water', model: 'river', policy: '讓山依然綠，讓溪水依然清', desc: '爭取桶頭自來水的水質檢測與改善評估，研議攔河堰增設淨水設施，並簡化自來水申請流程。' },
+        { id: 'i12e', name: '綠色交通減碳', en: 'Low-carbon transport', model: 'bikes', policy: '讓山依然綠，讓溪水依然清', desc: '鼓勵綠色運具，發展低碳運輸，降低排放，回應淨零減碳的全球趨勢。' },
+        { id: 'i12f', name: '有機友善農耕', en: 'Organic farming', model: 'farm', policy: '讓山依然綠，讓溪水依然清', desc: '推廣有機農耕與友善農業，讓土地休養生息，作物更安全，食安更有保障。' }
       ] }
   ],
-  // 影音紀錄（542upup.tw #policy 下方），islands 為依標題對應的政策島
+  // 影音紀錄（wen-shih-cheng.com.tw 首頁的 YouTube 影片），islands 為依標題對應的政策島
   videos: [
-    { id: 'v1', title: '郭昱晴推薦', kind: 'endorse', url: 'https://media.542upup.tw/videos/celeb-kuo-preview.mp4', islands: [] },
-    { id: 'v2', title: '陳培瑜推薦', kind: 'endorse', url: 'https://media.542upup.tw/videos/celeb-chen-preview.mp4', islands: [] },
-    { id: 'v3', title: '蔡其昌推薦', kind: 'endorse', url: 'https://media.542upup.tw/videos/celeb-tsai-preview.mp4', islands: [] },
-    { id: 'v4', title: '林楚茵推薦', kind: 'endorse', url: 'https://media.542upup.tw/videos/celeb-lin-preview.mp4', islands: [] },
-    { id: 'v5', title: '沈伯洋推薦', kind: 'endorse', url: 'https://media.542upup.tw/videos/celeb-shen-preview.mp4', islands: [] },
-    { id: 'v6', title: '《投投告訴你》專訪', kind: 'interview', url: 'https://media.542upup.tw/videos/interview-toutou-preview.mp4', islands: [] },
-    { id: 'v7', title: '《投投告訴你》專訪：草屯囝仔為何回家', kind: 'interview', url: 'https://media.542upup.tw/videos/interview-toutou-2-preview.mp4', islands: ['I03'] },
-    { id: 'v8', title: '《投投告訴你》專訪：草鞋墩的由來', kind: 'interview', url: 'https://media.542upup.tw/videos/interview-toutou-3-preview.mp4', islands: ['I09'] },
-    { id: 'v9', title: '《投投告訴你》專訪：發展觀光先解決交通痛點', kind: 'interview', url: 'https://media.542upup.tw/videos/interview-toutou-4-v2-preview.mp4', islands: ['I09', 'I12'] },
-    { id: 'v10', title: '《宵夜鏡來講》專訪：重陽敬老金與深夜共乘', kind: 'interview', url: 'https://media.542upup.tw/videos/interview-mnews-preview.mp4', islands: ['I12'] },
-    { id: 'v11', title: '《宵夜鏡來講》專訪：投票的感情與理智', kind: 'interview', url: 'https://media.542upup.tw/videos/interview-mnews-2-preview.mp4', islands: [] },
-    { id: 'v12', title: '《政治狠狠問》專訪：站路口的三十秒政見', kind: 'interview', url: 'https://media.542upup.tw/videos/interview-henhenwen-preview.mp4', islands: ['I04'] },
-    { id: 'v13', title: '出場致詞', kind: 'trail', url: 'https://media.542upup.tw/videos/debut-preview.mp4', islands: [] },
-    { id: 'v14', title: '登記參選', kind: 'trail', url: 'https://media.542upup.tw/videos/registration-preview.mp4', islands: [] },
-    { id: 'v15', title: '酷比公園', kind: 'trail', url: 'https://media.542upup.tw/videos/park-preview.mp4', islands: ['I01'] },
-    { id: 'v16', title: '南埔早餐', kind: 'trail', url: 'https://media.542upup.tw/videos/breakfast-preview.mp4', islands: ['I10'] },
-    { id: 'v17', title: '中秋祝福', kind: 'trail', url: 'https://media.542upup.tw/videos/mid-autumn-preview.mp4', islands: [] },
-    { id: 'v18', title: '帶潘孟安去捏陶', kind: 'trail', url: 'https://media.542upup.tw/videos/pottery-v2-preview.mp4', islands: ['I09'] }
+    { id: 'v1', title: '温世政宣布參選南投縣長', kind: 'trail', youtube: '-ZeTsodTTu8', islands: [] },
+    { id: 'v2', title: '打造無人機遠距醫療網：讓藥品飛過群山', kind: 'policy', youtube: 'peep9KVVXVA', islands: ['I02'] }
   ],
-  // 協作線：official = 政見文字明確提到彼此；thematic = 同主題延伸；pending = 政見寫「評估」
+  // 協作線：official = 政見文字明確提到彼此；thematic = 同主題延伸；pending = 政見寫「研議／研究」
   flows: [
-    { id: 'F1', from: 'I10', to: 'I02', carry: 'backpack', carryName: '書包制服', carryEn: 'school bags', walker: 'parent', level: 'official', note: '共享平台「整合草屯人 APP」媒合制服、書包與育兒用品', noteEn: 'The sharing platform runs on the Caotun app to match uniforms, school bags and baby supplies.' },
-    { id: 'F2', from: 'I10', to: 'I05', carry: 'alert', carryName: '豪雨預警', carryEn: 'storm alerts', walker: 'official', level: 'official', note: '山區豪雨智慧預警透過 LINE 官方帳號、APP 及里長系統即時通知', noteEn: 'Mountain rainstorm alerts go out through LINE, the app and village chiefs.' },
-    { id: 'F3', from: 'I10', to: 'I06', carry: 'tea', carryName: '奉茶', carryEn: 'cool tea', walker: 'official', level: 'official', note: '草屯人 APP 設置抗高溫專區', noteEn: 'The Caotun app gets a dedicated heat section.' },
-    { id: 'F4', from: 'I09', to: 'I12', carry: 'suitcase', carryName: '行李', carryEn: 'luggage', walker: 'tourist', level: 'official', note: '推出旅遊地圖，完善觀光行程的交通接駁', noteEn: 'A Caoxiedun travel map with better shuttle connections for tourist routes.' },
-    { id: 'F5', from: 'I07', to: 'I08', carry: 'pin', carryName: '停車資訊', carryEn: 'parking info', walker: 'commuter', level: 'official', note: '盤點商圈與公有市場的停車需求', noteEn: 'Parking demand is surveyed around shopping districts and public markets.' },
-    { id: 'F6', from: 'I01', to: 'I02', carry: 'bottle', carryName: '奶瓶', carryEn: 'baby bottles', walker: 'parent', level: 'thematic', note: '樂活休閒館結合托育，家長運動同時兼顧托育', noteEn: 'The active living center includes childcare, so parents can exercise while kids are looked after.' },
-    { id: 'F7', from: 'I03', to: 'I11', carry: 'book', carryName: '書', carryEn: 'books', walker: 'student', level: 'thematic', note: '青年公共參與營隊與青年委員會都在培力青年參與公共事務', noteEn: 'The youth civic camp and the Youth Council both train young people for public affairs.' },
-    { id: 'F8', from: 'I08', to: 'I05', carry: 'sapling', carryName: '農產', carryEn: 'produce', walker: 'farmer', level: 'thematic', note: '青農品牌與農業智慧防災都在守護農民', noteEn: 'Young farmer brands and smart farm protection both support farmers.' },
-    { id: 'F9', from: 'I04', to: 'I08', carry: 'bulb', carryName: '燈泡', carryEn: 'light bulbs', walker: 'worker', level: 'thematic', note: '公有市場照明與商圈照明動線改善', noteEn: 'Better lighting for public markets and the shopping district.' },
-    { id: 'F10', from: 'I07', to: 'I09', carry: 'pin', carryName: '景點停車', carryEn: 'scenic parking', walker: 'worker', level: 'pending', note: '盤點景點停車需求，活化閒置土地並「評估」增加停車空間', noteEn: 'Survey parking at scenic spots, reuse idle land and evaluate adding parking.' }
+    { id: 'F1', from: 'I02', to: 'I01', carry: 'pill', carryName: '慢性病用藥', carryEn: 'medicine', walker: 'medic', level: 'official', note: '把無人機配送與行動醫療車、遠距醫療整合成一張完整的「8公里健康守護圈」', noteEn: 'Drone delivery joins mobile clinics and telemedicine in one 8 km health circle.' },
+    { id: 'F2', from: 'I01', to: 'I03', carry: 'cross', carryName: '篩檢通知', carryEn: 'screening notices', walker: 'medic', level: 'official', note: '健康守護圈：肺癌篩檢全面免費，讓篩檢走進每一個社區', noteEn: 'The health circle brings free lung cancer screening into every community.' },
+    { id: 'F3', from: 'I04', to: 'I01', carry: 'tooth', carryName: '牙科巡迴車', carryEn: 'dental van', walker: 'medic', level: 'official', note: '偏鄉牙科巡迴車與行動醫療車定期開進偏鄉，把健檢、檢查、追蹤一次做完', noteEn: 'The dental van and mobile clinics visit remote villages for check-ups and follow-up.' },
+    { id: 'F4', from: 'I05', to: 'I01', carry: 'ticket', carryName: '就醫接送', carryEn: 'rides to the doctor', walker: 'elder', level: 'pending', note: '研究敬老卡與醫療交通服務的整合方式，推動「長輩就醫安心車」', noteEn: 'Studying how senior cards can pay for rides to the doctor.' },
+    { id: 'F5', from: 'I05', to: 'I08', carry: 'ticket', carryName: '敬老卡', carryEn: 'senior cards', walker: 'elder', level: 'thematic', note: '敬老卡整合幸福巴士、小黃公車；8字路網也要升級偏鄉大眾運輸', noteEn: 'Senior cards ride community buses, and the transit plan upgrades rural routes.' },
+    { id: 'F6', from: 'I08', to: 'I09', carry: 'suitcase', carryName: '行李', carryEn: 'luggage', walker: 'tourist', level: 'official', note: '鐵道觀光與鐵道交通雙主軸：修復集集線、讓高鐵彰化站與集集線接軌', noteEn: 'Rail for travel and tourism: restore the Jiji line and link it to the HSR.' },
+    { id: 'F7', from: 'I09', to: 'I10', carry: 'tea', carryName: '一泡好茶', carryEn: 'tea', walker: 'tourist', level: 'official', note: '配合茶產業轉型，讓鐵道觀光成為兩大主軸之一，花費落在沿線店家跟農家', noteEn: 'Tea tourism and rail travel together, so spending stays with local shops and farms.' },
+    { id: 'F8', from: 'I11', to: 'I12', carry: 'recycle', carryName: '回收物', carryEn: 'recyclables', walker: 'worker', level: 'official', note: '把「雞尾酒療法」化整為零的精神，用在整個環境願景', noteEn: 'The waste plan is part of the wider green environment plan.' },
+    { id: 'F9', from: 'I11', to: 'I10', carry: 'sapling', carryName: '茶苗', carryEn: 'tea seedlings', walker: 'farmer', level: 'official', note: '不該犧牲名間的茶園、農民與下一代的生活環境', noteEn: 'Waste solutions must not sacrifice Mingjian’s tea gardens and farmers.' },
+    { id: 'F10', from: 'I06', to: 'I07', carry: 'bottle', carryName: '奶瓶', carryEn: 'baby bottles', walker: 'parent', level: 'official', note: '顧少年：從產業、就業、成家、生育、托育到青年服務窗口，縣府成為青年後盾', noteEn: 'From jobs to childcare, the county backs young families.' },
+    { id: 'F11', from: 'I08', to: 'I07', carry: 'backpack', carryName: '書包', carryEn: 'school bags', walker: 'student', level: 'thematic', note: '守護通學的路：孩子上學的路，必須安全、完整、看得到大人', noteEn: 'Safe, complete routes to school for every child.' },
+    { id: 'F12', from: 'I06', to: 'I10', carry: 'sapling', carryName: '農事幫手', carryEn: 'farm hands', walker: 'farmer', level: 'official', note: '農業人力支援平台媒合在地農事幫手與願意進場的年輕人', noteEn: 'The farm labour platform matches young people with farms that need hands.' }
   ],
   // 一天時段：亮起的細項（黃色高亮）
   dayCycle: [
-    { id: 'D1', start: 360, end: 450, name: '清晨運動', en: 'Morning exercise', items: ['i01b', 'i01d', 'i01f', 'i04e'] },
-    { id: 'D2', start: 450, end: 540, name: '上學通勤', en: 'School run', items: ['i04b', 'i04c', 'i02d', 'i12d'] },
-    { id: 'D3', start: 540, end: 690, name: '托育與洽公', en: 'Childcare & services', items: ['i02a', 'i02c', 'i01c', 'i10a', 'i10b'] },
-    { id: 'D4', start: 690, end: 900, name: '正午高溫', en: 'Midday heat', items: ['i06a', 'i06b', 'i06c', 'i06d', 'i01e'] },
-    { id: 'D5', start: 900, end: 1080, name: '課後時光', en: 'After school', items: ['i03a', 'i03c', 'i03d', 'i03e'] },
-    { id: 'D6', start: 1080, end: 1260, name: '夜間經濟', en: 'Night economy', items: ['i08b', 'i08c', 'i08d', 'i08e', 'i04d'] },
-    { id: 'D7', start: 1260, end: 1800, name: '最後一班車', en: 'Last train home', items: ['i12d', 'i12e', 'i12g', 'i04d'] }
+    { id: 'D1', start: 360, end: 450, name: '清晨採茶', en: 'Dawn tea picking', items: ['i10a', 'i10e', 'i10d', 'i12b'] },
+    { id: 'D2', start: 450, end: 540, name: '上學通勤', en: 'School run', items: ['i08a', 'i08d', 'i07a', 'i08c'] },
+    { id: 'D3', start: 540, end: 690, name: '看診時段', en: 'Clinic hours', items: ['i01a', 'i03a', 'i03c', 'i04a', 'i04c', 'i05c'] },
+    { id: 'D4', start: 690, end: 900, name: '山區送藥', en: 'Medicine over the hills', items: ['i02a', 'i02c', 'i02d', 'i01c'] },
+    { id: 'D5', start: 900, end: 1080, name: '鐵道慢遊', en: 'Slow rail trip', items: ['i09a', 'i09c', 'i10f', 'i08e', 'i06e'] },
+    { id: 'D6', start: 1080, end: 1260, name: '垃圾車來了', en: 'Garbage truck hour', items: ['i11a', 'i11b', 'i11c', 'i06d'] },
+    { id: 'D7', start: 1260, end: 1800, name: '晚上回得了家', en: 'Home after dark', items: ['i09f', 'i08b', 'i01d', 'i02e'] }
   ]
 };
-
 </script>
 
 <script type="module">
@@ -524,8 +542,8 @@ const $ = (s) => document.querySelector(s);
 const LANG = (() => { try { return new URLSearchParams(location.search).get('lang') === 'en' ? 'en' : 'zh'; } catch (e) { return 'zh'; } })();
 const tr = (zh, en) => (LANG === 'en' && en ? en : zh);
 const store = {
-  get(k, d) { try { const v = localStorage.getItem('542upup:' + k); return v == null ? d : JSON.parse(v); } catch (e) { return d; } },
-  set(k, v) { try { localStorage.setItem('542upup:' + k, JSON.stringify(v)); } catch (e) { /* 私密模式 */ } }
+  get(k, d) { try { const v = localStorage.getItem('nantou:' + k); return v == null ? d : JSON.parse(v); } catch (e) { return d; } },
+  set(k, v) { try { localStorage.setItem('nantou:' + k, JSON.stringify(v)); } catch (e) { /* 私密模式 */ } }
 };
 function mulberry32(a) {
   return function () {
@@ -535,13 +553,13 @@ function mulberry32(a) {
     return ((t ^ t >>> 14) >>> 0) / 4294967296;
   };
 }
-const rand = mulberry32(5422026);
+const rand = mulberry32(492026);
 const rr = (a, b) => a + (b - a) * rand();
 
 function fail(err) {
   console.error(err);
   $('#loadingDots').hidden = true;
-  $('#loadingMsg').textContent = tr('城市組合失敗', 'Could not build the city');
+  $('#loadingMsg').textContent = tr('政策島載入失敗', 'Could not build the islands');
   const box = $('#loadingErr');
   box.hidden = false;
   box.textContent = tr('可能是瀏覽器不支援 WebGL，或網路無法載入 Three.js。請重新整理，或改用最新版 Chrome／Safari。', 'Your browser may not support WebGL, or Three.js could not be downloaded. Reload, or try a recent Chrome or Safari.') + '\n\n' + (err && err.message ? err.message : String(err));
@@ -553,9 +571,9 @@ const R = 2.02, SPACING = 2.28, TOP = 0.65, WATER_Y = -0.18;
 const SQ3 = Math.sqrt(3);
 const PATH_R = 1.8;
 const C = {
-  coral: '#db6a41', ink: '#211d1d', cream: '#fff8f4', yellow: '#fcea8b', stone: '#c5b5a7', green: '#71806a',
-  glass: '#86a8a6', wood: '#b48560', teal: '#3e7c8c', plant: ['#9cc27a', '#8db86f', '#728f5f'],
-  pastel: ['#f2b5c6', '#58a6a6', '#6f7fb5'], curb: '#e4d6c3', path: '#e8cdb0', glow: '#ffc777'
+  accent: '#2f7d5b', roof: '#c9793f', ink: '#1c2a24', cream: '#f5f8f0', yellow: '#f2d46b', stone: '#b9c2b2', green: '#5f7f5c',
+  glass: '#8fb3b5', wood: '#a9805a', teal: '#2f7896', plant: ['#8fbf6e', '#6fa65a', '#4f8a4c'], tea: ['#3f7a3e', '#4d8a45', '#5f9a4f'],
+  pastel: ['#e8a9b0', '#5fa8a0', '#7f93c4'], curb: '#dfe3d2', path: '#dccfb2', glow: '#ffc777'
 };
 const isMobile = matchMedia('(max-width: 800px)').matches;
 const reduceMQ = matchMedia('(prefers-reduced-motion: reduce)');
@@ -573,10 +591,10 @@ const reduceMQ = matchMedia('(prefers-reduced-motion: reduce)');
   if (LANG === 'en') {
     document.documentElement.lang = 'en';
     document.querySelectorAll('[data-en]').forEach((el) => { el.textContent = el.dataset.en; });
-    const aria = { '#tools': 'View', '#cardClose': 'Close card', '#side': 'Policy list', '#search': 'Search policies', '#log': 'City log', '#logFilter': 'Filter by link', '#hud': 'Time and display', '#btnHelp': 'Help', '#hud > #btnTime': 'Time' };
+    const aria = { '#tools': 'View', '#cardClose': 'Close card', '#side': 'Policy list', '#search': 'Search policies', '#log': 'Island log', '#logFilter': 'Filter by link', '#hud': 'Time and display', '#btnHelp': 'Help', '#hud > #btnTime': 'Time' };
     Object.entries(aria).forEach(([q, v]) => { const el = $(q); if (el) el.setAttribute('aria-label', v); });
-    $('#loadingMsg').textContent = 'Assembling the policy city…';
-    $('#loading h1').textContent = 'Caotun Policy Islands';
+    $('#loadingMsg').textContent = 'Planting policies on Sun Moon Lake…';
+    $('#loading h1').textContent = 'Nantou Policy Islands';
   }
   document.title = tr(c.title, c.titleEn);
 })();
@@ -612,12 +630,12 @@ function init() {
   renderer.toneMappingExposure = 1;
   stageEl.appendChild(renderer.domElement);
   renderer.domElement.tabIndex = 0;
-  renderer.domElement.setAttribute('aria-label', tr('草屯鎮政策島 3D 城市', 'Caotun policy islands 3D city'));
+  renderer.domElement.setAttribute('aria-label', tr('南投縣政策島 3D 地圖', 'Nantou policy islands 3D map'));
 
   const labelRenderer = new CSS2DRenderer({ element: $('#labels') });
 
   const scene = new THREE.Scene();
-  scene.fog = new THREE.Fog(0xf4eee3, 42, 150);
+  scene.fog = new THREE.Fog(0xeef3ea, 42, 150);
   const camera = new THREE.PerspectiveCamera(32, 1, 0.3, 320);
 
   // ───────────────────────── 島嶼座標 ─────────────────────────
@@ -656,7 +674,7 @@ function init() {
   const overviewDir = () => (innerWidth / innerHeight < .8 ? PORTRAIT.dir : OVERVIEW_DIR);
   function overviewDistance() {
     const a = innerWidth / innerHeight;
-    if (a > 1.25) return 28.5;
+    if (a > 1.25) return 31;
     if (a > 0.8) return 38;
     const need = (PORTRAIT.w / 2 + 2.4) / (Math.tan(THREE.MathUtils.degToRad(16)) * a);
     return THREE.MathUtils.clamp(need, 40, 68);
@@ -664,6 +682,7 @@ function init() {
   function overviewTarget() {
     const t = center.clone();
     if (innerWidth / innerHeight < .8) { t.x += PORTRAIT.hz * PORTRAIT.mid; t.z -= PORTRAIT.hx * PORTRAIT.mid; }
+    else { const d = overviewDir(); t.x -= d.x * 1.6; t.z -= d.z * 1.6; } // 往後看一點，讓遠方山景（合歡山、九九峰）入鏡
     if (innerWidth > 800 && document.body.classList.contains('side-open')) {
       const d = overviewDir();
       t.x += d.z * 2.4; t.z += -d.x * 2.4;
@@ -725,7 +744,7 @@ function init() {
 
   // ───────────────────────── 水 ─────────────────────────
   const waterU = THREE.UniformsUtils.merge([THREE.UniformsLib.fog, {
-    uShallow: { value: new THREE.Color('#a4d4da') }, uDeep: { value: new THREE.Color('#6fa9b8') },
+    uShallow: { value: new THREE.Color('#8fcbbd') }, uDeep: { value: new THREE.Color('#3f8f94') },
     uTime: { value: 0 }, uCenter: { value: new THREE.Vector2(center.x, center.z) }, uNight: { value: 0 }
   }]);
   const waterVS = `#include <fog_pars_vertex>
@@ -772,13 +791,13 @@ function init() {
   const texRand = mulberry32(77);
   const groundTex = {
     brick: canvasTex(256, (g, s) => {
-      g.fillStyle = '#fbf6ef'; g.fillRect(0, 0, s, s);
+      g.fillStyle = '#f7f8f1'; g.fillRect(0, 0, s, s);
       const bh = 16, bw = 32;
       for (let y = 0; y < s; y += bh) {
         const off = (y / bh) % 2 ? bw / 2 : 0;
         for (let x = -bw; x < s + bw; x += bw) {
           const v = 236 + texRand() * 14 | 0;
-          g.fillStyle = `rgb(${v},${v - 6},${v - 14})`;
+          g.fillStyle = `rgb(${v - 6},${v},${v - 12})`;
           g.fillRect(x + off + 1, y + 1, bw - 2, bh - 2);
         }
       }
@@ -792,8 +811,8 @@ function init() {
       }
     }),
     stripe: canvasTex(256, (g, s) => {
-      g.fillStyle = '#fbf7f1'; g.fillRect(0, 0, s, s);
-      g.fillStyle = 'rgba(200,185,165,.22)';
+      g.fillStyle = '#f6f8f0'; g.fillRect(0, 0, s, s);
+      g.fillStyle = 'rgba(120,160,110,.18)';
       for (let i = -s; i < s * 2; i += 22) { g.beginPath(); g.moveTo(i, 0); g.lineTo(i + 10, 0); g.lineTo(i + 10 - s, s); g.lineTo(i - s, s); g.fill(); }
       for (let i = 0; i < 300; i++) { g.fillStyle = 'rgba(180,160,140,.12)'; g.fillRect(texRand() * s, texRand() * s, 2, 2); }
     })
@@ -801,11 +820,12 @@ function init() {
   function bandTex(color) {
     return canvasTex(256, (g, s) => {
       g.fillStyle = color; g.fillRect(0, 0, s, s);
-      g.fillStyle = 'rgba(255,248,244,.85)';
+      g.fillStyle = 'rgba(247,250,245,.85)';
       const n = 8, w = s / n;
       for (let i = 0; i < n; i++) { g.beginPath(); g.moveTo(i * w, s * .78); g.lineTo(i * w + w / 2, s * .3); g.lineTo(i * w + w, s * .78); g.closePath(); g.fill(); }
-      g.fillStyle = 'rgba(33,29,29,.18)'; g.fillRect(0, 0, s, s * .08);
-      g.fillStyle = 'rgba(255,248,244,.6)'; for (let i = 0; i < n; i++) { g.beginPath(); g.arc(i * w + w / 2, s * .9, 4, 0, 7); g.fill(); }
+      g.fillStyle = 'rgba(28,42,36,.18)'; g.fillRect(0, 0, s, s * .08);
+      g.fillStyle = 'rgba(255,255,255,.95)'; for (let i = 0; i < n; i++) { g.beginPath(); g.moveTo(i * w + w * .36, s * .43); g.lineTo(i * w + w / 2, s * .3); g.lineTo(i * w + w * .64, s * .43); g.closePath(); g.fill(); }
+      g.fillStyle = 'rgba(247,250,245,.6)'; for (let i = 0; i < n; i++) { g.beginPath(); g.arc(i * w + w / 2, s * .9, 4, 0, 7); g.fill(); }
     });
   }
 
@@ -847,7 +867,7 @@ function init() {
   const groundMats = {};
   const curbMat = new THREE.MeshStandardMaterial({ color: C.curb, roughness: .9, polygonOffset: true, polygonOffsetFactor: -2, polygonOffsetUnits: -2 });
   const pathMat = new THREE.MeshStandardMaterial({ color: C.path, roughness: .95, map: groundTex.brick, polygonOffset: true, polygonOffsetFactor: -1, polygonOffsetUnits: -1 });
-  const shallowMat = new THREE.MeshBasicMaterial({ color: '#c4e6e6', transparent: true, opacity: .45, depthWrite: false, fog: true });
+  const shallowMat = new THREE.MeshBasicMaterial({ color: '#bfe3d8', transparent: true, opacity: .45, depthWrite: false, fog: true });
   const foamMat = new THREE.MeshBasicMaterial({ color: '#ffffff', transparent: true, opacity: .55, depthWrite: false, fog: true });
   const curbTopG = hexRing(R - 0.11, R + 0.005);
   const pathG = hexRing(PATH_R - 0.14, PATH_R + 0.14);
@@ -953,15 +973,15 @@ function init() {
     [0, '1e2c58', '3f4f80', 'b4c2ff', 1.15, '94a2d8', '64566a', 1.85, 1, '5a88b2'],
     [300, '26365f', '4c5688', 'b8c4ff', 1.0, '96a4da', '66586c', 1.85, 1, '5c8ab4'],
     [360, '7f8fc4', 'f6c3a6', 'ffb48a', 1.3, 'f3c6b5', '6b5a5a', 1.1, .55, '8fb7c4'],
-    [450, 'a9d1ea', 'fbe6d3', 'ffe2c4', 2.4, 'eaf2f6', '8a7a68', 1.25, 0, '9fcfd6'],
-    [720, '9fd0ec', 'f4eee3', 'fff1de', 2.9, 'eef6fa', '8f8270', 1.35, 0, 'a9d8db'],
-    [960, 'a6cfe6', 'f8e7d2', 'ffe3c0', 2.5, 'f1efe8', '8a7a66', 1.25, 0, '9fcbd2'],
+    [450, 'a9d1ea', 'f3ebdb', 'ffe2c4', 2.4, 'eaf2f2', '7a7d68', 1.25, 0, '8ccabc'],
+    [720, '9cd0ea', 'eef3ea', 'fff3e2', 2.9, 'eef6f4', '7f8a70', 1.35, 0, '94cfc2'],
+    [960, 'a6cfe6', 'f1ece0', 'ffe3c0', 2.5, 'f0f2ec', '7d7f66', 1.25, 0, '8fc7ba'],
     [1065, '8b8fc4', 'f7b98f', 'ff9f6a', 1.8, 'f6d2bc', '7d6660', 1.2, .3, '93a9bd'],
     [1140, '5a5e9e', 'd99aa6', 'ff9a7a', 1.3, 'c0b2e0', '655868', 1.35, .75, '6a7cab'],
     [1260, '22325f', '445488', 'c0ccff', 1.2, '98a8dc', '685a6e', 1.9, 1, '5a88b2'],
     [1440, '1e2c58', '3f4f80', 'b4c2ff', 1.15, '94a2d8', '64566a', 1.85, 1, '5a88b2']
   ].map((k) => ({ m: k[0], top: new THREE.Color('#' + k[1]), hor: new THREE.Color('#' + k[2]), sun: new THREE.Color('#' + k[3]), sunI: k[4], hs: new THREE.Color('#' + k[5]), hg: new THREE.Color('#' + k[6]), hI: k[7], night: k[8], water: new THREE.Color('#' + k[9]) }));
-  const NOON_SHALLOW = new THREE.Color('#a4d4da'), NOON_DEEP = new THREE.Color('#6fa9b8'), NOON_WATER = new THREE.Color('#a9d8db');
+  const NOON_SHALLOW = new THREE.Color('#8fcbbd'), NOON_DEEP = new THREE.Color('#3f8f94'), NOON_WATER = new THREE.Color('#94cfc2');
   const deepRatio = new THREE.Color(NOON_DEEP.r / NOON_WATER.r, NOON_DEEP.g / NOON_WATER.g, NOON_DEEP.b / NOON_WATER.b);
   const shallowRatio = new THREE.Color(NOON_SHALLOW.r / NOON_WATER.r, NOON_SHALLOW.g / NOON_WATER.g, NOON_SHALLOW.b / NOON_WATER.b);
   const world = { night: 0, minutes: 600 };
@@ -1046,7 +1066,7 @@ function init() {
   const glowMat = new THREE.MeshStandardMaterial({ color: 0xffffff, roughness: .6, emissive: new THREE.Color(C.glow), emissiveIntensity: 0 });
 
   // ── 小零件 helpers（單位空間：底面 ±0.5、高 0–1.5）──
-  const COL = { wall: '#f4ebdd', roof: C.coral, eave: '#a34e34', win: '#a8c4c2', wood: C.wood, ink: C.ink, cream: C.cream };
+  const COL = { wall: '#f6f1e6', roof: C.roof, eave: '#8a5a34', win: '#a8c4c2', wood: C.wood, ink: C.ink, cream: C.cream };
   const skin = ['#f3d2b8', '#e9bf9d', '#d8a684'];
   function mini(x, z, shirt, opts = {}) {
     const s = opts.s || 1;
@@ -1092,7 +1112,7 @@ function init() {
 
   // ── archetypes：由細項 model 欄位決定 ──（回傳模型高度）
   const ARCH = {
-    house(acc = C.coral) {
+    house(acc = C.roof) {
       P('rbox', COL.wall, 0, 0, 0, .72, .56, .62);
       P('box', COL.eave, 0, .55, 0, .86, .04, .76);
       P('hip', acc, 0, .58, 0, .84, .42, .74);
@@ -1108,15 +1128,15 @@ function init() {
       P('box', C.stone, 0, 0, .3, .9, .06, .14);
       for (const x of [-.36, -.12, .12, .36]) P('cyl', '#fffdf8', x, .06, .3, .07, .4, .07);
       P('box', COL.wall, 0, .46, .28, .96, .06, .14);
-      P('prism', C.coral, 0, .52, .27, .94, .2, .16);
+      P('prism', C.roof, 0, .52, .27, .94, .2, .16);
       for (const x of [-.3, 0, .3]) win(x, .16, .265, .12, .2);
       P('box', COL.cream, 0, .5, -.12, .28, .62, .28);
       P('cyl', '#ffffff', 0, .86, .02, .2, .02, .2, 0, Math.PI / 2);
       P('box', C.ink, 0, .9, .04, .015, .07, .01); P('box', C.ink, .02, .9, .04, .06, .012, .01);
       P('box', COL.eave, 0, 1.11, -.12, .34, .04, .34);
-      P('hip', C.coral, 0, 1.14, -.12, .32, .3, .32);
+      P('hip', C.roof, 0, 1.14, -.12, .32, .3, .32);
       P('cyl', C.ink, 0, 1.42, -.12, .015, .1, .015);
-      P('box', C.coral, .04, 1.48, -.12, .07, .04, .005);
+      P('box', C.roof, .04, 1.48, -.12, .07, .04, .005);
       win(-.12, .58, .025, .06, .12); win(.12, .58, .025, .06, .12);
       return 1.5;
     },
@@ -1124,10 +1144,10 @@ function init() {
       for (const [x, z] of [[-.3, -.2], [.3, -.2], [-.3, .2], [.3, .2]]) P('cyl', C.wood, x, 0, z, .04, .55, .04);
       P('box', C.wood, 0, 0, .12, .66, .26, .16);
       P('box', C.cream, 0, .26, .12, .7, .03, .2);
-      P('prism', C.coral, 0, .55, 0, .76, .2, .56);
+      P('prism', C.roof, 0, .55, 0, .76, .2, .56);
       for (const x of [-.24, 0, .24]) P('box', C.cream, x, .552, 0, .1, .18, .58);
       P('glowsphere', '#fff3d6', -.2, .48, .22, .06, .06, .06); P('glowsphere', '#fff3d6', .2, .48, .22, .06, .06, .06);
-      for (let i = 0; i < 4; i++) P('sphere', [C.yellow, C.coral, C.plant[0], C.pastel[0]][i], -.21 + i * .14, .3, .14, .08, .08, .08);
+      for (let i = 0; i < 4; i++) P('sphere', [C.yellow, C.roof, C.plant[0], C.pastel[0]][i], -.21 + i * .14, .3, .14, .08, .08, .08);
       P('box', C.wood, .38, 0, .34, .14, .1, .1); P('box', C.wood, .4, .1, .34, .12, .08, .1);
       return .8;
     },
@@ -1137,7 +1157,7 @@ function init() {
       P('box', '#3f5c4c', 0, .2, -.385, .56, .28, .02);
       P('box', '#ffffff', -.1, .3, -.37, .16, .01, .005);
       P('box', COL.cream, -.47, 0, -.1, .04, .6, .62);
-      P('box', C.coral, -.04, .6, -.16, 1.04, .04, .72);
+      P('box', C.roof, -.04, .6, -.16, 1.04, .04, .72);
       for (let r = 0; r < 2; r++) for (let c = 0; c < 3; c++) {
         const x = -.28 + c * .28, z = -.04 + r * .26;
         P('box', C.wood, x, .1, z, .16, .02, .1);
@@ -1151,7 +1171,7 @@ function init() {
     clinic() {
       P('rbox', '#ffffff', 0, 0, 0, .78, .6, .6);
       P('box', C.teal, 0, .6, 0, .84, .06, .66);
-      P('box', C.coral, 0, .3, .305, .2, .06, .02); P('box', C.coral, 0, .23, .305, .06, .2, .02);
+      P('box', C.roof, 0, .3, .305, .2, .06, .02); P('box', C.roof, 0, .23, .305, .06, .2, .02);
       win(-.26, .2, .305, .14, .2); win(.26, .2, .305, .14, .2);
       P('box', C.glass, 0, 0, .3, .2, .18, .03);
       P('box', C.teal, 0, .66, -.1, .2, .14, .2);
@@ -1164,20 +1184,20 @@ function init() {
       P('rbox', C.yellow, -.05, .05, .08, .7, .3, .26);
       P('glowbox', COL.win, -.1, .2, .21, .5, .1, .01);
       P('glowbox', COL.win, -.1, .2, -.05, .5, .1, .01);
-      P('box', C.coral, -.05, .14, .212, .7, .03, .005);
+      P('box', C.roof, -.05, .14, .212, .7, .03, .005);
       wheel(-.28, .05, .2, .055); wheel(.18, .05, .2, .055); wheel(-.28, .05, -.03, .055); wheel(.18, .05, -.03, .055);
       P('glowsphere', '#fff8e0', .3, .15, .17, .04, .04, .04);
       P('box', C.teal, .2, .04, -.38, .44, .02, .14);
       P('box', C.glass, .2, .04, -.44, .44, .28, .02);
       P('box', C.teal, .2, .32, -.38, .5, .03, .2);
       bench(.2, -.36);
-      P('cyl', C.ink, .46, .04, -.3, .02, .45, .02); P('cyl', C.coral, .46, .44, -.3, .12, .02, .12, 0, Math.PI / 2);
+      P('cyl', C.ink, .46, .04, -.3, .02, .45, .02); P('cyl', C.roof, .46, .44, -.3, .12, .02, .12, 0, Math.PI / 2);
       return .55;
     },
     bikes() {
       slab(C.stone, .96, .6, .03);
       P('box', C.ink, 0, .03, -.15, .8, .02, .02);
-      const cols = [C.coral, C.teal, C.yellow, C.pastel[2]];
+      const cols = [C.roof, C.teal, C.yellow, C.pastel[2]];
       for (let i = 0; i < 4; i++) {
         const x = -.3 + i * .2;
         withXf(xf(x, .03, .02, 1, Math.PI / 2), () => {
@@ -1198,19 +1218,19 @@ function init() {
       for (const [x, z, w, d] of [[0, -.33, .84, .015], [0, .33, .84, .015], [-.42, 0, .015, .66], [.42, 0, .015, .66], [-.15, 0, .015, .66], [.15, 0, .015, .66]]) P('box', '#ffffff', x, .045, z, w, .004, d);
       P('box', '#ffffff', 0, .05, 0, .015, .08, .66);
       P('box', C.ink, 0, .05, -.34, .02, .1, .02); P('box', C.ink, 0, .05, .34, .02, .1, .02);
-      mini(-.28, .1, C.coral, { s: .9 }); mini(.3, -.12, C.teal, { s: .9, hat: '#ffffff' });
+      mini(-.28, .1, C.roof, { s: .9 }); mini(.3, -.12, C.teal, { s: .9, hat: '#ffffff' });
       P('sphere', C.yellow, .1, .25, .05, .04, .04, .04);
       return .5;
     },
     playground() {
       slab('#ead7b8', .96, .9, .03);
-      P('box', C.coral, -.3, .03, -.2, .05, .4, .05); P('box', C.coral, -.1, .03, -.2, .05, .4, .05);
+      P('box', C.roof, -.3, .03, -.2, .05, .4, .05); P('box', C.roof, -.1, .03, -.2, .05, .4, .05);
       P('box', C.yellow, -.2, .4, -.2, .26, .04, .24);
       P('box', C.teal, -.2, .2, .06, .16, .02, .52, 0, -.75);
       for (const x of [.12, .42]) { P('cyl', C.pastel[2], x, .03, -.25, .03, .48, .03); }
       P('cyl', C.pastel[2], .27, .5, -.25, .03, .32, .03, 0, 0, Math.PI / 2);
       P('box', C.ink, .2, .2, -.25, .005, .3, .005); P('box', C.ink, .34, .2, -.25, .005, .3, .005);
-      P('box', C.coral, .27, .18, -.25, .16, .02, .06);
+      P('box', C.roof, .27, .18, -.25, .16, .02, .06);
       P('box', C.wood, .25, .03, .25, .5, .03, .06, 0, 0, .18);
       P('prism', C.ink, .25, .03, .25, .08, .08, .08);
       P('cyl', '#f5e3b8', -.25, .03, .32, .3, .03, .3);
@@ -1257,7 +1277,7 @@ function init() {
     },
     stage() {
       P('rbox', C.wood, 0, 0, 0, .96, .14, .6);
-      P('box', C.coral, 0, .14, -.27, .9, .62, .06);
+      P('box', C.roof, 0, .14, -.27, .9, .62, .06);
       P('torus', C.yellow, 0, .5, -.24, .5, .5, .3);
       for (const x of [-.4, .4]) { P('box', C.ink, x, .14, .2, .04, .56, .04); P('glowsphere', '#fff3d6', x, .72, .2, .08, .08, .08); }
       P('cyl', C.ink, .1, .14, .1, .015, .24, .015); P('sphere', C.ink, .1, .4, .1, .035, .035, .035);
@@ -1268,8 +1288,8 @@ function init() {
     book() {
       P('rbox', C.stone, 0, 0, 0, .7, .12, .5);
       withXf(xf(0, .12, 0), () => {
-        P('box', C.coral, -.2, .02, 0, .42, .04, .56, 0, 0, .18);
-        P('box', C.coral, .2, .02, 0, .42, .04, .56, 0, 0, -.18);
+        P('box', C.roof, -.2, .02, 0, .42, .04, .56, 0, 0, .18);
+        P('box', C.roof, .2, .02, 0, .42, .04, .56, 0, 0, -.18);
         P('box', '#fffdf6', -.19, .06, 0, .38, .05, .5, 0, 0, .18);
         P('box', '#fffdf6', .19, .06, 0, .38, .05, .5, 0, 0, -.18);
         for (let i = 0; i < 4; i++) { P('box', '#cdbfb2', -.2, .12 + i * .005, -.14 + i * .09, .26, .004, .02, 0, 0, .18); P('box', '#cdbfb2', .2, .12 + i * .005, -.14 + i * .09, .26, .004, .02, 0, 0, -.18); }
@@ -1290,11 +1310,11 @@ function init() {
       P('rbox', C.stone, 0, 0, 0, .6, .1, .3);
       P('box', C.ink, -.18, .1, 0, .06, .18, .06); P('box', C.ink, .18, .1, 0, .06, .18, .06);
       P('cyl', COL.cream, 0, .6, -.05, .8, .14, .8, 0, Math.PI / 2);
-      P('torus', C.coral, 0, .6, .08, .82, .82, .5);
+      P('torus', C.roof, 0, .6, .08, .82, .82, .5);
       for (let i = 0; i < 12; i++) { const a = i / 12 * Math.PI * 2; P('box', C.ink, Math.sin(a) * .31, .6 + Math.cos(a) * .31 - .02, .08, .025, .04, .01, 0, 0, -a); }
       P('box', C.ink, 0, .6, .09, .025, .22, .01, 0, 0, -.5);
       P('box', C.ink, 0, .6, .095, .02, .3, .01, 0, 0, 1.9);
-      P('sphere', C.coral, -.26, 1.04, -.05, .16, .16, .16); P('sphere', C.coral, .26, 1.04, -.05, .16, .16, .16);
+      P('sphere', C.roof, -.26, 1.04, -.05, .16, .16, .16); P('sphere', C.roof, .26, 1.04, -.05, .16, .16, .16);
       return 1.1;
     },
     globe() {
@@ -1313,7 +1333,7 @@ function init() {
       withXf(new THREE.Matrix4().makeRotationX(-.18).setPosition(0, .08, 0), () => {
         P('rbox', C.ink, 0, 0, 0, .56, 1.06, .1);
         P('glowbox', '#bfe0de', 0, .07, .051, .48, .88, .01);
-        const cols = [C.coral, C.yellow, C.teal, C.pastel[0], C.pastel[2], C.green];
+        const cols = [C.roof, C.yellow, C.teal, C.pastel[0], C.pastel[2], C.green];
         for (let i = 0; i < 6; i++) P('box', cols[i], -.13 + (i % 3) * .13, .62 - Math.floor(i / 3) * .15, .058, .09, .09, .01);
         P('box', '#ffffff', 0, .22, .058, .36, .14, .01);
         P('box', '#ffffff', 0, .99, .052, .1, .02, .01);
@@ -1331,8 +1351,8 @@ function init() {
         P('box', C.pastel[0], -.26, .035, -.12, .12, .01, .1);
         P('box', '#c9b18a', .05, .035, -.15, .3, .005, .025, .3);
       });
-      P('cone', C.coral, .12, .52, .02, .08, .16, .08, 0, Math.PI);
-      P('sphere', C.coral, .12, .72, .02, .14, .14, .14);
+      P('cone', C.roof, .12, .52, .02, .08, .16, .08, 0, Math.PI);
+      P('sphere', C.roof, .12, .72, .02, .14, .14, .14);
       P('sphere', '#ffffff', .12, .73, .07, .05, .05, .05);
       return .85;
     },
@@ -1341,14 +1361,14 @@ function init() {
       for (let i = 0; i < 3; i++) { const a = i / 3 * Math.PI * 2; P('box', '#8c8f99', Math.cos(a) * .16, .05, Math.sin(a) * .16, .04, 1.05, .04, -a, 0, Math.cos(a) * .1); }
       for (let k = 0; k < 4; k++) P('cyl', '#8c8f99', 0, .25 + k * .22, 0, .3 - k * .03, .02, .3 - k * .03);
       P('box', COL.cream, 0, 1.05, 0, .26, .16, .26);
-      for (let i = 0; i < 4; i++) P('cone', C.coral, Math.cos(i * Math.PI / 2) * .19, 1.13, Math.sin(i * Math.PI / 2) * .19, .12, .16, .12, -i * Math.PI / 2, 0, Math.PI / 2);
+      for (let i = 0; i < 4; i++) P('cone', C.roof, Math.cos(i * Math.PI / 2) * .19, 1.13, Math.sin(i * Math.PI / 2) * .19, .12, .16, .12, -i * Math.PI / 2, 0, Math.PI / 2);
       P('glowsphere', '#ffd0a0', 0, 1.3, 0, .14, .14, .14);
       P('box', C.teal, .25, .05, .25, .16, .22, .12);
       return 1.4;
     },
     camp() {
       slab('#c9d7a3', .96, .9, .02);
-      withXf(xf(-.2, .02, -.12, 1, .3), () => { P('prism', C.coral, 0, 0, 0, .44, .32, .36); P('prism', '#7a3a24', 0, 0, .181, .1, .2, .005); });
+      withXf(xf(-.2, .02, -.12, 1, .3), () => { P('prism', C.roof, 0, 0, 0, .44, .32, .36); P('prism', '#7a3a24', 0, 0, .181, .1, .2, .005); });
       withXf(xf(.24, .02, -.18, 1, -.4), () => { P('prism', C.teal, 0, 0, 0, .38, .28, .3); });
       for (let i = 0; i < 4; i++) P('cyl', C.wood, .05 + Math.cos(i) * .05, .02, .22 + Math.sin(i) * .05, .02, .1, .02, 0, Math.cos(i) * .6, Math.sin(i) * .6);
       P('glowsphere', '#ffb15e', .05, .1, .22, .08, .1, .08);
@@ -1363,18 +1383,18 @@ function init() {
       P('box', C.teal, .14, .97, -.1, .2, .12, .2);
       P('box', C.teal, 0, .3, .32, .34, .03, .12);
       P('box', C.glass, 0, 0, .29, .2, .26, .02);
-      P('box', C.coral, -.34, .55, .29, .04, .3, .02);
+      P('box', C.roof, -.34, .55, .29, .04, .3, .02);
       tinyTree(.42, .38, .8);
       return 1.1;
     },
     school() {
       P('rbox', COL.wall, -.1, 0, -.15, .72, .48, .44);
-      P('box', C.coral, -.1, .48, -.15, .78, .05, .5);
+      P('box', C.roof, -.1, .48, -.15, .78, .05, .5);
       for (const x of [-.34, -.1, .14]) win(x, .2, .075, .14, .16);
-      P('cyl', C.ink, .38, 0, -.3, .02, .9, .02); P('box', C.coral, .45, .74, -.3, .14, .1, .01);
+      P('cyl', C.ink, .38, 0, -.3, .02, .9, .02); P('box', C.roof, .45, .74, -.3, .14, .1, .01);
       P('box', '#5a5450', 0, 0, .3, .96, .02, .26);
       for (let i = 0; i < 5; i++) P('box', '#ffffff', -.32 + i * .16, .02, .3, .08, .004, .22);
-      mini(-.1, .3, C.pastel[0], { s: .7, hat: C.yellow }); mini(.08, .3, C.teal, { s: .7, hat: C.yellow }); mini(.25, .26, C.coral, { s: .95 });
+      mini(-.1, .3, C.pastel[0], { s: .7, hat: C.yellow }); mini(.08, .3, C.teal, { s: .7, hat: C.yellow }); mini(.25, .26, C.roof, { s: .95 });
       return .95;
     },
     crossing() {
@@ -1391,8 +1411,8 @@ function init() {
     },
     roadwork() {
       slab('#cbbfb0', .96, .9, .03);
-      for (const [x, z] of [[-.35, .3], [-.12, .35], [.12, .35], [.35, .3]]) { P('cone', C.coral, x, .03, z, .12, .22, .12); P('cyl', '#ffffff', x, .1, z, .085, .03, .085); P('box', C.coral, x, .03, z, .14, .02, .14); }
-      for (let i = 0; i < 5; i++) P('box', i % 2 ? C.cream : C.coral, -.24 + i * .12, .28, -.05, .12, .1, .03);
+      for (const [x, z] of [[-.35, .3], [-.12, .35], [.12, .35], [.35, .3]]) { P('cone', C.roof, x, .03, z, .12, .22, .12); P('cyl', '#ffffff', x, .1, z, .085, .03, .085); P('box', C.roof, x, .03, z, .14, .02, .14); }
+      for (let i = 0; i < 5; i++) P('box', i % 2 ? C.cream : C.roof, -.24 + i * .12, .28, -.05, .12, .1, .03);
       P('box', C.ink, -.3, .03, -.05, .03, .3, .03); P('box', C.ink, .3, .03, -.05, .03, .3, .03);
       mini(.2, -.3, '#f0a040', { s: 1, hat: C.yellow });
       P('rbox', '#ffffff', -.28, .03, -.3, .14, .2, .02);
@@ -1429,7 +1449,7 @@ function init() {
       for (let i = 0; i < 3; i++) {
         const x = -.28 + i * .28;
         P('box', C.wood, x, 0, .05, .22, .18, .3);
-        for (let k = 0; k < 3; k++) P('sphere', [C.coral, C.yellow, C.plant[0]][(i + k) % 3], x - .06 + k * .06, .2, .05, .07, .07, .07);
+        for (let k = 0; k < 3; k++) P('sphere', [C.roof, C.yellow, C.plant[0]][(i + k) % 3], x - .06 + k * .06, .2, .05, .07, .07, .07);
       }
       P('glowsphere', '#fff3d6', -.2, .42, 0, .07, .07, .07); P('glowsphere', '#fff3d6', .2, .42, 0, .07, .07, .07);
       mini(.3, .38, C.pastel[0], { s: .9 });
@@ -1448,32 +1468,167 @@ function init() {
       P('box', '#e9b949', 0, .32, .19, .16, .08, .01);
       return .9;
     },
-    sandal() {
-      P('rbox', C.stone, 0, 0, 0, .8, .1, .5);
-      withXf(xf(0, .1, 0, 1, -.35), () => {
-        P('rbox', '#d9b56a', 0, 0, 0, .34, .08, .82);
-        for (let i = 0; i < 9; i++) P('box', '#c39a4e', 0, .075, -.36 + i * .09, .3, .012, .025);
-        P('torus', '#a8783c', 0, .08, .2, .3, .3, .5, 0, Math.PI / 2);
-        P('box', '#a8783c', -.13, .08, -.05, .03, .1, .5, 0, 0, .1); P('box', '#a8783c', .13, .08, -.05, .03, .1, .5, 0, 0, -.1);
-        P('box', '#a8783c', 0, .16, -.05, .3, .03, .04);
-        P('cyl', '#a8783c', 0, .08, .38, .05, .1, .05);
+    medvan() {
+      slab('#d7dccf', .96, .6, .03);
+      withXf(xf(0, .03, 0, 1, -.25), () => {
+        P('rbox', '#ffffff', -.06, .07, 0, .62, .34, .32);
+        P('rbox', '#ffffff', .3, .07, 0, .2, .24, .3);
+        P('glowbox', COL.win, .4, .2, 0, .005, .1, .26);
+        P('box', C.accent, -.06, .26, .162, .62, .04, .005); P('box', C.accent, -.06, .26, -.162, .62, .04, .005);
+        P('box', '#d6453a', -.12, .18, .163, .12, .035, .005); P('box', '#d6453a', -.12, .18, .163, .035, .12, .005);
+        P('box', C.teal, -.06, .41, 0, .2, .04, .12);
+        P('glowsphere', '#ff8a6a', .28, .33, 0, .05, .04, .05);
+        wheel(.24, .07, .16, .07); wheel(-.22, .07, .16, .07); wheel(.24, .07, -.14, .07); wheel(-.22, .07, -.14, .07);
       });
-      P('box', C.coral, 0, .1, .28, .4, .06, .03);
+      mini(-.36, .3, '#ffffff', { s: .9 });
+      return .55;
+    },
+    drone() {
+      P('cyl', C.stone, 0, 0, 0, .7, .05, .7);
+      P('cyl', '#f7f8f1', 0, .05, 0, .52, .005, .52);
+      P('box', C.accent, 0, .052, 0, .26, .004, .05); P('box', C.accent, 0, .052, 0, .05, .004, .26);
+      withXf(xf(0, .62, 0, 1, .4), () => {
+        P('rbox', '#f2f2ee', 0, 0, 0, .26, .1, .26);
+        P('glowbox', C.accent, 0, .1, 0, .12, .01, .12);
+        for (const [x, z] of [[-.25, -.25], [.25, -.25], [-.25, .25], [.25, .25]]) {
+          P('box', C.ink, x / 2, .05, z / 2, .03, .02, .36, Math.atan2(x, z));
+          P('cyl', C.ink, x, .04, z, .03, .06, .03);
+          P('cyl', '#cfd8dc', x, .1, z, .24, .008, .24);
+        }
+        P('cyl', C.ink, 0, -.12, 0, .006, .12, .006);
+        P('rbox', '#ffffff', 0, -.24, 0, .14, .1, .1);
+        P('box', '#d6453a', 0, -.2, .051, .06, .02, .005); P('box', '#d6453a', 0, -.2, .051, .02, .06, .005);
+      });
+      return 1;
+    },
+    vaccine() {
+      P('rbox', C.stone, 0, 0, 0, .7, .08, .5);
+      withXf(new THREE.Matrix4().makeRotationZ(-.7).setPosition(-.05, .3, 0), () => {
+        P('cyl', '#e8f3f6', 0, 0, 0, .14, .5, .14);
+        P('cyl', C.teal, 0, .05, 0, .11, .25, .11);
+        P('cyl', C.ink, 0, .5, 0, .2, .03, .2);
+        P('cyl', C.ink, 0, .53, 0, .04, .16, .04);
+        P('cyl', '#aab0b8', 0, -.12, 0, .015, .14, .015);
+      });
+      P('cyl', '#ffffff', .25, .08, .1, .14, .16, .14); P('cyl', C.accent, .25, .24, .1, .15, .04, .15);
+      mini(-.3, .22, C.teal, { s: .8 });
+      return .9;
+    },
+    tooth() {
+      P('cyl', C.stone, 0, 0, 0, .6, .08, .6);
+      P('cyl', C.accent, 0, .08, 0, .5, .03, .5);
+      P('sphere', '#fffdf6', -.1, .55, 0, .3, .32, .3); P('sphere', '#fffdf6', .1, .55, 0, .3, .32, .3);
+      P('rbox', '#fffdf6', 0, .28, 0, .42, .3, .3);
+      P('cone', '#fffdf6', -.11, .11, 0, .14, .2, .14, 0, Math.PI); P('cone', '#fffdf6', .11, .11, 0, .14, .2, .14, 0, Math.PI);
+      P('sphere', C.ink, -.07, .52, .14, .03, .04, .02); P('sphere', C.ink, .07, .52, .14, .03, .04, .02);
+      P('box', '#e58a8a', 0, .44, .15, .08, .02, .005);
+      return .8;
+    },
+    card() {
+      P('rbox', C.stone, 0, 0, 0, .7, .08, .44);
+      withXf(new THREE.Matrix4().makeRotationX(-.35).setPosition(0, .1, 0), () => {
+        P('rbox', C.accent, 0, 0, 0, .62, .42, .04);
+        P('box', '#f2d46b', -.17, .25, .021, .14, .1, .005);
+        P('box', '#ffffff', .1, .3, .021, .24, .03, .005);
+        P('box', '#ffffff', .1, .22, .021, .18, .03, .005);
+        P('box', '#ffffff', 0, .09, .021, .48, .05, .005);
+      });
+      for (let i = 0; i < 3; i++) P('cyl', '#e9b949', .3, .08 + i * .04, .22, .12, .035, .12);
+      return .6;
+    },
+    car() {
+      slab('#cfd3c6', .96, .6, .03);
+      car(0, 0, C.yellow, -.3);
+      P('box', C.accent, -.02, .26, 0, .1, .03, .06);
+      mini(.36, .24, '#b8a9c9', { s: .9 });
       return .45;
+    },
+    factory() {
+      slab('#d9ddd2', .96, .8, .03);
+      P('rbox', '#eef1ec', -.08, .03, .05, .7, .42, .5);
+      for (let i = 0; i < 3; i++) P('prism', i % 2 ? C.teal : '#e6ebe6', -.32 + i * .24, .45, .05, .24, .16, .5);
+      for (const x of [-.3, -.08, .14]) win(x, .18, .302, .14, .14);
+      P('cyl', '#c9cfc7', .34, .03, -.22, .12, .72, .12);
+      P('cyl', C.accent, .34, .55, -.22, .13, .05, .13);
+      for (let i = 0; i < 4; i++) P('box', '#3a5a6e', -.3 + i * .14, .46, -.15, .1, .005, .18, 0, -.5);
+      tinyTree(.38, .32, .8);
+      return .9;
+    },
+    teafield() {
+      slab('#8a6a4c', .96, .9, .05);
+      for (let r = 0; r < 4; r++) {
+        const z = -.32 + r * .21, y = .05 + r * .06;
+        P('box', '#a07c58', 0, 0, z, .92, y, .17);
+        P('rbox', C.tea[r % 3], 0, y, z, .86, .12, .12);
+      }
+      mini(.28, .36, '#e9e2c8', { s: .8, hat: '#d9b56a' });
+      P('cone', '#d9b56a', .28, .3, .36, .2, .06, .2);
+      P('cyl', '#c9a26b', .14, .02, .38, .1, .08, .1);
+      return .55;
+    },
+    teahouse() {
+      P('box', '#d9cbb7', 0, 0, 0, .96, .06, .72);
+      P('rbox', '#f6f1e6', 0, .06, -.08, .7, .38, .44);
+      P('box', '#6a4a32', 0, .44, -.08, .84, .03, .58);
+      P('prism', '#3d5a44', 0, .47, -.08, .82, .22, .56);
+      for (const x of [-.22, .22]) win(x, .2, .145, .14, .14);
+      P('box', C.wood, 0, .06, .16, .16, .26, .02);
+      P('box', C.wood, -.2, .06, .3, .3, .1, .14);
+      P('cyl', '#f6f1e6', -.26, .16, .3, .05, .05, .05); P('cyl', '#f6f1e6', -.14, .16, .3, .05, .05, .05);
+      P('sphere', '#8a5a34', -.2, .19, .26, .07, .06, .07);
+      P('glowsphere', '#ffb15e', .38, .5, .1, .08, .12, .08);
+      return .75;
+    },
+    recycle() {
+      slab('#d7dccf', .96, .7, .03);
+      [['#2f7896', -.3], ['#e3b23c', -.1], [C.accent, .1], ['#8a8f99', .3]].forEach(([c, x]) => {
+        P('rbox', c, x, .03, -.05, .17, .36, .22);
+        P('box', '#ffffff', x, .26, .061, .08, .08, .005);
+        P('box', C.ink, x, .4, -.05, .18, .02, .23);
+      });
+      mini(.3, .28, '#f0a040', { s: .9, hat: C.yellow });
+      P('rbox', '#a07c58', -.15, .03, .25, .2, .12, .14);
+      return .55;
+    },
+    forest() {
+      slab('#7ea56a', .96, .9, .04);
+      for (let i = 0; i < 6; i++) {
+        const x = -.32 + (i % 3) * .3 + (rand() - .5) * .06, z = -.2 + Math.floor(i / 3) * .36;
+        P('cyl', '#7a5638', x, .04, z, .04, .12, .04);
+        P('cone', C.tea[i % 3], x, .12, z, .22, .36, .22); P('cone', C.plant[i % 3], x, .3, z, .15, .26, .15);
+      }
+      P('cyl', C.wood, .38, .04, .36, .02, .2, .02); P('box', C.yellow, .38, .22, .36, .14, .07, .01);
+      return .65;
+    },
+    leopard() {
+      slab('#8fb07a', .96, .9, .04);
+      for (let i = 0; i < 5; i++) P('ico', C.plant[i % 3], -.38 + i * .19, .04, -.34 + (i % 2) * .06, .2, .16, .2);
+      withXf(xf(0, .04, .05, 1, .6), () => {
+        P('sphere', '#c8a46a', 0, .2, 0, .34, .17, .16);
+        for (let k = 0; k < 6; k++) P('sphere', '#5b4632', -.12 + k * .05, .25 + (k % 2) * .02, (k % 2 ? .06 : -.06), .035, .02, .02);
+        for (const [x, z] of [[-.11, -.04], [.11, -.04], [-.11, .04], [.11, .04]]) P('cyl', '#b08c58', x, 0, z, .03, .15, .03);
+        P('sphere', '#c8a46a', .2, .29, 0, .13, .12, .12);
+        P('cone', '#c8a46a', .2, .34, .04, .04, .06, .03); P('cone', '#c8a46a', .2, .34, -.04, .04, .06, .03);
+        P('box', '#ffffff', .25, .31, .03, .005, .02, .015); P('box', '#ffffff', .25, .31, -.03, .005, .02, .015);
+        P('sphere', C.ink, .265, .3, .025, .015, .015, .015); P('sphere', C.ink, .265, .3, -.025, .015, .015, .015);
+        P('cyl', '#c8a46a', -.24, .22, 0, .035, .22, .035, 0, 0, 1.0);
+        P('box', '#5b4632', -.3, .25, 0, .02, .02, .04);
+      });
+      return .55;
     },
     lever() {
       slab(C.stone, .96, .5, .05);
-      P('prism', C.coral, 0, .05, 0, .3, .32, .3);
+      P('prism', C.roof, 0, .05, 0, .3, .32, .3);
       P('box', C.wood, 0, .36, 0, 1.0, .05, .14, 0, 0, .2);
       P('sphere', C.teal, -.4, .55, 0, .26, .26, .26);
-      P('box', C.yellow, .35, .2, 0, .14, .14, .14); P('box', C.coral, .42, .08, 0, .12, .12, .12);
+      P('box', C.yellow, .35, .2, 0, .14, .14, .14); P('box', C.roof, .42, .08, 0, .12, .12, .12);
       P('box', '#ffffff', -.4, .55, .13, .08, .03, .005);
       return .7;
     },
     gate() {
       P('rbox', C.stone, 0, 0, 0, .96, .06, .4);
       P('rbox', COL.cream, -.36, .06, 0, .14, .66, .14); P('rbox', COL.cream, .36, .06, 0, .14, .66, .14);
-      P('box', C.coral, 0, .72, 0, .9, .08, .16);
+      P('box', C.roof, 0, .72, 0, .9, .08, .16);
       P('prism', '#2f6b5b', 0, .8, 0, 1, .2, .26);
       P('box', COL.cream, 0, .55, .02, .4, .12, .04);
       P('box', C.ink, 0, .58, .045, .26, .02, .005);
@@ -1485,7 +1640,7 @@ function init() {
       P('box', '#8e8174', 0, .03, -.06, .96, .02, .03); P('box', '#8e8174', 0, .03, .06, .96, .02, .03);
       P('rbox', '#f7f6f2', -.06, .06, 0, .74, .22, .24);
       P('sphere', '#f7f6f2', .31, .16, 0, .34, .2, .24);
-      P('box', C.coral, 0, .12, .121, .84, .03, .005);
+      P('box', C.roof, 0, .12, .121, .84, .03, .005);
       P('glowbox', COL.win, -.08, .2, .121, .6, .05, .005);
       P('glowbox', COL.win, -.08, .2, -.121, .6, .05, .005);
       P('box', C.teal, -.36, .03, .24, .3, .04, .14);
@@ -1525,7 +1680,7 @@ function init() {
     parking() {
       slab('#6d6660', .96, .9, .03);
       for (let i = 0; i < 4; i++) P('box', '#ffffff', -.36 + i * .24, .03, -.15, .015, .004, .4);
-      car(-.24, -.15, C.coral, Math.PI / 2); car(.24, -.15, C.pastel[2], Math.PI / 2);
+      car(-.24, -.15, C.roof, Math.PI / 2); car(.24, -.15, C.pastel[2], Math.PI / 2);
       P('box', '#ffffff', 0, .03, .25, .96, .004, .015);
       P('cyl', C.ink, .38, .03, .32, .025, .5, .025);
       P('rbox', '#3a6fb0', .38, .48, .32, .2, .2, .03);
@@ -1546,9 +1701,9 @@ function init() {
       P('rbox', C.stone, 0, 0, 0, .7, .1, .5);
       P('rbox', '#fffaf2', 0, .1, 0, .46, .44, .36);
       P('box', C.ink, 0, .54, 0, .26, .01, .04);
-      P('box', C.coral, 0, .3, .181, .3, .12, .005);
+      P('box', C.roof, 0, .3, .181, .3, .12, .005);
       P('box', '#ffffff', .02, .54, 0, .2, .26, .01, .1, 0, .08);
-      P('box', C.coral, .02, .64, .006, .06, .06, .005, .1, 0, .08);
+      P('box', C.roof, .02, .64, .006, .06, .06, .005, .1, 0, .08);
       mini(-.36, .3, C.yellow, { s: .9 }); mini(.36, .3, C.teal, { s: .9 });
       return .85;
     }
@@ -1652,23 +1807,32 @@ function init() {
     }
   });
 
-  // ── 海上點綴：小島、燈塔、帆船 ──
-  [[-13, 9, 1.1], [16, 10, .8], [-8, -12, .9], [19, -9, 1.2], [4, 15, .7]].forEach(([x, z, s], i) => {
+  // ── 日月潭點綴：拉魯島、慈恩塔小島、竹林小島 ──
+  const LAKE_SPOTS = { lalu: [-8.5, -13, 1.1], pagoda: [3.5, -18, 1.25] };
+  [[-8.5, -13, 1.1], [16, 10, .8], [-13, 9, .9], [3.5, -18, 1.25], [4, 15, .7], [19, -6, .8]].forEach(([x, z, s], i) => {
     withXf(xf(center.x + x, WATER_Y, center.z + z, s), () => {
-      P('dome', '#d9c9a3', 0, -.05, 0, 1.6, .5, 1.3);
+      P('dome', '#cfc59c', 0, -.05, 0, 1.6, .5, 1.3);
       P('ico', C.plant[i % 3], .1, .18, -.1, .7, .5, .6);
       if (i === 0) {
-        P('cyl', '#ffffff', -.3, .1, .2, .3, 1.4, .3); P('cyl', C.coral, -.3, .5, .2, .31, .2, .31); P('cyl', C.coral, -.3, .95, .2, .31, .2, .31);
-        P('glowsphere', '#fff1c0', -.3, 1.62, .2, .26, .26, .26); P('cone', C.coral, -.3, 1.72, .2, .36, .3, .36);
-      } else { TREE.palm(); }
+        // 拉魯島：邵族聖島，一棵大樹＋環島浮台
+        P('torus', '#e9e2d0', 0, .06, 0, 2.1, 2.1, .4, 0, Math.PI / 2);
+        P('cyl', '#7a5638', 0, .1, 0, .14, .6, .14);
+        P('ico', '#4f8a4c', 0, .78, 0, 1.05, .8, 1.05); P('ico', '#6fa65a', .25, .98, .1, .6, .5, .6);
+      } else if (i === 3) {
+        // 慈恩塔：八角九層塔
+        for (let k = 0; k < 9; k++) {
+          const w = .5 - k * .035, y = .1 + k * .2;
+          P('cyl', '#f1ece0', -.2, y, .1, w, .16, w);
+          P('cone', '#b5643c', -.2, y + .14, .1, w + .16, .08, w + .16);
+        }
+        P('cone', '#e9b949', -.2, 1.94, .1, .1, .3, .1);
+        P('glowsphere', '#fff1c0', -.2, 2.25, .1, .1, .1, .1);
+      } else {
+        // 竹林
+        for (let k = 0; k < 5; k++) { const a = k * 1.3, r = .25 + (k % 2) * .15; P('cyl', '#7f9a4a', Math.cos(a) * r, .1, Math.sin(a) * r, .05, .9 + (k % 3) * .2, .05); P('ico', '#7fae5a', Math.cos(a) * r, .95 + (k % 3) * .2, Math.sin(a) * r, .32, .22, .32); }
+      }
     });
   });
-  const boats = [[-8, 17, .4], [13, -14, 2.2], [-20, -3, 1.2]];
-  boats.forEach(([x, z, ry]) => withXf(xf(center.x + x, WATER_Y, center.z + z, .7, ry), () => {
-    P('rbox', '#ffffff', 0, -.05, 0, .9, .2, .3); P('box', C.coral, 0, .1, 0, .92, .03, .32);
-    P('cyl', C.wood, .05, .12, 0, .03, 1.0, .03);
-    P('prism', '#fffaf0', .25, .2, 0, .02, .8, .42, Math.PI / 2);
-  }));
 
   // ── 建立 InstancedMesh ──
   const kitMeshes = {};
@@ -1731,7 +1895,7 @@ function init() {
     if (d < 21) h = Math.min(h, -1.2 + THREE.MathUtils.smoothstep(d, 15, 21) * 1.1);
     return h;
   }
-  const TCOL = [[-99, '#8fb3ad'], [.15, '#d9c9a3'], [.8, '#aec493'], [2.6, '#a3b986'], [5.5, '#6f8a62'], [10.5, '#b2a38d']].map(([h, c]) => [h, new THREE.Color(c)]);
+  const TCOL = [[-99, '#7fb0a2'], [.15, '#cfc59c'], [.8, '#9fc283'], [2.6, '#86ad6c'], [5.5, '#5e8a5a'], [10.5, '#8f9a86'], [14, '#eef2f0']].map(([h, c]) => [h, new THREE.Color(c)]);
   const terrainG = new THREE.PlaneGeometry(170, 170, isMobile ? 110 : 160, isMobile ? 110 : 160).rotateX(-Math.PI / 2).toNonIndexed();
   {
     const p = terrainG.attributes.position;
@@ -1803,8 +1967,110 @@ function init() {
     scene.add(im);
   });
 
+  // ── 南投地標：合歡山、九九峰、清境農場、茶園 ──
+  const lmMats = {};
+  const lmMat = (c) => lmMats[c] || (lmMats[c] = new THREE.MeshStandardMaterial({ color: c, flatShading: true, roughness: .92 }));
+  const lmGroup = new THREE.Group();
+  scene.add(lmGroup);
+  const lmAt = (dx, dz) => new THREE.Vector3(center.x + dx, terrainH(center.x + dx, center.z + dz), center.z + dz);
+  function lmAdd(geo, c, x, y, z, sx = 1, sy = 1, sz = 1, ry = 0) {
+    const m = new THREE.Mesh(geo, lmMat(c));
+    m.position.set(x, y, z); m.scale.set(sx, sy, sz); m.rotation.y = ry;
+    lmGroup.add(m);
+    return m;
+  }
+  const lmRand = mulberry32(2626);
+  const LANDMARKS = [];
+  // 合歡山：台灣最高的公路山，冬天山頭覆雪
+  {
+    const p = lmAt(6.5, -31), base = Math.max(p.y, 0) - 1;
+    const peak = new THREE.ConeGeometry(1, 1, 9, 4);
+    const pp = peak.attributes.position;
+    for (let i = 0; i < pp.count; i++) { const y = pp.getY(i); if (y < .45) { pp.setX(i, pp.getX(i) * (1 + (lmRand() - .5) * .25)); pp.setZ(i, pp.getZ(i) * (1 + (lmRand() - .5) * .25)); } }
+    peak.computeVertexNormals();
+    lmAdd(peak, '#6f8f73', p.x, base + 2.8, p.z, 6.6, 5.6, 4.4, .3);
+    lmAdd(peak, '#86a07e', p.x + 5, base + 2.4, p.z + 1.2, 4.4, 4.8, 3.4, 1.1);
+    lmAdd(peak, '#f4f7f8', p.x, base + 4.75, p.z, 2.7, 1.9, 1.8, .3);
+    lmAdd(peak, '#eef3f5', p.x + 5, base + 4, p.z + 1.2, 1.4, 1.5, 1.1, 1.1);
+    LANDMARKS.push({ name: '合歡山', en: 'Mount Hehuan', pos: new THREE.Vector3(p.x - 1.5, base + 4.4, p.z + 2) });
+  }
+  // 九九峰：火炎山地形，一群尖銳山峰
+  {
+    const p0 = lmAt(-8, -29), cone = new THREE.ConeGeometry(1, 1, 6);
+    let top = 0;
+    for (let i = 0; i < 34; i++) {
+      const a = lmRand() * Math.PI * 2, r = Math.sqrt(lmRand()) * 5;
+      const x = p0.x + Math.cos(a) * r, z = p0.z + Math.sin(a) * r * .55, y = Math.max(terrainH(x, z), WATER_Y) - .3;
+      const h = 1.8 + lmRand() * 3.2 * (1 - r / 7), w = .5 + lmRand() * .5;
+      lmAdd(cone, i % 3 ? '#a8946a' : '#93835c', x, y + h / 2, z, w, h, w, lmRand() * 3);
+      lmAdd(cone, '#6f9a5a', x, y + h * .18, z, w * 1.25, h * .36, w * 1.25, lmRand() * 3);
+      top = Math.max(top, y + h);
+    }
+    LANDMARKS.push({ name: '九九峰', en: 'Jiujiu Peaks', pos: new THREE.Vector3(p0.x, top + .8, p0.z) });
+  }
+  // 清境農場：高山草原、綿羊與歐風小屋
+  {
+    const p = lmAt(-22, -24), y = Math.max(p.y, .4) + .2;
+    lmAdd(new THREE.CylinderGeometry(1, 1.15, 1, 18), '#a7cf7c', p.x, y - .5, p.z, 5.2, 1.4, 3.6);
+    const fence = new THREE.BoxGeometry(1, 1, 1);
+    for (let k = 0; k < 18; k++) { const a = k / 18 * Math.PI * 2; lmAdd(fence, '#f6f1e6', p.x + Math.cos(a) * 4.6, y + .3, p.z + Math.sin(a) * 3.1, .08, .5, .08); }
+    const body = new THREE.SphereGeometry(1, 10, 8), head = new THREE.SphereGeometry(1, 8, 6);
+    for (let k = 0; k < 14; k++) {
+      const a = lmRand() * Math.PI * 2, r = Math.sqrt(lmRand()) * 3.4;
+      const x = p.x + Math.cos(a) * r, z = p.z + Math.sin(a) * r * .62, ry = lmRand() * 6;
+      lmAdd(body, '#fbfaf5', x, y + .32, z, .42, .3, .3, ry);
+      lmAdd(head, '#3b3430', x + Math.sin(ry) * .38, y + .42, z + Math.cos(ry) * .38, .14, .14, .14);
+    }
+    const box = new THREE.BoxGeometry(1, 1, 1), roof = new THREE.ConeGeometry(Math.SQRT1_2, 1, 4).rotateY(Math.PI / 4);
+    [[-3.2, -1.6, '#d4553f'], [-1.6, -2.4, '#3f6fa8'], [3.4, -1.2, '#e3a63c']].forEach(([dx, dz, rc]) => {
+      lmAdd(box, '#fbf6ea', p.x + dx, y + .55, p.z + dz, 1, 1.1, .9, .3);
+      lmAdd(roof, rc, p.x + dx, y + 1.45, p.z + dz, 1.25, .8, 1.15, .3);
+    });
+    LANDMARKS.push({ name: '清境農場', en: 'Cingjing Farm', pos: new THREE.Vector3(p.x, y + 2.4, p.z) });
+  }
+  // 茶園：潭邊一座梯田茶山，一圈圈茶樹沿等高線排列
+  {
+    const p = new THREE.Vector3(center.x - 14.5, WATER_Y, center.z - 20.5);
+    const rows = [];
+    const STEPS = 5;
+    for (let k = 0; k < STEPS; k++) {
+      const r = 3.6 - k * .66, y = WATER_Y + .1 + k * .42;
+      lmAdd(new THREE.CylinderGeometry(1, 1.06, 1, 28), k ? '#a98a62' : '#9c7f5a', p.x, y - .21, p.z, r, .42, r * .72);
+      for (let a = 0; a < Math.PI * 2; a += .34 / r) rows.push([p.x + Math.cos(a) * (r - .25), y + .02, p.z + Math.sin(a) * (r - .25) * .72, a]);
+    }
+    const bush = new THREE.CapsuleGeometry(.16, .22, 3, 8).rotateZ(Math.PI / 2);
+    const im = new THREE.InstancedMesh(bush, new THREE.MeshStandardMaterial({ color: 0xffffff, roughness: .9 }), rows.length);
+    const col = new THREE.Color();
+    rows.forEach(([x, h, z, a], i) => {
+      im.setMatrixAt(i, _m.compose(_p.set(x, h + .1, z), _q.setFromEuler(_e.set(0, -a + Math.PI / 2, 0)), _s.set(1, .85, 1)));
+      im.setColorAt(i, col.set(C.tea[i % 3]).offsetHSL(0, 0, (lmRand() - .5) * .05));
+    });
+    im.castShadow = true;
+    scene.add(im);
+    // 山頂小茶亭
+    lmAdd(new THREE.BoxGeometry(1, 1, 1), '#f6f1e6', p.x, WATER_Y + STEPS * .42 + .2, p.z, .55, .4, .45);
+    lmAdd(new THREE.ConeGeometry(Math.SQRT1_2, 1, 4).rotateY(Math.PI / 4), '#3d5a44', p.x, WATER_Y + STEPS * .42 + .58, p.z, .8, .36, .7);
+    LANDMARKS.push({ name: '茶園', en: 'Tea gardens', pos: new THREE.Vector3(p.x, WATER_Y + STEPS * .42 + 1.3, p.z) });
+  }
+  LANDMARKS.push({ name: '日月潭・拉魯島', en: 'Sun Moon Lake', pos: new THREE.Vector3(center.x + LAKE_SPOTS.lalu[0], 1.5, center.z + LAKE_SPOTS.lalu[1] + .6) });
+  LANDMARKS.push({ name: '慈恩塔', en: 'Ci’en Pagoda', pos: new THREE.Vector3(center.x + LAKE_SPOTS.pagoda[0], 3.4, center.z + LAKE_SPOTS.pagoda[1]) });
+  const lmLabels = LANDMARKS.map((L) => {
+    const el = document.createElement('div');
+    el.className = 'lm-label';
+    el.textContent = tr(L.name, L.en);
+    if (LANG !== 'en') { const sm = document.createElement('small'); sm.textContent = L.en; el.append(sm); }
+    const o = new CSS2DObject(el);
+    o.position.copy(L.pos);
+    scene.add(o);
+    return el;
+  });
+  onFrame.push(() => {
+    const off = camera.position.distanceTo(controls.target) < 18 || UI.bird;
+    if (lmLabels[0].classList.contains('off') !== off) lmLabels.forEach((el) => el.classList.toggle('off', off));
+  });
+
   // ── 三圈遠山剪影 ──
-  const ridges = [[96, 16, '#9fb39a', .35], [118, 24, '#a9b7b4', .55], [140, 32, '#b9c2c8', .75]].map(([rad, hgt, col, mixK], ri) => {
+  const ridges = [[96, 16, '#8fae94', .35], [118, 24, '#9db3b2', .55], [140, 32, '#b3c2cc', .75]].map(([rad, hgt, col, mixK], ri) => {
     const seg = 160, pos = [], idx = [];
     for (let i = 0; i <= seg; i++) {
       const a = i / seg * Math.PI * 2;
@@ -1876,7 +2142,7 @@ function init() {
   };
   const WALKER = {
     parent: ['家長', 'Parent'], official: ['公務員', 'Civil servant'], tourist: ['旅客', 'Traveller'], commuter: ['通勤族', 'Commuter'],
-    student: ['學童', 'Student'], farmer: ['農夫', 'Farmer'], worker: ['工人', 'Worker'], researcher: ['研究員', 'Researcher'], elder: ['長者', 'Elder']
+    student: ['學童', 'Student'], farmer: ['農夫', 'Farmer'], worker: ['清潔隊員', 'Sanitation worker'], researcher: ['研究員', 'Researcher'], elder: ['長者', 'Elder'], medic: ['醫護人員', 'Health worker']
   };
   const UI = { sel: null, flowsOn: false, bird: false, names: false, carry: true, log: false };
   const onSelect = [];   // 階段 4：協作線、小人會掛上來
@@ -1903,7 +2169,7 @@ function init() {
   });
 
   // ── 高亮：setColorAt 往 coral／yellow 混 22% ──
-  const CORAL = new THREE.Color(C.coral), YEL = new THREE.Color(C.yellow), tmpCol = new THREE.Color();
+  const CORAL = new THREE.Color(C.accent), YEL = new THREE.Color(C.yellow), tmpCol = new THREE.Color();
   function refreshColors() {
     const selItem = UI.sel && UI.sel.type === 'item' ? UI.sel.id : null;
     const touched = new Set();
@@ -1924,7 +2190,7 @@ function init() {
   // ── ①②③ pin ──
   const pinGroup = new THREE.Group();
   scene.add(pinGroup);
-  const pinLineMat = new THREE.LineBasicMaterial({ color: C.coral, depthTest: false, transparent: true, opacity: .9 });
+  const pinLineMat = new THREE.LineBasicMaterial({ color: C.accent, depthTest: false, transparent: true, opacity: .9 });
   let pinIsland = null;
   const pinEls = {};
   function showPins(s) {
@@ -2064,7 +2330,8 @@ function init() {
 
   // ───────────────────────── 卡片 ─────────────────────────
   const cardEl = $('#card'), cardBody = $('#cardBody');
-  const src = `<a class="src" href="${DATA.city.source}" target="_blank" rel="noopener">${tr('政見原文：542upup.tw ↗', 'Source: 542upup.tw ↗')}</a>`;
+  const srcLink = (url) => `<a class="src" href="${esc(url || DATA.city.source)}" target="_blank" rel="noopener">${tr(`政見原文：${DATA.city.sourceHost} ↗`, `Source: ${DATA.city.sourceHost} ↗`)}</a>`;
+  const src = srcLink();
   const flowChip = (f) => `<button class="chip btnlike" data-flow="${f.id}">${esc(tr(byId[f.from].d.name, byId[f.from].d.en))} → ${esc(tr(byId[f.to].d.name, byId[f.to].d.en))}・${esc(tr(f.carryName, f.carryEn))}</button>`;
   function extractStats(text) {
     const out = [];
@@ -2091,7 +2358,7 @@ function init() {
         <h3>${tr('細項', 'Items')}</h3><ul class="items">${s.order.map((it, k) => `<li><button class="btn" data-item="${it.id}"><span class="num${litSet.has(it.id) ? ' lit' : ''}">${k + 1}</span>${esc(tr(it.name, it.en))}</button></li>`).join('')}</ul>
         ${fl.length ? `<h3>${tr('協作', 'Connections')}</h3><div class="chips">${fl.map(flowChip).join('')}</div>` : ''}
         ${vidList(DATA.videos.filter((v) => v.islands.includes(d.id)))}
-        ${src}`;
+        ${srcLink(d.url)}`;
     } else if (sel.type === 'item') {
       const { it, s, n } = itemById[sel.id], p = pillarById[s.d.pillar];
       const stats = extractStats(it.desc + ' ' + (it.facts || []).join(' '));
@@ -2105,7 +2372,7 @@ function init() {
         ${slots.length ? `<h3>${tr('什麼時候亮起', 'Lights up during')}</h3><div class="when">${slots.map((d) => `<button class="chip btnlike" data-time="${d.start}">${String(Math.floor(d.start / 60) % 24).padStart(2, '0')}:00 ${esc(tr(d.name, d.en))}</button>`).join('')}</div>` : ''}
         <h3>${tr('所屬', 'Part of')}</h3><div class="chips"><button class="chip btnlike" data-island="${s.d.id}">${esc(islandName(s))}</button><span class="chip cream">${p.no} ${esc(tr(p.name, p.en))}</span></div>
         ${vidList(DATA.videos.filter((v) => v.islands.includes(s.d.id)))}
-        ${src}`;
+        ${srcLink(s.d.url)}`;
     } else if (sel.type === 'flow') {
       const f = flowById[sel.id], a = byId[f.from], b = byId[f.to];
       html = `<div class="eyebrow">${tr('協作線', 'Connection')}</div>
@@ -2163,17 +2430,28 @@ function init() {
   }
 
   // ───────────────────────── 影音紀錄 ─────────────────────────
-  const VKIND = { endorse: ['推薦', 'Endorsements'], interview: ['媒體專訪', 'Interviews'], trail: ['行程與活動', 'On the trail'] };
+  const VKIND = { policy: ['政策說明', 'Policy explainers'], trail: ['參選紀錄', 'On the trail'] };
   const vidById = Object.fromEntries(DATA.videos.map((v) => [v.id, v]));
   const vidRows = (list, q = '') => `<ul class="vids">${list.map((v) => `<li><button class="btn" data-video="${v.id}"><span class="play" aria-hidden="true">▶</span><span>${hl(v.title, q)}</span></button></li>`).join('')}</ul>`;
   const vidList = (list) => (list.length ? `<h3>${tr('影音紀錄', 'Videos')}</h3>${vidRows(list)}` : '');
-  const playerEl = $('#player'), playerVideo = $('#playerVideo');
+  const playerEl = $('#player'), playerVideo = $('#playerVideo'), playerYT = $('#playerYT');
   function playVideo(id) {
     const v = vidById[id];
     if (!v) return;
     $('#playerKind').textContent = tr(VKIND[v.kind][0], VKIND[v.kind][1]);
     $('#playerTitle').textContent = v.title;
     $('#playerNote').hidden = true;
+    playerVideo.hidden = !!v.youtube;
+    playerYT.hidden = !v.youtube;
+    if (v.youtube) {
+      playerYT.src = `https://www.youtube-nocookie.com/embed/${encodeURIComponent(v.youtube)}?autoplay=1&rel=0`;
+      const n = $('#playerNote');
+      n.hidden = false;
+      n.innerHTML = `<a href="https://www.youtube.com/watch?v=${encodeURIComponent(v.youtube)}" target="_blank" rel="noopener">${tr('在 YouTube 開啟 ↗', 'Open on YouTube ↗')}</a>`;
+      playerEl.hidden = false;
+      $('#playerClose').focus();
+      return;
+    }
     // 網站上的 -preview 檔是靜音預覽；先試完整版（去掉 -preview），失敗再退回預覽
     const full = v.url.replace(/-preview(\.mp4)$/, '$1');
     playerVideo.dataset.fallback = full !== v.url ? v.url : '';
@@ -2182,7 +2460,7 @@ function init() {
     playerVideo.play().catch(() => {});
     $('#playerClose').focus();
   }
-  function closePlayer() { playerVideo.pause(); playerVideo.removeAttribute('src'); playerVideo.load(); playerEl.hidden = true; }
+  function closePlayer() { playerVideo.pause(); playerVideo.removeAttribute('src'); playerVideo.load(); playerYT.removeAttribute('src'); playerEl.hidden = true; }
   playerVideo.addEventListener('error', () => {
     if (!playerVideo.getAttribute('src')) return;
     if (playerVideo.dataset.fallback) { const fb = playerVideo.dataset.fallback; playerVideo.dataset.fallback = ''; playerVideo.src = fb; playerVideo.play().catch(() => {}); return; }
@@ -2201,7 +2479,7 @@ function init() {
 
   // ───────────────────────── 右側清單 ─────────────────────────
   const sideEl = $('#side'), sideBody = $('#sideBody'), searchEl = $('#search');
-  searchEl.placeholder = tr('搜尋政見，例如：托育、防災', 'Search policies');
+  searchEl.placeholder = tr('搜尋政見，例如：假牙、茶、公托', 'Search policies');
   let tab = 'topics';
   const hl = (t, q) => { t = esc(t); if (!q) return t; const i = t.toLowerCase().indexOf(q.toLowerCase()); return i < 0 ? t : t.slice(0, i) + '<mark>' + t.slice(i, i + q.length) + '</mark>' + t.slice(i + q.length); };
   function buildList() {
@@ -2407,7 +2685,7 @@ function init() {
   }
 
   // ───────────────────────── 協作線 ─────────────────────────
-  const flowColor = new THREE.Color(C.coral);
+  const flowColor = new THREE.Color(C.accent);
   const flowGroup = new THREE.Group();
   scene.add(flowGroup);
   const flowRoutes = {};
@@ -2480,6 +2758,11 @@ function init() {
     bottle(g) { g.strokeRect(-8, -6, 16, 24); g.beginPath(); g.moveTo(-6, -6); g.lineTo(-4, -12); g.lineTo(4, -12); g.lineTo(6, -6); g.stroke(); g.beginPath(); g.arc(0, -16, 4, 0, 7); g.stroke(); g.beginPath(); g.moveTo(-8, 4); g.lineTo(8, 4); g.stroke(); },
     book(g) { g.beginPath(); g.moveTo(0, -12); g.quadraticCurveTo(-10, -16, -18, -12); g.lineTo(-18, 14); g.quadraticCurveTo(-10, 10, 0, 14); g.quadraticCurveTo(10, 10, 18, 14); g.lineTo(18, -12); g.quadraticCurveTo(10, -16, 0, -12); g.lineTo(0, 14); g.stroke(); },
     sapling(g) { g.beginPath(); g.moveTo(0, 18); g.lineTo(0, -4); g.stroke(); g.beginPath(); g.moveTo(0, -2); g.quadraticCurveTo(-16, -4, -14, -18); g.quadraticCurveTo(-2, -16, 0, -2); g.stroke(); g.beginPath(); g.moveTo(0, 4); g.quadraticCurveTo(14, 2, 14, -10); g.quadraticCurveTo(2, -10, 0, 4); g.stroke(); },
+    pill(g) { g.save(); g.rotate(-.6); g.beginPath(); g.moveTo(-6, -14); g.arc(0, -14, 6, Math.PI, 0); g.lineTo(6, 14); g.arc(0, 14, 6, 0, Math.PI); g.closePath(); g.stroke(); g.beginPath(); g.moveTo(-6, 0); g.lineTo(6, 0); g.stroke(); g.restore(); },
+    cross(g) { g.strokeRect(-16, -16, 32, 32); g.beginPath(); g.moveTo(0, -9); g.lineTo(0, 9); g.moveTo(-9, 0); g.lineTo(9, 0); g.stroke(); },
+    tooth(g) { g.beginPath(); g.moveTo(-14, -8); g.quadraticCurveTo(-14, -18, -6, -16); g.quadraticCurveTo(0, -13, 6, -16); g.quadraticCurveTo(14, -18, 14, -8); g.quadraticCurveTo(13, 2, 9, 16); g.quadraticCurveTo(6, 18, 4, 10); g.quadraticCurveTo(0, 2, -4, 10); g.quadraticCurveTo(-6, 18, -9, 16); g.quadraticCurveTo(-13, 2, -14, -8); g.stroke(); },
+    ticket(g) { g.strokeRect(-18, -11, 36, 22); g.beginPath(); g.moveTo(-10, -4); g.lineTo(4, -4); g.moveTo(-10, 4); g.lineTo(10, 4); g.stroke(); g.beginPath(); g.arc(11, -4, 3, 0, 7); g.fill(); },
+    recycle(g) { for (let k = 0; k < 3; k++) { g.save(); g.rotate(k * Math.PI * 2 / 3); g.beginPath(); g.moveTo(-8, -10); g.lineTo(8, -10); g.lineTo(3, -16); g.moveTo(8, -10); g.lineTo(3, -4); g.stroke(); g.restore(); } },
     bulb(g) { g.beginPath(); g.arc(0, -6, 12, Math.PI * .8, Math.PI * .2); g.lineTo(5, 8); g.lineTo(-5, 8); g.closePath(); g.stroke(); g.beginPath(); g.moveTo(-5, 13); g.lineTo(5, 13); g.moveTo(-3, 18); g.lineTo(3, 18); g.stroke(); }
   };
   const badgeMats = {};
@@ -2488,7 +2771,7 @@ function init() {
     const t = canvasTex(128, (g, s) => {
       g.clearRect(0, 0, s, s);
       g.fillStyle = '#ffffff'; g.beginPath(); g.arc(64, 64, 54, 0, 7); g.fill();
-      g.lineWidth = 9; g.strokeStyle = C.coral; g.beginPath(); g.arc(64, 64, 54, 0, 7); g.stroke();
+      g.lineWidth = 9; g.strokeStyle = C.accent; g.beginPath(); g.arc(64, 64, 54, 0, 7); g.stroke();
       g.translate(64, 64); g.lineWidth = 4.5; g.lineCap = g.lineJoin = 'round'; g.strokeStyle = g.fillStyle = C.ink;
       (CARRY_ICON[kind] || CARRY_ICON.pin)(g);
     }, false);
@@ -2504,10 +2787,11 @@ function init() {
     farmer: { shirt: '#c9a26b', pants: '#5b5d73', hair: C.ink, hat: ['#d9b56a', 'cone'] },
     worker: { shirt: '#f0a040', pants: '#3e4a5c', hair: C.ink, hat: [C.yellow, 'dome'] },
     researcher: { shirt: '#ffffff', pants: '#5b5d73', hair: '#3b2a22', coat: true },
+    medic: { shirt: '#8fc7c0', pants: '#5f8f8a', hair: '#2a1d18', coat: true },
     elder: { shirt: '#b8a9c9', pants: '#6b6a72', hair: '#d8d4cf', cane: true }
   };
   // 部分角色換成相關配件，讓同一條線上的人不完全一樣
-  const ROLE_MIX = { parent: ['parent', 'elder'], official: ['official', 'researcher'], tourist: ['tourist', 'commuter'], commuter: ['commuter', 'elder'], student: ['student', 'researcher'], farmer: ['farmer', 'worker'], worker: ['worker', 'official'] };
+  const ROLE_MIX = { parent: ['parent', 'elder'], official: ['official', 'researcher'], medic: ['medic', 'elder'], tourist: ['tourist', 'commuter'], commuter: ['commuter', 'elder'], student: ['student', 'parent'], farmer: ['farmer', 'worker'], worker: ['worker', 'official'], elder: ['elder', 'commuter'] };
   const wRand = mulberry32(2026);
   const walkers = [];
   DATA.flows.forEach((f) => {
@@ -2567,13 +2851,13 @@ function init() {
       acc.push(['aCyl', C.ink, -.05, .025, .2, .03, .012, .03, 0, 0, Math.PI / 2]); acc.push(['aCyl', C.ink, .05, .025, .2, .03, .012, .03, 0, 0, Math.PI / 2]);
     }
     if (w.f.walker === 'tourist' && w.role === 'tourist') {
-      acc.push(['aRbox', C.coral, .06, .03, -.1, .05, .09, .07]);
+      acc.push(['aRbox', C.roof, .06, .03, -.1, .05, .09, .07]);
       acc.push(['aCyl', C.ink, .06, .1, -.08, .006, .08, .006, .5]);
     }
     if (w.bike) {
       acc.push(['aTorus', C.ink, 0, .06, .1, .12, .12, .12, 0, Math.PI / 2]);
       acc.push(['aTorus', C.ink, 0, .06, -.1, .12, .12, .12, 0, Math.PI / 2]);
-      acc.push(['aBox', C.coral, 0, .09, 0, .016, .016, .2, .2]);
+      acc.push(['aBox', C.roof, 0, .09, 0, .016, .016, .2, .2]);
       acc.push(['aBox', C.ink, 0, .14, .1, .1, .01, .01]);
     }
     w.acc = acc;
@@ -2624,11 +2908,11 @@ function init() {
     w.bubble = o;
   });
 
-  // ── 城市日誌 ──
+  // ── 南投日誌 ──
   const logList = $('#logList'), logFilter = $('#logFilter'), logEl = $('#log');
-  logFilter.innerHTML = `<option value="">${tr('全部協作線', 'All links')}</option><option value="cand">${esc(tr(DATA.city.candidate, DATA.city.candidateEn))}</option><option value="boat">${tr('草鞋船', 'Sandal boat')}</option>` + DATA.flows.map((f) => `<option value="${f.id}">${esc(tr(byId[f.from].d.name, byId[f.from].d.en))} → ${esc(tr(byId[f.to].d.name, byId[f.to].d.en))}</option>`).join('');
+  logFilter.innerHTML = `<option value="">${tr('全部協作線', 'All links')}</option><option value="cand">${esc(tr(DATA.city.candidate, DATA.city.candidateEn))}</option>` + DATA.flows.map((f) => `<option value="${f.id}">${esc(tr(byId[f.from].d.name, byId[f.from].d.en))} → ${esc(tr(byId[f.to].d.name, byId[f.to].d.en))}</option>`).join('');
   const LOG = [];
-  const KIND = { depart: ['出發', 'DEPART'], arrive: ['抵達', 'ARRIVE'], handoff: ['交接', 'HANDOFF'], visit: ['推動', 'ON SITE'], sail: ['航行', 'SAIL'] };
+  const KIND = { depart: ['出發', 'DEPART'], arrive: ['抵達', 'ARRIVE'], handoff: ['交接', 'HANDOFF'], visit: ['推動', 'ON SITE'] };
   function logEvent(kind, w, s) {
     const role = tr(...WALKER[w.role]);
     const isl = tr(s.d.name, s.d.en);
@@ -2866,373 +3150,9 @@ function init() {
     if (band !== lastAspectBand && !UI.sel) { lastAspectBand = band; overview(); }
   });
 
-  // ───────────────────────── 草鞋船（草屯以草鞋墩聞名） ─────────────────────────
-  // 停在安心行路前方、被五座島圍住的那格水域，約半個六角島大
-  const boatHome = axial(byId.I04.d.q, byId.I04.d.r + 1).add(new THREE.Vector3(-.35, 0, -.1));
-  const sandalBoat = new THREE.Group();
-  sandalBoat.name = 'sandalBoat';
-  {
-    const STRAW = '#e6b54a', STRAW_D = '#c9922f', CREAM = '#f4e6c8';
-    const mStraw = new THREE.MeshStandardMaterial({ color: STRAW, roughness: .85 });
-    const mDark = new THREE.MeshStandardMaterial({ color: STRAW_D, roughness: .9 });
-    const mCream = new THREE.MeshStandardMaterial({ color: CREAM, roughness: .8 });
-    const mesh = (g, m) => { const o = new THREE.Mesh(g, m); o.castShadow = o.receiveShadow = true; sandalBoat.add(o); return o; };
-    // 鞋底輪廓：圓弧鞋頭、腰身略收、圓腳跟（+z 為鞋頭）
-    const L = 1.0;
-    const hw = (z) => .43 + .07 * THREE.MathUtils.smoothstep(z, -.2, .6) - .045 * Math.exp(-(((z + .15) / .3) ** 2));
-    const outline = (k, n = 72) => { const pts = []; for (let i = 0; i < n; i++) { const t = i / n * Math.PI * 2, c = Math.cos(t), z = L * Math.sign(c) * Math.abs(c) ** .55; pts.push(new THREE.Vector2(hw(z) * Math.sin(t) * k, z * (k * .5 + .5))); } return pts; };
-    const SOLE_H = .16;
-    const shape = new THREE.Shape(outline(1).map((p) => new THREE.Vector2(p.x, -p.y)));
-    const soleG = new THREE.ExtrudeGeometry(shape, { depth: SOLE_H, bevelEnabled: true, bevelThickness: .05, bevelSize: .05, bevelSegments: 3, curveSegments: 24 });
-    soleG.rotateX(-Math.PI / 2);
-    soleG.computeVertexNormals();
-    mesh(soleG, mStraw);
-    const TOP_Y = SOLE_H + .05;
-    // 鞋面編織：橫向草紋＋中線
-    const strip = new THREE.BoxGeometry(1, .02, .035);
-    for (let z = -.86; z <= .86; z += .11) mesh(strip, mDark).position.set(0, TOP_Y, z) || 0;
-    sandalBoat.children.slice(-17).forEach((o) => { o.scale.x = hw(o.position.z) * 1.55 * Math.sqrt(Math.max(0, 1 - (o.position.z / L) ** 2)); });
-    mesh(new THREE.BoxGeometry(.03, .02, 1.7), mDark).position.set(0, TOP_Y + .002, 0);
-    // 凸起的草繩鞋緣：一圈壓扁的小圓
-    const bump = new THREE.SphereGeometry(.5, 10, 8);
-    const rim = (() => {
-      const dense = outline(.93, 600), cum = [0];
-      for (let i = 1; i <= dense.length; i++) cum.push(cum[i - 1] + dense[i % dense.length].distanceTo(dense[i - 1]));
-      const out = [], N = 64, total = cum[cum.length - 1];
-      for (let k = 0, j = 0; k < N; k++) { const d = k / N * total; while (cum[j + 1] < d) j++; out.push(dense[j]); }
-      return out;
-    })();
-    rim.forEach((p, i) => {
-      const q = rim[(i + 1) % rim.length];
-      const o = mesh(bump, i % 2 ? mStraw : mDark);
-      o.position.set(p.x, TOP_Y + .02, p.y);
-      o.rotation.y = Math.atan2(q.x - p.x, q.y - p.y);
-      o.scale.set(.15, .12, .1);
-    });
-    // 扭繩：主繩＋一條螺旋細繩
-    function rope(points, r = .05) {
-      const curve = new THREE.CatmullRomCurve3(points);
-      mesh(new THREE.TubeGeometry(curve, 48, r, 10, false), mStraw);
-      const n = 120, fr = curve.computeFrenetFrames(n, false), sp = [];
-      for (let i = 0; i <= n; i++) {
-        const u = i / n, a = u * curve.getLength() * 38;
-        sp.push(curve.getPointAt(u).addScaledVector(fr.normals[i], Math.cos(a) * r * .75).addScaledVector(fr.binormals[i], Math.sin(a) * r * .75));
-      }
-      mesh(new THREE.TubeGeometry(new THREE.CatmullRomCurve3(sp), 240, r * .45, 6, false), mDark);
-      return curve;
-    }
-    const band = new THREE.CylinderGeometry(.07, .07, .07, 14);
-    const wrap = (curve, u) => { const o = mesh(band, mCream); o.position.copy(curve.getPointAt(u)); o.quaternion.setFromUnitVectors(new THREE.Vector3(0, 1, 0), curve.getTangentAt(u)); };
-    const V = (x, y, z) => new THREE.Vector3(x, y, z);
-    // 夾腳繩：鞋頭立柱分成左右兩條，接到兩側
-    const post = rope([V(0, TOP_Y, .5), V(0, TOP_Y + .12, .45), V(0, TOP_Y + .2, .38)], .055);
-    wrap(post, .25);
-    for (const sx of [-1, 1]) {
-      const c = rope([V(0, TOP_Y + .2, .38), V(sx * .18, TOP_Y + .27, .18), V(sx * .34, TOP_Y + .2, -.05), V(sx * .4, TOP_Y + .03, -.18)]);
-      wrap(c, .55); wrap(c, .97);
-    }
-    // 腳跟繩圈：從兩側拱起繞過腳跟
-    const heel = rope([V(-.4, TOP_Y + .03, -.18), V(-.38, TOP_Y + .22, -.45), V(-.25, TOP_Y + .34, -.72), V(0, TOP_Y + .38, -.82), V(.25, TOP_Y + .34, -.72), V(.38, TOP_Y + .22, -.45), V(.4, TOP_Y + .03, -.18)]);
-    wrap(heel, .12); wrap(heel, .88);
-    // 揚帆啟航：桅杆、向前鼓起的風帆、船尾舵輪
-    const mWood = new THREE.MeshStandardMaterial({ color: '#8a5a36', roughness: .75 });
-    const mast = mesh(new THREE.CylinderGeometry(.03, .038, 1.45, 10), mWood);
-    mast.position.set(0, TOP_Y + .72, -.08);
-    for (const y of [1.38, .62]) { const yd = mesh(new THREE.CylinderGeometry(.022, .022, 1.0, 8), mWood); yd.rotation.z = Math.PI / 2; yd.position.set(0, TOP_Y + y, -.06); }
-    const sailTex = canvasTex(256, (g, sz) => {
-      g.fillStyle = '#fff8ec'; g.fillRect(0, 0, sz, sz);
-      g.fillStyle = C.coral; g.fillRect(0, sz * .12, sz, sz * .1); g.fillRect(0, sz * .78, sz, sz * .1);
-      g.fillStyle = C.coral; g.font = '900 92px "Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif'; g.textAlign = 'center'; g.textBaseline = 'middle';
-      g.fillText('草屯', sz / 2, sz * .5);
-      g.strokeStyle = 'rgba(180,140,90,.25)'; g.lineWidth = 2; for (let x = 32; x < sz; x += 32) { g.beginPath(); g.moveTo(x, 0); g.lineTo(x, sz); g.stroke(); }
-    }, false);
-    const sailGeo = new THREE.PlaneGeometry(.94, .74, 14, 12);
-    const sailBase = sailGeo.attributes.position.array.slice();
-    const sail = mesh(sailGeo, new THREE.MeshStandardMaterial({ map: sailTex, roughness: .9, side: THREE.DoubleSide }));
-    sail.position.set(0, TOP_Y + 1.0, -.05);
-    sandalBoat.userData.billow = (amp) => {
-      const p = sailGeo.attributes.position;
-      for (let i = 0; i < p.count; i++) {
-        const x = sailBase[i * 3], y = sailBase[i * 3 + 1];
-        const u = x / .94 + .5, v = y / .74 + .5;
-        p.setZ(i, Math.sin(Math.PI * u) * (.35 + .65 * Math.sin(Math.PI * v)) * amp);
-      }
-      p.needsUpdate = true;
-      sailGeo.computeVertexNormals();
-    };
-    sandalBoat.userData.billow(.24);
-    const flagGeo = new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(0, 0, 0), new THREE.Vector3(0, -.12, 0), new THREE.Vector3(0, -.06, .26)]);
-    flagGeo.computeVertexNormals();
-    const pennant = mesh(flagGeo, new THREE.MeshStandardMaterial({ color: C.coral, side: THREE.DoubleSide }));
-    pennant.position.set(0, TOP_Y + 1.46, -.08);
-    sandalBoat.userData.pennant = pennant;
-    // 舵輪
-    const helm = new THREE.Group();
-    helm.position.set(0, TOP_Y + .34, -.5);
-    sandalBoat.add(helm);
-    const post2 = mesh(new THREE.CylinderGeometry(.025, .03, .3, 8), mWood); post2.position.set(0, TOP_Y + .17, -.53);
-    const wheelRim = new THREE.Mesh(new THREE.TorusGeometry(.13, .018, 8, 28), mWood); wheelRim.castShadow = true; helm.add(wheelRim);
-    for (let k = 0; k < 8; k++) {
-      const a = k / 8 * Math.PI * 2;
-      const sp = new THREE.Mesh(new THREE.CylinderGeometry(.009, .009, .34, 6), mWood);
-      sp.rotation.z = a; sp.castShadow = true; helm.add(sp);
-    }
-    const hub = new THREE.Mesh(new THREE.CylinderGeometry(.035, .035, .04, 12), mStraw); hub.rotation.x = Math.PI / 2; helm.add(hub);
-    sandalBoat.userData.helm = helm;
-    // 船邊泡沫
-    const foam = new THREE.Mesh(new THREE.RingGeometry(.95, 1.2, 40).rotateX(-Math.PI / 2), new THREE.MeshBasicMaterial({ color: '#ffffff', transparent: true, opacity: .45, depthWrite: false }));
-    foam.scale.z = 1.25; foam.position.y = .02;
-    sandalBoat.add(foam);
-    sandalBoat.scale.setScalar(.95);
-    sandalBoat.position.set(boatHome.x, WATER_Y, boatHome.z);
-    sandalBoat.rotation.y = .5;
-    scene.add(sandalBoat);
-  }
-  // ───────────────────────── 草鞋船環島航行 ─────────────────────────
-  // 白天沿環城航道繞行，停靠各島碼頭上下客；19:30 後回到安心行路前的港灣過夜，06:00 再啟航
-  const BAY = boatHome.clone().setY(0);
-  // 環城航道：每個方位找出最外側的島，再往外留 1.4 的水道
-  const ring = (() => {
-    const N = 96, rs = [];
-    for (let i = 0; i < N; i++) {
-      const a = i / N * Math.PI * 2, dx = Math.cos(a), dz = Math.sin(a);
-      let r = 6;
-      islands.forEach((s) => {
-        const ox = s.c.x - center.x, oz = s.c.z - center.z;
-        const along = ox * dx + oz * dz, perp = Math.abs(ox * dz - oz * dx), cl = R + 1.5;
-        if (perp < cl) r = Math.max(r, along + Math.sqrt(cl * cl - perp * perp));
-      });
-      rs.push(r);
-    }
-    for (let pass = 0; pass < 3; pass++) for (let i = 0; i < N; i++) rs[i] = Math.max(rs[i], (rs[(i + N - 1) % N] + rs[i] + rs[(i + 1) % N]) / 3);
-    const pts = rs.map((r, i) => { const a = i / N * Math.PI * 2; return new THREE.Vector3(center.x + Math.cos(a) * r, 0, center.z + Math.sin(a) * r); });
-    return new THREE.CatmullRomCurve3(pts, true, 'centripetal');
-  })();
-  const RING_LEN = ring.getLength();
-  const ringU = (p) => { let best = 0, bd = 1e9; for (let i = 0; i < 400; i++) { const u = i / 400, d = ring.getPointAt(u).distanceToSquared(p); if (d < bd) { bd = d; best = u; } } return best; };
-  // 出港航道：港灣往 +z（兩座空水格之間）接到環城航道
-  const exitU = ringU(BAY.clone().add(new THREE.Vector3(0, 0, 6)));
-  const exitPt = ring.getPointAt(exitU);
-  const harbor = new THREE.CatmullRomCurve3([BAY.clone(), BAY.clone().add(new THREE.Vector3(0, 0, 1.6)), exitPt.clone().lerp(BAY, .35), exitPt.clone()]);
-  const HARBOR_LEN = harbor.getLength();
-  // 碼頭：離航道最近的外圈島，各島一座木棧橋
-  const docks = [];
-  islands.forEach((s) => {
-    const u = ringU(s.c), p = ring.getPointAt(u), gap = p.distanceTo(s.c.clone().setY(0)) - R;
-    if (gap < 2.4) docks.push({ s, u, p, gap });
-  });
-  docks.sort((x, y) => x.u - y.u);
-  // 太近的碼頭只留一個
-  for (let i = docks.length - 1; i > 0; i--) if ((docks[i].u - docks[i - 1].u) * RING_LEN < 4) docks.splice(i, 1);
-  const pierMesh = (() => {
-    const list = [];
-    docks.forEach((dk) => {
-      const dir = dk.p.clone().sub(dk.s.c).setY(0).normalize();
-      const from = dk.s.c.clone().setY(0).addScaledVector(dir, R * .86), to = dk.p.clone().addScaledVector(dir, -.75);
-      dk.land = dk.s.c.clone().setY(0).addScaledVector(dir, PATH_R * .86).setY(NODE_Y);
-      dk.end = to.clone().setY(TOP - .02);
-      dk.dir = dir;
-      const L = from.distanceTo(to), yaw = Math.atan2(dir.x, dir.z), side = new THREE.Vector3(dir.z, 0, -dir.x);
-      const n = Math.max(3, Math.round(L / .16));
-      for (let k = 0; k < n; k++) list.push([from.clone().lerp(to, (k + .5) / n).setY(TOP - .02), yaw, [.5, .04, L / n * .9], C.wood]);
-      for (const sd of [-1, 1]) for (const t of [0, 1]) list.push([from.clone().lerp(to, t).addScaledVector(side, sd * .27).setY(WATER_Y - .1), yaw, [.06, TOP - WATER_Y + .2, .06], '#7a5638']);
-      list.push([to.clone().addScaledVector(side, .3).setY(TOP + .02), yaw, [.04, .5, .04], C.ink]);
-    });
-    const m = new THREE.InstancedMesh(new THREE.BoxGeometry(1, 1, 1).translate(0, .5, 0), new THREE.MeshStandardMaterial({ color: '#ffffff', roughness: .8 }), list.length);
-    list.forEach(([p, yaw, sc, col], i) => {
-      m.setMatrixAt(i, new THREE.Matrix4().compose(p, new THREE.Quaternion().setFromEuler(new THREE.Euler(0, yaw, 0)), new THREE.Vector3(...sc)));
-      m.setColorAt(i, new THREE.Color(col));
-    });
-    m.castShadow = m.receiveShadow = true;
-    scene.add(m);
-    return m;
-  })();
-  void pierMesh;
-
-  // 簡單的小人（船長、乘客）
-  const pMat = {};
-  const pm = (c) => pMat[c] || (pMat[c] = new THREE.MeshStandardMaterial({ color: c, roughness: .75 }));
-  function makePerson(o) {
-    const g = new THREE.Group(), parts = {};
-    const legG = new THREE.BoxGeometry(.034, .08, .036).translate(0, -.04, 0);
-    for (const sx of [-1, 1]) {
-      const lp = new THREE.Group(); lp.position.set(sx * .022, .085, 0); g.add(lp);
-      lp.add(new THREE.Mesh(legG, pm(o.pants)));
-      parts[sx < 0 ? 'legL' : 'legR'] = lp;
-      const ap = new THREE.Group(); ap.position.set(sx * .058, .185, 0); g.add(ap);
-      ap.add(new THREE.Mesh(new THREE.BoxGeometry(.024, .07, .026).translate(0, -.035, 0), pm(o.shirt)));
-      parts[sx < 0 ? 'armL' : 'armR'] = ap;
-    }
-    const body = new THREE.Mesh(new THREE.CapsuleGeometry(.045, .05, 4, 10), pm(o.shirt)); body.position.y = .14; g.add(body);
-    const head = new THREE.Mesh(new THREE.SphereGeometry(.07, 14, 10), pm(o.skin)); head.position.y = .265; g.add(head);
-    const hair = new THREE.Mesh(new THREE.SphereGeometry(.074, 14, 8, 0, Math.PI * 2, 0, Math.PI * .55), pm(o.hair)); hair.position.set(0, .272, -.008); hair.rotation.x = -.35; g.add(hair);
-    for (const sx of [-1, 1]) { const e = new THREE.Mesh(new THREE.SphereGeometry(.011, 6, 4), pm(C.ink)); e.position.set(sx * .025, .27, .064); e.scale.y = 1.4; g.add(e); }
-    if (o.hat === 'captain') {
-      const cap = new THREE.Mesh(new THREE.CylinderGeometry(.075, .07, .045, 14), pm('#ffffff')); cap.position.y = .33; g.add(cap);
-      const brim = new THREE.Mesh(new THREE.BoxGeometry(.09, .01, .05), pm(C.ink)); brim.position.set(0, .31, .07); g.add(brim);
-      const band = new THREE.Mesh(new THREE.CylinderGeometry(.076, .076, .015, 14), pm(C.ink)); band.position.y = .315; g.add(band);
-    } else if (o.hat) { const h = new THREE.Mesh(new THREE.SphereGeometry(.08, 12, 6, 0, Math.PI * 2, 0, Math.PI / 2), pm(o.hat)); h.position.y = .29; g.add(h); }
-    g.traverse((m) => { if (m.isMesh) m.castShadow = true; });
-    g.userData.parts = parts;
-    return g;
-  }
-  function animPerson(g, t, moving) {
-    const p = g.userData.parts, sw = moving ? Math.sin(t * 9) : 0;
-    p.legL.rotation.x = sw * .55; p.legR.rotation.x = -sw * .55; p.armL.rotation.x = -sw * .45; p.armR.rotation.x = sw * .45;
-  }
-  const BOAT_S = .95, inv = 1 / BOAT_S;
-  // 船長站在舵輪後
-  const captain = makePerson({ shirt: '#ffffff', pants: '#2f3a4f', skin: skin[1], hair: '#2a1d18', hat: 'captain' });
-  captain.position.set(0, TOP_Y_BOAT(), -.7);
-  captain.scale.setScalar(1.25 * inv);
-  sandalBoat.add(captain);
-  captain.userData.parts.armL.rotation.x = captain.userData.parts.armR.rotation.x = -1.2;
-  function TOP_Y_BOAT() { return .21; }
-
-  // 乘客
-  const SEATS = [[-.2, .3], [.2, .3], [-.2, -.12], [.2, -.12]].map(([x, z]) => new THREE.Vector3(x, TOP_Y_BOAT(), z));
-  const PASS_LOOKS = [
-    { shirt: C.pastel[0], pants: '#5b5d73', skin: skin[0], hair: '#3b2a22' },
-    { shirt: C.teal, pants: '#3e4a5c', skin: skin[2], hair: C.ink, hat: C.yellow },
-    { shirt: '#c9a26b', pants: '#5b5d73', skin: skin[1], hair: '#d8d4cf' },
-    { shirt: C.pastel[2], pants: '#c5b5a7', skin: skin[0], hair: '#6b4a32' },
-    { shirt: '#f0a040', pants: '#3e4a5c', skin: skin[1], hair: C.ink }
-  ];
-  const passengers = [];
-  const pRand = mulberry32(77077);
-  function spawnPassenger(dk, seat) {
-    const g = makePerson(PASS_LOOKS[(pRand() * PASS_LOOKS.length) | 0]);
-    scene.add(g);
-    const dest = docks[(docks.indexOf(dk) + 1 + ((pRand() * Math.min(3, docks.length - 1)) | 0)) % docks.length];
-    const p = { g, seat, dest, state: 'boarding', a: dk.land.clone(), b: dk.end.clone(), t: 0 };
-    g.position.copy(p.a);
-    passengers.push(p);
-    return p;
-  }
-
-  const boat = { mode: 'berth', d: 0, u: exitU, wait: 1.2, dock: null, nextDock: 0, t: 0 };
-  const isNight = () => world.minutes >= 1170 || world.minutes < 360;
-  const nextDockIndex = (u) => { for (let i = 0; i < docks.length; i++) if (docks[i].u > u + 1e-4) return i; return 0; };
-  boat.nextDock = nextDockIndex(exitU);
-  function boatLog(text) {
-    LOG.unshift({ t: fmt(world.minutes), kind: 'sail', flow: 'boat', text });
-    if (LOG.length > 80) LOG.pop();
-    if (UI.log) renderLog();
-  }
-  const dockName = (dk) => tr(dk.s.d.name, dk.s.d.en);
-  const _bp = new THREE.Vector3(), _bt = new THREE.Vector3(), _sw = new THREE.Vector3();
-  function placeBoat(p, tan) {
-    sandalBoat.position.x = p.x; sandalBoat.position.z = p.z;
-    if (tan) {
-      const yaw = Math.atan2(tan.x, tan.z);
-      let dy = yaw - boat.yaw;
-      dy = Math.atan2(Math.sin(dy), Math.cos(dy));
-      boat.yaw += dy * Math.min(1, (placeBoat.dt || .016) * 5);
-      sandalBoat.rotation.y = boat.yaw;
-    }
-  }
-  boat.yaw = Math.PI; // 停泊時船頭朝港內
-  placeBoat(BAY);
-  sandalBoat.rotation.y = boat.yaw;
-  const SPEED = .75;
-  onFrame.push((dt, animate) => {
-    if (!animate) return;
-    boat.t += dt; placeBoat.dt = dt;
-    const t = boat.t;
-    sandalBoat.position.y = WATER_Y - .06 + Math.sin(t * 1.3) * .025;
-    sandalBoat.rotation.z = Math.sin(t * 1.1) * .03;
-    sandalBoat.rotation.x = Math.sin(t * .9 + 1) * .02;
-    const sailing = boat.mode === 'loop' || boat.mode === 'out' || boat.mode === 'in';
-    sandalBoat.userData.billow((sailing ? .26 : .1) + Math.sin(t * 1.7) * .04);
-    sandalBoat.userData.pennant.rotation.y = Math.sin(t * 3.1) * .25;
-    sandalBoat.userData.helm.rotation.z = Math.sin(t * .3) * (sailing ? .9 : .2);
-    captain.userData.parts.armL.rotation.z = Math.sin(t * .3) * .2;
-
-    if (boat.mode === 'berth') {
-      if (!isNight()) { boat.wait -= dt; if (boat.wait <= 0) { boat.mode = 'out'; boat.d = 0; boatLog(tr('草鞋船揚帆啟航！', 'The straw-sandal boat sets sail!')); } }
-    } else if (boat.mode === 'out' || boat.mode === 'in') {
-      boat.d += SPEED * dt;
-      const k = Math.min(1, boat.d / HARBOR_LEN), u = boat.mode === 'out' ? k : 1 - k;
-      harbor.getPointAt(u, _bp); harbor.getTangentAt(u, _bt);
-      if (boat.mode === 'in') _bt.negate();
-      placeBoat(_bp, _bt);
-      if (k >= 1) {
-        if (boat.mode === 'out') { boat.mode = 'loop'; boat.u = exitU; boat.nextDock = nextDockIndex(exitU); }
-        else { boat.mode = 'berth'; boat.wait = 2; boatLog(tr('草鞋船回到港灣停泊休息', 'The boat moors in the harbor for the night')); }
-      }
-    } else if (boat.mode === 'loop') {
-      const prevU = boat.u;
-      boat.u = (boat.u + SPEED * dt / RING_LEN) % 1;
-      const wrapped = boat.u < prevU;
-      const crossed = (target) => (wrapped ? (target > prevU || target <= boat.u) : (target > prevU && target <= boat.u));
-      ring.getPointAt(boat.u, _bp); ring.getTangentAt(boat.u, _bt);
-      placeBoat(_bp, _bt);
-      if (isNight() && crossed(exitU)) { boat.mode = 'in'; boat.d = 0; boat.u = exitU; }
-      else if (docks.length && crossed(docks[boat.nextDock].u)) {
-        const dk = docks[boat.nextDock];
-        boat.mode = 'dock'; boat.dock = dk; boat.wait = 4.5; boat.u = dk.u;
-        let off = 0, on = 0;
-        passengers.forEach((p) => { if (p.state === 'riding' && p.dest === dk) { p.state = 'leaving'; p.t = 0; sandalBoat.localToWorld(p.a.copy(p.g.position)); sandalBoat.remove(p.g); scene.add(p.g); p.g.position.copy(p.a); p.g.scale.setScalar(1); p.b.copy(dk.end); p.land = dk.land.clone(); off++; } });
-        const free = SEATS.filter((st) => !passengers.some((p) => p.seat === st && p.state !== 'gone'));
-        const n = Math.min(free.length, (pRand() * 3) | 0);
-        for (let i = 0; i < n; i++) { spawnPassenger(dk, free[i]); on++; }
-        boatLog(tr(`草鞋船停靠${dockName(dk)}碼頭${off ? `，${off} 位下船` : ''}${on ? `，${on} 位登船` : ''}`, `Boat docks at ${dockName(dk)}${off ? `, ${off} off` : ''}${on ? `, ${on} on` : ''}`));
-      }
-    } else if (boat.mode === 'dock') {
-      // 船頭轉向前進方向、靠岸
-      ring.getTangentAt(boat.u, _bt);
-      placeBoat(ring.getPointAt(boat.u, _bp), _bt);
-      const busy = passengers.some((p) => p.state === 'boarding' || (p.state === 'leaving' && p.t < .5));
-      boat.wait -= dt;
-      if (boat.wait <= 0 && !busy) { boat.mode = 'loop'; boat.nextDock = (boat.nextDock + 1) % docks.length; }
-    }
-
-    // 乘客走動
-    for (const p of passengers) {
-      if (p.state === 'gone') continue;
-      if (p.state === 'riding') { animPerson(p.g, t, false); continue; }
-      const seatW = sandalBoat.localToWorld(_sw.copy(p.seat));
-      let from, to, legs;
-      if (p.state === 'boarding') { legs = [p.a, p.b, seatW]; }
-      else { legs = [p.a, p.b, p.land]; }
-      // 依距離沿折線前進
-      p.t += dt * .4;
-      const L1 = legs[0].distanceTo(legs[1]), L2 = legs[1].distanceTo(legs[2]), Ltot = L1 + L2 || 1, d = p.t;
-      if (d < L1) { from = legs[0]; to = legs[1]; p.g.position.copy(from).lerp(to, d / (L1 || 1)); }
-      else { from = legs[1]; to = legs[2]; p.g.position.copy(from).lerp(to, Math.min(1, (d - L1) / (L2 || 1))); }
-      const dir = to.clone().sub(from).setY(0);
-      if (dir.lengthSq() > 1e-6) p.g.rotation.y = Math.atan2(dir.x, dir.z);
-      animPerson(p.g, t, true);
-      if (d >= Ltot) {
-        if (p.state === 'boarding') { p.state = 'riding'; scene.remove(p.g); sandalBoat.add(p.g); p.g.position.copy(p.seat); p.g.rotation.set(0, 0, 0); p.g.scale.setScalar(inv); }
-        else { p.state = 'gone'; scene.remove(p.g); }
-      }
-    }
-    for (let i = passengers.length - 1; i >= 0; i--) if (passengers[i].state === 'gone') passengers.splice(i, 1);
-  });
-  // 點船 → 船的狀態卡片
-  function boatCard() {
-    const riding = passengers.filter((p) => p.state === 'riding').length;
-    const status = boat.mode === 'berth' ? (isNight() ? tr('夜間停泊在安心行路港灣，06:00 再啟航', 'Moored for the night; sets sail again at 06:00') : tr('準備啟航', 'Getting ready to sail'))
-      : boat.mode === 'dock' ? tr(`停靠${dockName(boat.dock)}碼頭，乘客上下船中`, `Docked at ${dockName(boat.dock)}`)
-        : boat.mode === 'in' ? tr('返航回港', 'Heading back to harbor')
-          : tr(`航向${dockName(docks[boat.nextDock])}`, `Sailing to ${dockName(docks[boat.nextDock])}`);
-    return `<div class="eyebrow">${tr('草鞋墩・揚帆啟航', 'Caoxiedun · Setting sail')}</div>
-      <h2>${tr('草鞋船', 'Straw-sandal boat')}</h2>
-      <p class="lead">${esc(status)}${riding ? tr(`，船上有 ${riding} 位乘客。`, `, ${riding} passengers aboard.`) : tr('。', '.')}</p>
-      <h3>${tr('停靠碼頭', 'Docks')}</h3><div class="chips">${docks.map((dk) => `<button class="chip btnlike" data-island="${dk.s.d.id}">${esc(islandName(dk.s))}</button>`).join('')}</div>
-      <h3>${tr('相關政見', 'Related policy')}</h3><div class="chips"><button class="chip btnlike" data-item="i09a">${esc(tr('草鞋墩品牌', 'The Caoxiedun brand'))}</button></div>
-      ${src}`;
-  }
-  pickers.push((ray) => {
-    if (!ray.intersectObject(sandalBoat, true).length) return false;
-    select({ type: 'walker', pos: sandalBoat.position.clone().setY(TOP), html: boatCard() });
-    return true;
-  });
-
-  // ───────────────────────── 候選人：張媛婷 ─────────────────────────
-  // 走遍十二座島，在政見地點停下來推動市政；外觀參數集中在 LOOK，方便換成正確造型
-  const LOOK = { skin: '#f3d2b8', hair: '#3a2219', hairHi: '#5a3524', blazer: '#ece3d3', top: '#a8442a', legs: '#e9c4a6', shoes: '#4a2f24', board: '#fff4df' };
+  // ───────────────────────── 候選人：温世政（温欸醫生） ─────────────────────────
+  // 走遍十二座島，在政見地點停下來傾聽鄉親；外觀參數集中在 LOOK，方便換成正確造型
+  const LOOK = { skin: '#efc9a8', hair: '#26201c', coat: '#fbfbf7', shirt: '#7fa9c9', legs: '#34404c', shoes: '#2a2420', glasses: '#2a2a2a', sash: C.accent };
   const cand = new THREE.Group();
   cand.name = 'candidate';
   const cParts = {};
@@ -3240,41 +3160,42 @@ function init() {
     const mat = (c) => new THREE.MeshStandardMaterial({ color: c, roughness: .7 });
     const add = (key, g, m, x, y, z, parent = cand) => { const o = new THREE.Mesh(g, m); o.position.set(x, y, z); o.castShadow = true; parent.add(o); if (key) cParts[key] = o; return o; };
     const pivot = (key, x, y, z) => { const p = new THREE.Group(); p.position.set(x, y, z); cand.add(p); cParts[key] = p; return p; };
-    const legG = new THREE.BoxGeometry(.03, .08, .032).translate(0, -.04, 0);
-    const armG = new THREE.BoxGeometry(.028, .074, .03).translate(0, -.037, 0);
+    const legG = new THREE.BoxGeometry(.034, .085, .036).translate(0, -.042, 0);
+    const armG = new THREE.BoxGeometry(.028, .076, .03).translate(0, -.038, 0);
     for (const sx of [-1, 1]) {
-      const lp = pivot(sx < 0 ? 'legL' : 'legR', sx * .02, .085, 0);
+      const lp = pivot(sx < 0 ? 'legL' : 'legR', sx * .022, .088, 0);
       add(null, legG, mat(LOOK.legs), 0, 0, 0, lp);
-      add(null, new THREE.BoxGeometry(.036, .02, .052), mat(LOOK.shoes), 0, -.078, .008, lp);
-      const ap = pivot(sx < 0 ? 'armL' : 'armR', sx * .06, .19, 0);
-      add(null, armG, mat(LOOK.blazer), 0, 0, 0, ap);
-      add(null, new THREE.SphereGeometry(.016, 8, 6), mat(LOOK.skin), 0, -.076, 0, ap);
-      if (sx > 0) { const b = add(null, new THREE.BoxGeometry(.008, .07, .055), mat(LOOK.board), .012, -.07, .025, ap); b.rotation.y = .2; }
+      add(null, new THREE.BoxGeometry(.04, .02, .056), mat(LOOK.shoes), 0, -.082, .008, lp);
+      const ap = pivot(sx < 0 ? 'armL' : 'armR', sx * .062, .195, 0);
+      add(null, armG, mat(LOOK.coat), 0, 0, 0, ap);
+      add(null, new THREE.SphereGeometry(.017, 8, 6), mat(LOOK.skin), 0, -.078, 0, ap);
     }
-    // 磚紅色洋裝裙擺 + 米白西裝外套
-    add(null, new THREE.CylinderGeometry(.04, .06, .06, 14), mat(LOOK.top), 0, .088, 0);
-    add('body', new THREE.CapsuleGeometry(.047, .05, 4, 12), mat(LOOK.blazer), 0, .145, 0);
-    const v = add(null, new THREE.ConeGeometry(.03, .07, 3), mat(LOOK.top), 0, .17, .041);
+    // 白袍（醫師）＋淺藍襯衫＋茶綠背帶
+    add('body', new THREE.CapsuleGeometry(.05, .06, 4, 12), mat(LOOK.coat), 0, .15, 0);
+    add(null, new THREE.CylinderGeometry(.052, .062, .05, 14), mat(LOOK.coat), 0, .095, 0);
+    const v = add(null, new THREE.ConeGeometry(.026, .07, 3), mat(LOOK.shirt), 0, .18, .045);
     v.rotation.set(Math.PI, 0, 0); v.scale.z = .25;
-    for (const sx of [-1, 1]) { const lap = add(null, new THREE.BoxGeometry(.012, .07, .008), mat('#f6efe3'), sx * .024, .168, .046); lap.rotation.z = sx * .35; }
-    add('head', new THREE.SphereGeometry(.072, 18, 14), mat(LOOK.skin), 0, .268, 0);
-    // 深棕色長捲髮：頭頂、側分瀏海、垂到背後與兩側肩下
-    const hairM = mat(LOOK.hair), hiM = mat(LOOK.hairHi);
-    add(null, new THREE.SphereGeometry(.078, 18, 10, 0, Math.PI * 2, 0, Math.PI * .52), hairM, 0, .272, -.004);
-    const swoop = add(null, new THREE.SphereGeometry(.05, 12, 8), hairM, .03, .318, .04);
-    swoop.scale.set(1.5, .55, .9); swoop.rotation.z = -.35;
-    // 清爽及肩：後髮到肩膀，兩側各一束微捲
-    add(null, new RoundedBoxGeometry(.15, .13, .055, 2, .025), hairM, 0, .235, -.045);
+    const sash = add(null, new THREE.BoxGeometry(.016, .15, .006), mat(LOOK.sash), 0, .155, .052);
+    sash.rotation.z = .7;
+    add(null, new THREE.BoxGeometry(.02, .014, .004), mat('#ffffff'), -.026, .19, .052);
+    add('head', new THREE.SphereGeometry(.072, 18, 14), mat(LOOK.skin), 0, .275, 0);
+    // 短髮：頭頂＋後腦，前額旁分
+    const hairM = mat(LOOK.hair);
+    add(null, new THREE.SphereGeometry(.076, 18, 10, 0, Math.PI * 2, 0, Math.PI * .42), hairM, 0, .282, -.006);
+    add(null, new RoundedBoxGeometry(.13, .06, .04, 2, .015), hairM, 0, .27, -.05);
+    const part = add(null, new THREE.SphereGeometry(.04, 12, 8), hairM, -.025, .33, .03);
+    part.scale.set(1.5, .45, .9); part.rotation.z = .25;
+    // 眼鏡
+    const gm = mat(LOOK.glasses);
     for (const sx of [-1, 1]) {
-      add(null, new RoundedBoxGeometry(.028, .11, .05, 2, .012), hairM, sx * .07, .24, -.005);
-      add(null, new THREE.SphereGeometry(.02, 10, 8), hiM, sx * .072, .19, .0);
+      const ring = add(null, new THREE.TorusGeometry(.016, .004, 6, 14), gm, sx * .026, .278, .068);
+      ring.scale.y = .8;
+      add(null, new THREE.SphereGeometry(.007, 6, 4), mat(C.ink), sx * .026, .277, .066);
+      add(null, new THREE.BoxGeometry(.004, .004, .07), gm, sx * .062, .282, .03);
     }
-    for (const sx of [-1, 1]) {
-      add(null, new THREE.SphereGeometry(.012, 8, 6), mat(C.ink), sx * .025, .27, .066).scale.y = 1.3;
-      add(null, new THREE.SphereGeometry(.012, 8, 6), mat('#f2a5a5'), sx * .042, .25, .058).scale.set(1.2, .7, .5);
-    }
-    add(null, new THREE.BoxGeometry(.024, .006, .006), mat('#c4524a'), 0, .238, .07);
-    const shadow = new THREE.Mesh(new THREE.CircleGeometry(.08, 18).rotateX(-Math.PI / 2), new THREE.MeshBasicMaterial({ color: '#3a2a20', transparent: true, opacity: .22, depthWrite: false }));
+    add(null, new THREE.BoxGeometry(.02, .004, .004), gm, 0, .28, .07);
+    add(null, new THREE.BoxGeometry(.026, .006, .006), mat('#b5564a'), 0, .243, .068);
+    const shadow = new THREE.Mesh(new THREE.CircleGeometry(.08, 18).rotateX(-Math.PI / 2), new THREE.MeshBasicMaterial({ color: '#1f3a2c', transparent: true, opacity: .22, depthWrite: false }));
     shadow.position.y = .004;
     cand.add(shadow);
     cand.traverse((o) => { o.userData.candidate = true; });
@@ -3297,9 +3218,9 @@ function init() {
   scene.add(candLabel);
 
   // 行程：每座島挑一個細項，依相鄰順序繞城一圈
-  const ACTION = { hall: ['傾聽鄉親需求', 'Listening to residents'], phone: ['測試草屯人 APP', 'Testing the Caotun app'], map: ['盤點地圖', 'Reviewing the map'], river: ['檢查排水', 'Checking drainage'], farm: ['拜訪農友', 'Visiting farmers'], classroom: ['陪孩子讀書', 'Reading with kids'], busstop: ['搭幸福巴士', 'Riding the bus'], playground: ['檢查共融遊具', 'Checking play equipment'], roadwork: ['道路總體檢', 'Auditing roads'], crossing: ['改善路口', 'Fixing a crossing'], market: ['逛市場聽攤商', 'Talking to vendors'], kiosk: ['和攤商聊天', 'Chatting with stall owners'] };
+  const ACTION = { hall: ['傾聽鄉親需求', 'Listening to residents'], phone: ['試用遠距服務', 'Trying the remote service'], map: ['盤點路線', 'Reviewing routes'], river: ['檢查水源', 'Checking the water'], farm: ['拜訪農友', 'Visiting farmers'], classroom: ['說明戒菸衛教', 'Giving a health talk'], busstop: ['搭接駁車', 'Riding the shuttle'], playground: ['陪孩子玩', 'Playing with kids'], roadwork: ['看工程', 'Inspecting works'], crossing: ['檢查通學路口', 'Checking a school crossing'], market: ['逛市場聽攤商', 'Talking to vendors'], medvan: ['跟車巡迴看診', 'Riding along on the clinic van'], drone: ['看無人機送藥', 'Watching a drone delivery'], clinic: ['幫鄉親看診', 'Seeing patients'], tooth: ['幫長輩看牙', 'Checking an elder’s teeth'], vaccine: ['宣導皮蛇疫苗', 'Promoting the shingles vaccine'], teafield: ['跟茶農採茶', 'Picking tea with farmers'], teahouse: ['品一泡好茶', 'Tasting local tea'], recycle: ['跟清潔隊做回收', 'Sorting recycling'], leopard: ['巡石虎棲地', 'Walking the leopard cat habitat'], forest: ['種一棵樹', 'Planting a tree'], train: ['搭集集線', 'Riding the Jiji line'], card: ['幫長輩辦敬老卡', 'Helping with senior cards'], house: ['家訪', 'Visiting a family'], office: ['跟青年創業家聊天', 'Meeting young founders'], factory: ['拜訪產業', 'Visiting industry'] };
   const tourIslands = (() => {
-    const order = [byId.I04], left = new Set(islands.filter((s) => s !== byId.I04));
+    const order = [byId.I07], left = new Set(islands.filter((s) => s !== byId.I07));
     while (left.size) {
       const last = order[order.length - 1];
       let best = null, bd = 1e9;
@@ -3322,7 +3243,7 @@ function init() {
       for (const [v, w] of adj[u]) if (dist[u] + w < dist[v]) { dist[v] = dist[u] + w; prev[v] = u; }
     }
   }
-  const C_ = { node: byId.I04.nodes[1], leg: null, d: 0, wait: 0, stop: null, phase: 'walk', pos: new THREE.Vector3(), fwd: new THREE.Vector3(0, 0, 1), t: 0 };
+  const C_ = { node: byId.I07.nodes[1], leg: null, d: 0, wait: 0, stop: null, phase: 'walk', pos: new THREE.Vector3(), fwd: new THREE.Vector3(0, 0, 1), t: 0 };
   function planLeg() {
     const stop = nextStop();
     const info = itemInfo[stop.it.id];
@@ -3348,9 +3269,9 @@ function init() {
   let follow = false;
   const greet = { t: 0, dir: new THREE.Vector3() };
   const GREET = {
-    elder: ['阿伯、阿姨好！', 'Good day, auntie!'], student: ['小朋友好！', 'Hi there, kiddo!'], farmer: ['辛苦了！', 'Thanks for your hard work!'],
-    worker: ['辛苦了！', 'Thanks for your hard work!'], parent: ['寶寶好可愛！', 'What a cute baby!'], tourist: ['歡迎來草屯！', 'Welcome to Caotun!'],
-    official: ['一起加油！', "Let's keep going!"], commuter: ['路上小心！', 'Ride safe!'], researcher: ['你好！', 'Hello!']
+    elder: ['阿伯、阿姨，牙齒有顧否？', 'Good day! Teeth doing well?'], student: ['小朋友好！', 'Hi there, kiddo!'], farmer: ['辛苦了！', 'Thanks for your hard work!'],
+    worker: ['辛苦了！', 'Thanks for your hard work!'], parent: ['寶寶好可愛！', 'What a cute baby!'], tourist: ['歡迎來南投！', 'Welcome to Nantou!'],
+    official: ['一起加油！', "Let's keep going!"], commuter: ['路上小心！', 'Ride safe!'], researcher: ['你好！', 'Hello!'], medic: ['醫護辛苦了！', 'Thank you, nurse!']
   };
   const _prevT = new THREE.Vector3();
   onFrame.push((dt, animate) => {
@@ -3390,7 +3311,7 @@ function init() {
     cand.position.set(C_.pos.x, C_.pos.y + (moving ? Math.abs(Math.sin(ph)) * .012 : 0), C_.pos.z);
     if (C_.fwd.lengthSq() > .01) cand.rotation.y = Math.atan2(C_.fwd.x, C_.fwd.z);
     cand.scale.setScalar(sc);
-    // 對遇到的每位鎮民問好
+    // 對遇到的每位鄉親問好
     if (animate) {
       if (greet.t > 0) { greet.t -= dt; if (greet.t <= 0) candGreet.hidden = true; }
       else if (UI.carry) {
@@ -3422,7 +3343,7 @@ function init() {
     }
     dirty = true;
   });
-  // 點她 → 候選人卡片
+  // 點候選人 → 候選人卡片
   function candCard() {
     const c = DATA.city;
     const now = C_.phase === 'visit' ? `${tr((ACTION[C_.stop.it.model] || ['推動政見'])[0], (ACTION[C_.stop.it.model] || [, 'Working on policy'])[1])}：${tr(C_.stop.it.name, C_.stop.it.en)}` : tr(`正在前往 ${C_.stop.s.d.name}`, `Heading to ${C_.stop.s.d.en}`);
@@ -3430,9 +3351,11 @@ function init() {
       <div><div class="eyebrow">${esc(tr(c.role, c.roleEn))}</div><h2>${esc(tr(c.candidate, c.candidateEn))}</h2></div></div>
       <p class="lead">${esc(tr(c.slogan, c.sloganEn))}</p>
       <h3>${tr('現在', 'Right now')}</h3><div class="chips"><button class="chip btnlike" data-item="${C_.stop.it.id}">${esc(now)}</button></div>
-      <h3>${tr('行程', 'Route')}</h3><p class="lead">${tr('她會走遍十二座政策島，在政見地點停下來傾聽鄉親、推動市政。', 'She walks all twelve policy islands and stops at each policy site to listen and get work done.')}</p>
-      <div class="chips"><button class="chip btnlike" id="candFollow">${follow ? tr('停止跟隨', 'Stop following') : tr('跟著她走', 'Follow her')}</button></div>
-      ${vidList(DATA.videos.filter((v) => !v.islands.length || v.kind !== 'trail'))}
+      <p class="lead" style="margin-top:0">${esc(tr(c.bio, c.bioEn))}</p>
+      <h3>${tr('三顧總攬', 'The plan')}</h3><p class="lead">${esc(tr(c.pledge, c.pledgeEn))}</p>
+      <h3>${tr('行程', 'Route')}</h3><p class="lead">${esc(tr(`${c.nick}會走遍十二座政策島，在政見地點停下來傾聽鄉親、推動縣政。`, `${c.nickEn} walks all twelve policy islands and stops at each policy site to listen and get work done.`))}</p>
+      <div class="chips"><button class="chip btnlike" id="candFollow">${follow ? tr('停止跟隨', 'Stop following') : tr(`跟著${DATA.city.nick}走`, `Follow ${DATA.city.nickEn}`)}</button></div>
+      ${vidList(DATA.videos)}
       ${src}`;
   }
   function selectCandidate() {
@@ -3448,7 +3371,7 @@ function init() {
     if (!e.target.closest('#candFollow')) return;
     follow = !follow;
     if (follow) { fly = null; controls.minDistance = 3; }
-    e.target.textContent = follow ? tr('停止跟隨', 'Stop following') : tr('跟著她走', 'Follow her');
+    e.target.textContent = follow ? tr('停止跟隨', 'Stop following') : tr(`跟著${DATA.city.nick}走`, `Follow ${DATA.city.nickEn}`);
   });
   cv.addEventListener('pointerdown', () => { /* 拖曳時仍跟隨，只取消飛行 */ });
   onSelect.push((sel) => { if (!sel || sel.type !== 'walker' || sel.flow) follow = follow && sel && sel.type === 'walker' && !sel.flow; });
